@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Container,
   FormControl,
@@ -10,17 +10,70 @@ import "./Search.css";
 import search_icon from "../../assets/search.png";
 
 const Search = () => {
+  const [links1, setLinks1] = useState(false);
+  const [links2, setLinks2] = useState(false);
+  const [links3, setLinks3] = useState(false);
+
+  const link1Active = () => {
+    setLinks1(true);
+    setLinks2(false);
+    setLinks3(false);
+  };
+
+  const link2Active = () => {
+    setLinks1(false);
+    setLinks2(true);
+    setLinks3(false);
+  };
+
+  const link3Active = () => {
+    setLinks1(false);
+    setLinks2(false);
+    setLinks3(true);
+  };
+
   return (
-    <Navbar bg="primary" data-bs-theme="dark">
+    <Navbar className="search" data-bs-theme="dark">
       <Container>
         <div className="search__input_group">
-          <img src={search_icon} alt="" />
-          <FormControl className="search__input" />
+          <img src={search_icon} alt="" className="search__input_icon" />
+          <input
+            type="text"
+            className="search__input"
+            placeholder="Search store"
+          />
         </div>
-        <Nav className="me-auto">
-          <Nav.Link href="#home">Home</Nav.Link>
-          <Nav.Link href="#features">Features</Nav.Link>
-          <Nav.Link href="#pricing">Pricing</Nav.Link>
+        <Nav className="me-auto search__items_group">
+          <Nav.Link style={{ marginRight: "1rem" }} href="#home">
+            <span
+              onClick={link1Active}
+              className={`search__items ${
+                links1 ? "search__items_active" : ""
+              }`}
+            >
+              Discover
+            </span>
+          </Nav.Link>
+          <Nav.Link style={{ marginRight: "1rem" }} href="#features">
+            <span
+              onClick={link2Active}
+              className={`search__items ${
+                links2 ? "search__items_active" : ""
+              }`}
+            >
+              Browse
+            </span>
+          </Nav.Link>
+          <Nav.Link href="#pricing">
+            <span
+              onClick={link3Active}
+              className={`search__items ${
+                links3 ? "search__items_active" : ""
+              }`}
+            >
+              News
+            </span>
+          </Nav.Link>
         </Nav>
       </Container>
     </Navbar>
