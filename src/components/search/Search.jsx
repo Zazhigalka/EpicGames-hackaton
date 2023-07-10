@@ -14,6 +14,7 @@ const Search = () => {
     <Navbar bg="primary" data-bs-theme="dark">
       <Container>
         <div className="search__input_group">
+          <img src={search_icon} alt="" />
           <FormControl className="search__input" />
         </div>
         <Nav className="me-auto">
