@@ -1,0 +1,11 @@
+.icon {
+  width: 31px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin: 0 5px;
+}
+
+.icon:hover path {
+  fill: #007aff;
+  transition: 0.3s;
+}
