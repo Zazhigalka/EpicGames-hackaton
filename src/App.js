@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css';
 import MainRoutes from './routes/MainRoutes';
 import Navbar from './components/navbar/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
