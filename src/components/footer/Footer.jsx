@@ -4,10 +4,17 @@ import './Footer.css';
 import { ReactComponent as YoutubeIcon } from '../../assets/youtube.svg';
 import { ReactComponent as TwitterIcon } from '../../assets/twitter.svg';
 import { ReactComponent as FacebookIcon } from '../../assets/facebook.svg';
+import { ReactComponent as UpBtnIcon } from '../../assets/up-btn.svg';
 import { ReactComponent as EpicGamesIcon } from '../../assets/epicGames.svg';
 import { ReactComponent as UnrealEngineIcon } from '../../assets/unrealEngine.svg';
 
 const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
   return (
     <footer style={{ backgroundColor: '#202020', marginBottom: '0' }}>
       <Container>
@@ -17,7 +24,9 @@ const Footer = () => {
             <TwitterIcon className="icon" />
             <YoutubeIcon className="icon" />
           </div>
-          <div className="scroll"></div>
+          <div>
+            <UpBtnIcon className="up-btn" onClick={scrollToTop} />
+          </div>
         </div>
 
         <div className="section-2">

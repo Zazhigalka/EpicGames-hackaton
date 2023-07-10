@@ -3,6 +3,12 @@ footer {
   background-color: #202020;
 }
 
+.section-1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .section-2 {
   font-size: 14px;
   font-family: 'Open Sans', sans-serif;
@@ -21,7 +27,6 @@ a:hover {
 }
 
 .icon {
-  width: 34px;
   cursor: pointer;
   margin: 3em 0.3em;
 }
@@ -33,6 +38,20 @@ a:hover {
 .icon:hover path {
   fill: #007aff;
   transition: 0.5s;
+}
+
+.up-btn {
+  cursor: pointer;
+}
+
+.up-btn path {
+  width: 35px;
+  transition: 0.5s;
+}
+
+.up-btn:hover path {
+  transition: 0.5s;
+  stroke: #007aff;
 }
 
 h4 {
