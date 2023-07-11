@@ -8,6 +8,7 @@ import WishList from "../components/wishList/WishList";
 import WishListPage from "../pages/WishListPage";
 import CartPage from "../pages/CartPage";
 import NotFoundPage from "../pages/NotFoundPage";
+import ProductDetailsPage from '../pages/ProductDetailsPage';
 
 const MainRoutes = () => {
   return (
