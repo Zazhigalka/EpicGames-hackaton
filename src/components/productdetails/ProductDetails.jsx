@@ -1,12 +1,11 @@
-import React from 'react';
-import './ProductDetails.css';
-import { Button, Container } from 'react-bootstrap';
-import CarouselBox from '../components/Carousel/CarouselBox';
-import addTo from '../assets/add-to.png';
+import React from "react";
+import "./ProductDetails.css";
+import { Button, Container } from "react-bootstrap";
+import addTo from "../assets/add-to.png";
 
 const ProductDetails = () => {
   return (
-    <div style={{ backgroundColor: '#121212' }}>
+    <div style={{ backgroundColor: "#121212" }}>
       <div className="product-details-container">
         <div className="product-details-left">
           <h3>Fortnite</h3>

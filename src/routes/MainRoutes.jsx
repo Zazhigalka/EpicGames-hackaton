@@ -2,8 +2,11 @@ import React from "react";
 import HomePage from "../pages/HomePage";
 import AuthPage from "../pages/AuthPage";
 import Distribution from "../components/distribution/Distribution";
-
-import NotFound from "../components/notfound/NotFound";
+import ProductDetailsPage from "../pages/ProductDetailsPage";
+import WishListPage from "../pages/WishListPage";
+import CartPage from "../pages/CartPage";
+import NotFoundPage from "../pages/NotFoundPage";
+import { Route, Routes } from "react-router-dom";
 
 const MainRoutes = () => {
   return (
