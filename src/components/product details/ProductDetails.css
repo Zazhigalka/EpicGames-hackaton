@@ -1,0 +1,14 @@
+.product-details-container {
+  width: 70%;
+  margin: auto;
+  display: flex;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.product-details-left {
+  width: 70%;
+}
+
+.product-details-right {
+  width: 30%;
+}

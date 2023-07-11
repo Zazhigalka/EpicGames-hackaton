@@ -1,0 +1,52 @@
+.page_not_found {
+  background-color: #202020;
+  background-size: cover;
+  color: #fff;
+  font-family: "Open-sans", sans-serif, arial;
+  z-index: -5;
+  text-align: center;
+  display: flex;
+  justify-content: end;
+  border-bottom: 1px solid #363636;
+}
+
+.error {
+  z-index: 1;
+  position: absolute;
+  color: gray;
+  top: 5%;
+  left: 25%;
+}
+
+.error > h2 {
+  font-size: 340px;
+  font-weight: 700;
+  color: #363636;
+}
+
+.page__not_found-new {
+  z-index: 5;
+  position: absolute;
+  top: 30%;
+  left: 30%;
+}
+
+.page__not_found-new > h1 {
+  padding-bottom: 3%;
+  letter-spacing: 0.045em;
+}
+
+#button__home {
+  letter-spacing: 0.075em;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 2;
+  padding: 2% 8%;
+  border: none;
+  border-radius: 0px;
+}
+
+#rex {
+  width: 30%;
+  height: 30%;
+}

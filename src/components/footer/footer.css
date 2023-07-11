@@ -3,103 +3,107 @@ footer {
   background-color: #202020;
 }
 
-.section-1 {
+footer .section-1 {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.section-2 {
+footer .section-2 {
   font-size: 14px;
   font-family: "Open Sans", sans-serif;
   color: #e7e7e7;
 }
 
-a {
+footer a {
   text-decoration: none;
   color: #ccc;
   transition: 0.5s;
 }
 
-a:hover {
+footer a:hover {
   color: #007aff;
   transition: 0.5s;
 }
 
-.icon {
+footer .icon {
   cursor: pointer;
   margin: 3em 0.3em;
 }
 
-.icon path {
+footer .icon-tg {
+  margin: 0;
+}
+
+footer .icon path {
   transition: 0.5s;
 }
 
-.icon:hover path {
+footer .icon:hover path {
   fill: #007aff;
   transition: 0.5s;
 }
 
-.up-btn {
+footer .up-btn {
   cursor: pointer;
 }
 
-.up-btn path {
+footer .up-btn path {
   width: 35px;
   transition: 0.5s;
 }
 
-.up-btn:hover path {
+footer .up-btn:hover path {
   transition: 0.5s;
   stroke: #007aff;
 }
 
-h4 {
+footer h4 {
   font-size: 1em;
   opacity: 0.4;
   color: #ccc;
   margin-bottom: -0.1em;
 }
 
-.list-box {
+footer .list-box {
   width: 100%;
   display: flex;
   gap: 4%;
 }
 
-.footer-list {
+footer .footer-list {
   display: flex;
   flex-direction: column;
   font-size: 1em;
   padding: 0;
 }
 
-li {
+footer li {
   padding-top: 0.5em;
 }
 
-.footer-copyright__box {
+footer .footer-copyright__box {
   color: #ccc;
   width: 35%;
   font-size: 0.8em;
   padding: 2em 0;
 }
 
-.icon-end {
+footer .icon-end {
   width: 34px;
   cursor: pointer;
 }
 
-.icon-end path {
+footer .icon-end path {
   transition: 0.5s;
 }
 
-.icon-end:hover path {
+footer .icon-end:hover path {
   fill: #fff;
   transition: 0.5s;
 }
 
-.section-3 {
+footer .section-3 {
   width: 100%;
   display: flex;
   align-items: end;
