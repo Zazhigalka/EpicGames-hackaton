@@ -106,3 +106,144 @@
 }
 
 /* INFO */
+
+/* COMMUNITY */
+
+.container__community {
+  width: 75%;
+  margin: auto;
+}
+
+.community {
+  background: rgba(22, 39, 49, 0)
+    linear-gradient(
+      to right,
+      rgb(22, 39, 49) 31%,
+      rgba(22, 39, 49, 0.8) 46%,
+      rgba(22, 39, 49, 0.1) 63%,
+      rgba(22, 39, 49, 0.1) 82%
+    );
+  margin-top: 1.2rem;
+  width: 100%;
+  display: flex;
+  border: solid 1px #2a2a2a;
+  border-radius: 10px;
+}
+
+.community__main {
+  display: flex;
+  width: 45%;
+}
+
+.community__main_image {
+  width: 100%;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  margin-left: 3rem;
+}
+
+.community__descr_p {
+  font-size: 22px;
+  color: #969597;
+  text-align: center;
+  margin-top: 7rem;
+  margin-left: 10rem;
+}
+
+.communtiy__descr_a {
+  color: #969597;
+  font-size: 18px;
+  margin-left: 19rem;
+  text-decoration-style: solid;
+}
+
+.communtiy__descr_a:hover {
+  color: #ffff;
+}
+
+/* COMMUNITY */
+
+/* SERVICES */
+
+.container__services {
+  width: 75%;
+  margin: auto;
+}
+
+.services {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.services__left {
+  display: flex;
+  border: solid 1px #2a2a2a;
+  width: 48.8%;
+  border-radius: 10px;
+  background: linear-gradient(
+      to right,
+      rgb(26, 12, 71) 31%,
+      rgba(26, 12, 71, 0.8) 46%,
+      rgba(26, 12, 71, 0.1) 63%,
+      rgba(26, 12, 71, 0.1) 82%
+    )
+    rgba(26, 12, 71, 0);
+}
+
+.services__left_image {
+  width: 23rem;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+.services__right_image {
+  width: 23rem;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+.services__right {
+  display: flex;
+  border: solid 1px #2a2a2a;
+  width: 49.9%;
+  border-radius: 10px;
+  background: linear-gradient(
+      to right,
+      rgb(26, 12, 71) 31%,
+      rgba(26, 12, 71, 0.8) 46%,
+      rgba(26, 12, 71, 0.1) 63%,
+      rgba(26, 12, 71, 0.1) 82%
+    )
+    rgba(26, 12, 71, 0);
+}
+
+.services__right_descr,
+.services__left_descr {
+  width: 40%;
+}
+
+.services__right_descr_p,
+.services__left_descr_p {
+  color: #9a9a9b;
+  font-size: 22px;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 5rem;
+}
+
+.services__right_descr_a {
+  margin-left: 5.5rem;
+  color: #969597;
+}
+
+.services__left_descr_a {
+  margin-left: 2.5rem;
+  color: #969597;
+}
+
+.services__left_descr_a:hover,
+.services__right_descr_a:hover {
+  color: #ffff;
+}
+/* SERVICES */

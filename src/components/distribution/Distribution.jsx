@@ -8,6 +8,9 @@ import epic_player_icon from "../../assets/epic-games-player-icon.svg";
 import epic_payment_icon from "../../assets/epic-games-payment-icon.svg";
 import epic_wallet_icon from "../../assets/epic-games-wallet-icon.svg";
 import epic_rating_icon from "../../assets/epic-games-ratings-icon.svg";
+import epic_logo from "../../assets/epic-developer-community-logo.svg";
+import epic_services_logo from "../../assets/epic-online-services-icon.svg";
+import epic_unreal_logo from "../../assets/unreal-engine-icon.svg";
 
 const Distribution = () => {
   return (
@@ -82,6 +85,65 @@ const Distribution = () => {
               запросить бесплатную локализацию товарной страницы и подключить
               программу поддержки авторов.
             </p>
+          </div>
+        </div>
+      </div>
+      <div className="container__community">
+        <div className="community">
+          <div className="community__main">
+            <img className="community__main_image" src={epic_logo} alt="" />
+          </div>
+          <div className="community__descr">
+            <p className="community__descr_p">
+              Присоединяйтесь к обсуждению или создавайте <br /> темы,
+              посвящённые дистрибуции, получая <br /> помощь от сообщества
+            </p>
+            <a className="communtiy__descr_a" href="">
+              Станьте частью сообщества
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div className="container__services">
+        <div className="services">
+          <div className="services__left">
+            <img
+              src={epic_services_logo}
+              alt=""
+              className="services__left_image"
+            />
+            <div className="services__left_descr">
+              <p className="services__left_descr_p">
+                Модульный набор сетевых услуг для подключения к сообществам всех
+                платформ
+              </p>
+              <a
+                href="https://dev.epicgames.com/en-US/services"
+                className="services__left_descr_a"
+              >
+                Взгляните на наши услуги
+              </a>
+            </div>
+          </div>
+          <div className="services__right">
+            <img
+              className="services__right_image"
+              src={epic_unreal_logo}
+              alt=""
+            />
+            <div className="services__right_descr">
+              <p className="services__right_descr_p">
+                Самый открытый и продвинутый в мире инструмент для создания
+                трёхмерных моделей в реальном времени
+              </p>
+              <a
+                href="https://www.unrealengine.com/en-US"
+                className="services__right_descr_a"
+              >
+                Узнать больше
+              </a>
+            </div>
           </div>
         </div>
       </div>

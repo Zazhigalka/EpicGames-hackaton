@@ -1,7 +1,8 @@
 import React from "react";
 import "./ProductDetails.css";
 import { Button, Container } from "react-bootstrap";
-import addTo from "../assets/add-to.png";
+import CarouselBox from "../Carousel/CarouselBox";
+import addTo from "../../assets/add-to.png";
 
 const ProductDetails = () => {
   return (
@@ -27,6 +28,13 @@ const ProductDetails = () => {
           <Button variant="outline-light w-100 mt-3">
             <img width={20} src={addTo} alt="" /> В список желаемого
           </Button>
+
+          <div className="product-details__more-about-product">
+            <div>
+              <h6>Разработчик</h6>
+              <p></p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

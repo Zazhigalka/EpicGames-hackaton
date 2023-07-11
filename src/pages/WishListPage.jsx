@@ -5,7 +5,9 @@ import Search from "../components/search/Search";
 const WishListPage = () => {
   return (
     <>
-      <Search />
+      <div style={{ position: "fixed", left: "0", right: "0" }}>
+        <Search />
+      </div>
       <WishList />
     </>
   );
