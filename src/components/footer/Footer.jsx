@@ -1,9 +1,10 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
-import './footer.css';
+import './Footer.css';
 import { ReactComponent as YoutubeIcon } from '../../assets/youtube.svg';
 import { ReactComponent as TwitterIcon } from '../../assets/twitter.svg';
 import { ReactComponent as FacebookIcon } from '../../assets/facebook.svg';
+import { ReactComponent as TelegramIcon } from '../../assets/telegram.svg';
 import { ReactComponent as UpBtnIcon } from '../../assets/up-btn.svg';
 import { ReactComponent as EpicGamesIcon } from '../../assets/epicGames.svg';
 import { ReactComponent as UnrealEngineIcon } from '../../assets/unrealEngine.svg';
@@ -20,9 +21,16 @@ const Footer = () => {
       <Container>
         <div className="section-1">
           <div className="links-box">
-            <FacebookIcon className="icon" />
-            <TwitterIcon className="icon" />
-            <YoutubeIcon className="icon" />
+            <a href="https://www.facebook.com/epicgames">
+              <FacebookIcon className="icon" />
+            </a>
+            <TelegramIcon className="icon icon-tg" />
+            <a href="https://twitter.com/EpicGamesRU">
+              <TwitterIcon className="icon" />
+            </a>
+            <a href="https://www.youtube.com/channel/UC5Qk8mWBwtMyEj7iQQYRk1A">
+              <YoutubeIcon className="icon" />
+            </a>
           </div>
           <div>
             <UpBtnIcon className="up-btn" onClick={scrollToTop} />
