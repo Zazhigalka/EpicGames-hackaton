@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap");
+
+.navbar {
+  background-color: #2a2a2a;
+  height: 60px;
+  color: #e7e7e7;
+  font-size: 75%;
+  margin: 0;
+  font-family: "Open Sans", sans-serif, arial;
+}
+
+.navbar__container {
+  margin: 0;
+}
+
+/* logo */
+.navbar__logo {
+  margin-left: 1%;
+}
+
+#epic-games-logo {
+  width: 30px;
+  height: 35px;
+}
+/* logo */
+
+/* titles */
+
+.navbar__titles {
+  margin-left: 1%;
+  font-weight: 600;
+}
+
+.navbar__items {
+  border-bottom: 2px solid transparent;
+  transition: 0.2s;
+  height: 60px; /* Фиксированная высота */
+  padding: 23px 0;
+}
+
+.navbar__items:hover {
+  border-bottom: 6px solid #007aff;
+  transition: 0.1s;
+}
+
+.square {
+  border-right: 1px solid #fff;
+  height: 35px;
+}
+/* titles */

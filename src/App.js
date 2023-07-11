@@ -1,12 +1,12 @@
 import React from "react";
 import MainRoutes from "./routes/MainRoutes";
-import Navbar from "./components/navbar/Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
+import NavbarEpic from "./components/navbar/NavbarEpic";
 
 const App = () => {
   return (
     <div>
-      <Navbar />
+      <NavbarEpic />
       <MainRoutes />
     </div>
   );
