@@ -40,7 +40,7 @@ const Search = () => {
           <input
             type="text"
             className="search__input"
-            placeholder="Search store"
+            placeholder="Искать в магазине"
           />
         </div>
         <Nav className="me-auto search__items_group">
@@ -51,7 +51,7 @@ const Search = () => {
                 links1 ? "search__items_active" : ""
               }`}
             >
-              Discover
+              Главное
             </span>
           </Nav.Link>
           <Nav.Link style={{ marginRight: "1rem" }} href="#features">
@@ -61,7 +61,7 @@ const Search = () => {
                 links2 ? "search__items_active" : ""
               }`}
             >
-              Browse
+              Все игры
             </span>
           </Nav.Link>
           <Nav.Link href="#pricing">
@@ -71,7 +71,7 @@ const Search = () => {
                 links3 ? "search__items_active" : ""
               }`}
             >
-              News
+              Новости
             </span>
           </Nav.Link>
         </Nav>
