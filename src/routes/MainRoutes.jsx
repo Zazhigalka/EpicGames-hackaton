@@ -1,8 +1,9 @@
-import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import HomePage from "../pages/HomePage";
-import AuthPage from "../pages/AuthPage";
-import NotFound from "../components/notfound/NotFound";
+import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import HomePage from '../pages/HomePage';
+import AuthPage from '../pages/AuthPage';
+import NotFound from '../components/notfound/NotFound';
+import ProductDetailsPage from '../pages/ProductDetailsPage';
 
 const MainRoutes = () => {
   return (
