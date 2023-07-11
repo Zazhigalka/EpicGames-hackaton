@@ -1,16 +1,16 @@
 import React from "react";
-import Cart from "../components/cart/Cart";
+import Distribution from "../components/distribution/Distribution";
 import Search from "../components/search/Search";
 
-const CartPage = () => {
+const DistributionPage = () => {
   return (
     <>
       <div style={{ position: "fixed", left: "0", right: "0" }}>
         <Search />
       </div>
-      <Cart />
+      <Distribution />
     </>
   );
 };
 
-export default CartPage;
+export default DistributionPage;

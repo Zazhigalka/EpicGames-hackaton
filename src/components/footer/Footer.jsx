@@ -1,23 +1,23 @@
-import React from 'react';
-import { Container } from 'react-bootstrap';
-import './Footer.css';
-import { ReactComponent as YoutubeIcon } from '../../assets/youtube.svg';
-import { ReactComponent as TwitterIcon } from '../../assets/twitter.svg';
-import { ReactComponent as FacebookIcon } from '../../assets/facebook.svg';
-import { ReactComponent as TelegramIcon } from '../../assets/telegram.svg';
-import { ReactComponent as UpBtnIcon } from '../../assets/up-btn.svg';
-import { ReactComponent as EpicGamesIcon } from '../../assets/epicGames.svg';
-import { ReactComponent as UnrealEngineIcon } from '../../assets/unrealEngine.svg';
+import React from "react";
+import { Container } from "react-bootstrap";
+import "./Footer.css";
+import { ReactComponent as YoutubeIcon } from "../../assets/youtube.svg";
+import { ReactComponent as TwitterIcon } from "../../assets/twitter.svg";
+import { ReactComponent as FacebookIcon } from "../../assets/facebook.svg";
+import { ReactComponent as TelegramIcon } from "../../assets/telegram.svg";
+import { ReactComponent as UpBtnIcon } from "../../assets/up-btn.svg";
+import { ReactComponent as EpicGamesIcon } from "../../assets/epicGames.svg";
+import { ReactComponent as UnrealEngineIcon } from "../../assets/unrealEngine.svg";
 
 const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: "smooth",
     });
   };
   return (
-    <footer style={{ backgroundColor: '#202020', marginBottom: '0' }}>
+    <footer style={{ backgroundColor: "#202020", marginBottom: "0" }}>
       <Container>
         <div className="section-1">
           <div className="links-box">
@@ -43,16 +43,16 @@ const Footer = () => {
           <div className="list-box">
             <ul className="footer-list">
               <li>
-                <a href="#">Поддержка автора</a>{' '}
+                <a href="#">Поддержка автора</a>{" "}
               </li>
               <li>
-                <a href="#">Опубликовать на Epic Games</a>{' '}
+                <a href="#">Опубликовать на Epic Games</a>{" "}
               </li>
               <li>
-                <a href="#">Вакансии</a>{' '}
+                <a href="#">Вакансии</a>{" "}
               </li>
               <li>
-                <a href="#">Компания</a>{' '}
+                <a href="#">Компания</a>{" "}
               </li>
               <br />
               <li>
@@ -88,13 +88,13 @@ const Footer = () => {
           <div className="list-box">
             <ul className="footer-list">
               <li>
-                <a href="#">Battle Breakers</a>{' '}
+                <a href="#">Battle Breakers</a>{" "}
               </li>
               <li>
-                <a href="#">Fortnite</a>{' '}
+                <a href="#">Fortnite</a>{" "}
               </li>
               <li>
-                <a href="#">Infinity Blade</a>{' '}
+                <a href="#">Infinity Blade</a>{" "}
               </li>
             </ul>
 
@@ -112,7 +112,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <hr style={{ border: 'solid 1px #666' }} />
+        <hr style={{ border: "solid 1px #666" }} />
 
         <div className="footer-copyright__box">
           <p>
@@ -127,19 +127,19 @@ const Footer = () => {
         </div>
 
         <div className="section-3">
-          <ul style={{ display: 'flex', gap: '0.7em', padding: '0' }}>
+          <ul style={{ display: "flex", gap: "0.7em", padding: "0" }}>
             <li>
-              <a href="#">Условия предоставления услуг</a>{' '}
+              <a href="#">Условия предоставления услуг</a>{" "}
             </li>
             <li>
-              <a href="#">Политика конфиденциальности</a>{' '}
+              <a href="#">Политика конфиденциальности</a>{" "}
             </li>
             <li>
-              <a href="#">Правила возврата магазина</a>{' '}
+              <a href="#">Правила возврата магазина</a>{" "}
             </li>
           </ul>
 
-          <ul style={{ display: 'flex', gap: '1em', padding: '0' }}>
+          <ul style={{ display: "flex", gap: "1em", padding: "0" }}>
             <li>
               <EpicGamesIcon className="icon-end" />
             </li>

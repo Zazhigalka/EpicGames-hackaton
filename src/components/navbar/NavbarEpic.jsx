@@ -42,7 +42,7 @@ const NavbarEpic = () => {
           <Nav.Link
             className={second ? "navbar__items clicked" : "navbar__items"}
             onClick={() => {
-              navigate("/NotFound");
+              navigate("/distribution");
               handleElementSecond();
             }}
           >

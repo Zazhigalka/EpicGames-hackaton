@@ -13,25 +13,48 @@ const Search = () => {
   const [links1, setLinks1] = useState(false);
   const [links2, setLinks2] = useState(false);
   const [links3, setLinks3] = useState(false);
+  const [links4, setLinks4] = useState(false);
+  const [links5, setLinks5] = useState(false);
 
   const link1Active = () => {
     setLinks1(true);
     setLinks2(false);
     setLinks3(false);
+    setLinks4(false);
+    setLinks5(false);
   };
 
   const link2Active = () => {
     setLinks1(false);
     setLinks2(true);
     setLinks3(false);
+    setLinks4(false);
+    setLinks5(false);
   };
 
   const link3Active = () => {
     setLinks1(false);
     setLinks2(false);
     setLinks3(true);
+    setLinks4(false);
+    setLinks5(false);
   };
 
+  const link4Active = () => {
+    setLinks1(false);
+    setLinks2(false);
+    setLinks3(false);
+    setLinks4(true);
+    setLinks5(false);
+  };
+
+  const link5Active = () => {
+    setLinks1(false);
+    setLinks2(false);
+    setLinks3(false);
+    setLinks4(false);
+    setLinks5(true);
+  };
   return (
     <Navbar className="search" data-bs-theme="dark">
       <Container>
@@ -40,7 +63,7 @@ const Search = () => {
           <input
             type="text"
             className="search__input"
-            placeholder="Search store"
+            placeholder="Искать в магазине"
           />
         </div>
         <Nav className="me-auto search__items_group">
@@ -51,7 +74,7 @@ const Search = () => {
                 links1 ? "search__items_active" : ""
               }`}
             >
-              Discover
+              Главное
             </span>
           </Nav.Link>
           <Nav.Link style={{ marginRight: "1rem" }} href="#features">
@@ -61,7 +84,7 @@ const Search = () => {
                 links2 ? "search__items_active" : ""
               }`}
             >
-              Browse
+              Все игры
             </span>
           </Nav.Link>
           <Nav.Link href="#pricing">
@@ -71,7 +94,28 @@ const Search = () => {
                 links3 ? "search__items_active" : ""
               }`}
             >
-              News
+              Новости
+            </span>
+          </Nav.Link>
+
+          <Nav.Link style={{ marginLeft: "20rem" }} href="/wish-list">
+            <span
+              onClick={link4Active}
+              className={`search__items ${
+                links4 ? "search__items_active" : ""
+              }`}
+            >
+              Список желаемого
+            </span>
+          </Nav.Link>
+          <Nav.Link href="/cart">
+            <span
+              onClick={link5Active}
+              className={`search__items ${
+                links5 ? "search__items_active" : ""
+              }`}
+            >
+              Корзина
             </span>
           </Nav.Link>
         </Nav>

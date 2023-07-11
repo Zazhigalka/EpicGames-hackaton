@@ -1,5 +1,5 @@
-import React from 'react';
-import ProductDetails from '../components/product details/ProductDetails';
+import React from "react";
+import ProductDetails from "../components/productdetails/ProductDetails";
 
 const ProductDetailsPage = () => {
   return <ProductDetails />;
