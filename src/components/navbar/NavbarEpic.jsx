@@ -42,7 +42,7 @@ const NavbarEpic = () => {
           <Nav.Link
             className={second ? "navbar__items clicked" : "navbar__items"}
             onClick={() => {
-              navigate("/NotFound");
+              navigate("/distribution");
               handleElementSecond();
             }}
           >
@@ -65,10 +65,10 @@ const NavbarEpic = () => {
           </Nav.Link>
         </Nav>
         <Nav className="navbar__user">
-          <div class="user-icon">
+          <div className="user-icon">
             <img src={userIcon} id="user__icon" alt="" />
           </div>
-          <div class="user__menu">
+          <div className="user__menu">
             <div>
               <p>Учетная запись</p>
               <li>Корзина</li>
