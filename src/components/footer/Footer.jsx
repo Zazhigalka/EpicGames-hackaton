@@ -1,22 +1,22 @@
-import React from "react";
-import { Container } from "react-bootstrap";
-import "./footer.css";
-import { ReactComponent as YoutubeIcon } from "../../assets/youtube.svg";
-import { ReactComponent as TwitterIcon } from "../../assets/twitter.svg";
-import { ReactComponent as FacebookIcon } from "../../assets/facebook.svg";
-import { ReactComponent as UpBtnIcon } from "../../assets/up-btn.svg";
-import { ReactComponent as EpicGamesIcon } from "../../assets/epicGames.svg";
-import { ReactComponent as UnrealEngineIcon } from "../../assets/unrealEngine.svg";
+import React from 'react';
+import { Container } from 'react-bootstrap';
+import './footer.css';
+import { ReactComponent as YoutubeIcon } from '../../assets/youtube.svg';
+import { ReactComponent as TwitterIcon } from '../../assets/twitter.svg';
+import { ReactComponent as FacebookIcon } from '../../assets/facebook.svg';
+import { ReactComponent as UpBtnIcon } from '../../assets/up-btn.svg';
+import { ReactComponent as EpicGamesIcon } from '../../assets/epicGames.svg';
+import { ReactComponent as UnrealEngineIcon } from '../../assets/unrealEngine.svg';
 
 const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
   };
   return (
-    <footer style={{ backgroundColor: "#202020", marginBottom: "0" }}>
+    <footer style={{ backgroundColor: '#202020', marginBottom: '0' }}>
       <Container>
         <div className="section-1">
           <div className="links-box">
@@ -30,47 +30,49 @@ const Footer = () => {
         </div>
 
         <div className="section-2">
-          <h4>Resources</h4>
+          <h4>Ресурсы</h4>
 
           <div className="list-box">
             <ul className="footer-list">
               <li>
-                <a href="#">Support-A-Creator</a>{" "}
+                <a href="#">Поддержка автора</a>{' '}
               </li>
               <li>
-                <a href="#">Destribite on Epic Games</a>{" "}
+                <a href="#">Опубликовать на Epic Games</a>{' '}
               </li>
               <li>
-                <a href="#">Careers</a>{" "}
+                <a href="#">Вакансии</a>{' '}
               </li>
               <li>
-                <a href="#">Company</a>{" "}
+                <a href="#">Компания</a>{' '}
               </li>
-            </ul>
-
-            <ul className="footer-list">
+              <br />
               <li>
-                <a href="#">Fan Art Policy</a>
+                <a href="#">Правила для неофициальных материалов</a>
               </li>
               <li>
-                <a href="#">UX Research</a>
+                <a href="#">Расследование пользевательского опыта</a>
               </li>
               <li>
-                <a href="#">Store EULA</a>
+                <a href="#">
+                  Лицензионное соглашение с конечным пользователем магазина
+                </a>
               </li>
-            </ul>
-
-            <ul className="footer-list">
+              <br />
               <li>
-                <a href="#">Online Services</a>
+                <a href="#">Сетевые службы</a>
               </li>
               <li>
-                <a href="#">Community Rules</a>
+                <a href="#">Правила сообщества</a>
               </li>
               <li>
                 <a href="#">Epic Newsroom</a>
               </li>
             </ul>
+
+            <ul className="footer-list"></ul>
+
+            <ul className="footer-list"></ul>
           </div>
           <br />
           <br />
@@ -78,13 +80,13 @@ const Footer = () => {
           <div className="list-box">
             <ul className="footer-list">
               <li>
-                <a href="#">Battle Breakers</a>{" "}
+                <a href="#">Battle Breakers</a>{' '}
               </li>
               <li>
-                <a href="#">Fortnite</a>{" "}
+                <a href="#">Fortnite</a>{' '}
               </li>
               <li>
-                <a href="#">Infinity Blade</a>{" "}
+                <a href="#">Infinity Blade</a>{' '}
               </li>
             </ul>
 
@@ -102,33 +104,34 @@ const Footer = () => {
           </div>
         </div>
 
-        <hr style={{ border: "solid 1px #666" }} />
+        <hr style={{ border: 'solid 1px #666' }} />
 
         <div className="footer-copyright__box">
           <p>
-            © 2023, Epic Games, Inc. All rights reserved. Epic, Epic Games, the
-            Epic Games logo, Fortnite, the Fortnite logo, Unreal, Unreal Engine,
-            the Unreal Engine logo, Unreal Tournament, and the Unreal Tournament
-            logo are trademarks or registered trademarks of Epic Games, Inc. in
-            the United States of America and elsewhere. Other brands or product
-            names are the trademarks of their respective owners.
+            © 2023, Epic Games, Inc. Все права сохранены. Epic, Epic Games,
+            логотип Epic Games, Fortnite, логотип Fortnite, Unreal, Unreal
+            Engine, логотип Unreal Engine, Unreal Tournament и логотип Unreal
+            Tournament являются товарными знаками или зарегистрированными
+            товарными знаками Epic Games, Inc. в США и во всём остальном мире.
+            Все прочие марки и наименования продукции являются товарными знаками
+            соответствующих владельцев.
           </p>
         </div>
 
         <div className="section-3">
-          <ul style={{ display: "flex", gap: "0.7em", padding: "0" }}>
+          <ul style={{ display: 'flex', gap: '0.7em', padding: '0' }}>
             <li>
-              <a href="#">Terms of Service</a>{" "}
+              <a href="#">Условия предоставления услуг</a>{' '}
             </li>
             <li>
-              <a href="#">Privacy Policy</a>{" "}
+              <a href="#">Политика конфиденциальности</a>{' '}
             </li>
             <li>
-              <a href="#">Store Refund Policy</a>{" "}
+              <a href="#">Правила возврата магазина</a>{' '}
             </li>
           </ul>
 
-          <ul style={{ display: "flex", gap: "1em", padding: "0" }}>
+          <ul style={{ display: 'flex', gap: '1em', padding: '0' }}>
             <li>
               <EpicGamesIcon className="icon-end" />
             </li>
