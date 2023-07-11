@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap");
+
+.navbar {
+  background-color: #2a2a2a;
+  height: 53px;
+  color: #e7e7e7;
+  font-size: 10.5px;
+  margin: 0;
+  font-family: "Open Sans", sans-serif, arial;
+}
+
+.navbar__container {
+  max-width: 100% !important;
+  margin: 0;
+  padding-right: 0 !important;
+}
+
+/* logo */
+.navbar__logo {
+  margin-left: 1%;
+}
+
+#epic-games-logo {
+  width: 30px;
+  height: 35px;
+  filter: brightness(90%);
+  transition: 0.5s;
+}
+
+#epic-games-logo:hover {
+  filter: brightness(100%);
+  transition: 0.5s;
+}
+
+/* logo */
+
+/* titles */
+
+.navbar__titles {
+  width: 40%;
+  margin-top: 15px;
+  font-weight: 600;
+  line-height: 12px;
+}
+
+.navbar__items {
+  width: 22%;
+  height: 38px;
+  text-align: center;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+  border-bottom: 2px solid transparent !important;
+  transition: 0.3s !important;
+}
+
+.navbar__items:first-child {
+  width: 16%;
+}
+
+.navbar__items:last-child {
+  width: 25%;
+}
+
+.navbar__items:hover {
+  border-bottom: 6px solid #007aff !important;
+  color: #e7e7e7 !important;
+  transition: 0.1s !important;
+}
+
+.active {
+  color: #ffffff8c !important;
+}
+
+.clicked {
+  border-bottom: 6px solid #007aff !important;
+  color: #ffffff8c !important;
+}
+
+.square {
+  margin: 0 2%;
+  border-right: 1px solid gray;
+  height: 28px;
+}
+
+/* titles */
+
+/* user */
+.navbar__user {
+  width: 10%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.navbar__user_name {
+  font-weight: 400;
+  font-size: 10.5px;
+  line-height: 22px;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+  margin-top: 5px;
+  margin-left: 5%;
+}
+
+#user__icon {
+  width: 25px;
+  height: 25px;
+}
+
+.user__menu {
+  display: none;
+}
+
+.user__icon:hover .user__menu {
+  display: block;
+}
+
+/* user */
+
+/* downlaod button */
+.download {
+  text-align: center;
+  text-transform: uppercase;
+  background-color: #007aff;
+  letter-spacing: 0.075em;
+  border: none;
+  height: 53px;
+  width: 130px;
+  font-size: 10px;
+  transition: 0.5s;
+  flex: end;
+}
+
+.download:hover {
+  filter: brightness(90%);
+  transition: 0.5s;
+}
