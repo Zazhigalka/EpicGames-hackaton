@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+
+body {
+  background-color: #121212 !important;
+}
+
+.wish-list__container {
+  width: 77%;
+  margin: auto;
+  color: rgb(245, 245, 245);
+  display: flex;
+  flex-direction: column;
+  font-family: "Inter", sans-serif;
+}
+
+.wish-list__title {
+  margin: 3% 0 1%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.wish-list__title > p {
+  font-size: 30px;
+  line-height: 35px;
+  letter-spacing: -0.3px;
+  font-weight: 500;
+}
+
+.wish-list__rewards {
+  display: flex;
+}
+
+.wish-list__rewards > p {
+  line-height: 35px;
+  color: #f5f5f599;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+.rewards__price {
+  border-radius: 40px;
+  height: 30px;
+  line-height: 35px;
+  padding: 0px 15px;
+  border: 1px solid rgba(245, 245, 245, 0.6);
+  background-color: rgb(32, 32, 32);
+  color: rgb(245, 245, 245);
+}
+
+/* top end */
+/* middle start */
+.wish-list__subscribe {
+  margin-bottom: 1%;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.1);
+  align-items: center;
+  padding: 15px;
+  border-radius: 4px;
+  min-height: 70px;
+}
+
+#mail {
+  width: 34px;
+  height: 34px;
+  margin-right: 15px;
+}
+/* middle end */
+/* bottom end */
+.wish-list__bottom {
+  margin: 3% 0 2%;
+}
+
+.wish-list__bottom > span {
+  color: rgba(245, 245, 245, 0.6);
+}
+
+.select {
+  color: inherit;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  transition: color 125ms ease-in-out;
+  background-color: transparent;
+  border: none;
+}
+
+.options > button {
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  border: none;
+  min-height: 40px;
+  padding: 5px 20px;
+  transition: background-color 125ms ease-in-out 0s;
+  position: relative;
+  color: rgb(245, 245, 245);
+}
+
+.wish-list__catalog {
+  margin-top: 2%;
+  padding-bottom: 150px;
+}
+
+.wish-list__catalog_title {
+  text-align: center;
+  padding-top: 150px;
+  width: 60%;
+  margin: auto;
+  color: #fff !important;
+  font-size: 30px;
+  line-height: 35px;
+  letter-spacing: -0.3px;
+}
+
+.wish-list__catalog_desc {
+  width: 60%;
+  margin: 2% auto;
+  text-align: center;
+  font-weight: 300;
+  font-size: 26px;
+  line-height: 35px;
+  letter-spacing: -0.3px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(245, 245, 245, 0.6);
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+.wish-list__catalog_desc:hover {
+  border-bottom: 1px solid rgba(255, 255, 255);
+  color: rgba(245, 245, 245);
+  transition: 0.4s;
+}
+/* bottom end */

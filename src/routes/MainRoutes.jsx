@@ -4,8 +4,6 @@ import AuthPage from "../pages/AuthPage";
 import Distribution from "../components/distribution/Distribution";
 
 import NotFound from "../components/notfound/NotFound";
-import { Route, Routes } from "react-router-dom";
-import ProductDetailsPage from "../pages/ProductDetailsPage";
 
 const MainRoutes = () => {
   return (
@@ -14,7 +12,9 @@ const MainRoutes = () => {
       <Route path="/auth" element={<AuthPage />} />
       <Route path="/distribution" element={<Distribution />} />
       <Route path="/product/" element={<ProductDetailsPage />} />
-      <Route path="*" element={<NotFound />} />
+      <Route path="/wish-list" element={<WishListPage />} />
+      <Route path="/cart" element={<CartPage />} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 };
