@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+
+.cart__container {
+  width: 77%;
+  margin: 5% auto;
+  color: rgb(245, 245, 245);
+  font-family: "Inter", sans-serif;
+}
+
+.cart__title {
+  margin: 3% 0 1%;
+  display: flex;
+  justify-content: space-between;
+}
+
+#cart__title_main {
+  font-size: 30px;
+  line-height: 35px;
+  letter-spacing: -0.3px;
+}
+
+.cart__price {
+  display: flex;
+}
+
+#cart__price_left {
+  color: #f5f5f599;
+  margin-right: 10px;
+  font-size: 14px;
+  line-height: 35px;
+  letter-spacing: 0.2px;
+}
+#cart__price_right {
+  border-radius: 40px;
+  height: 35px;
+  line-height: 35px;
+  padding: 0px 15px;
+  border: 1px solid rgba(245, 245, 245, 0.6);
+  background-color: rgb(32, 32, 32);
+  color: rgb(245, 245, 245);
+}
+
+/* cart mid */
+.cart__catalog {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 5%;
+}
+
+.cart__svg {
+  display: block;
+  line-height: 0;
+  width: 80px;
+  height: 80px;
+  color: rgb(58, 58, 58);
+}
+
+#cart__is_empty {
+  margin-top: 3%;
+  color: rgb(245, 245, 245);
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 30px;
+  letter-spacing: -0.3px;
+}
+#cart__to_store {
+  font-weight: 300;
+  font-size: 15px;
+  letter-spacing: -0.3px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(245, 245, 245, 0.6);
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+#cart__to_store:hover {
+  border-bottom: 1px solid rgba(255, 255, 255);
+  color: rgba(245, 245, 245);
+  transition: 0.4s;
+}
