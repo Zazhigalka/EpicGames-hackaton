@@ -56,7 +56,7 @@ const Search = () => {
     setLinks5(true);
   };
   return (
-    <Navbar className="search" data-bs-theme="dark">
+    <Navbar style={{ height: "90px" }} className="search" data-bs-theme="dark">
       <Container>
         <div className="search__input_group">
           <img src={search_icon} alt="" className="search__input_icon" />
