@@ -5,18 +5,66 @@ import CarouselBox from '../Carousel/CarouselBox';
 import addTo from '../../assets/add-to.png';
 import shareIcon from '../../assets/share.png';
 import reportIcon from '../../assets/flag.png';
+import { ReactComponent as UnrealEngineIcon } from '../../assets/unrealEngine.svg';
 
 const ProductDetails = () => {
   return (
-    <div style={{ backgroundColor: '#121212', marginTop: '200px' }}>
+    <div style={{ backgroundColor: '#121212', marginTop: '100px' }}>
       <div className="product-details-container">
         <div className="product-details-left">
           <h3>Fortnite</h3>
-          <div className="product-details-rating">
+          <div className="product-details-rating__title">
             <div className="raiting-on-num">4.3</div>
           </div>
-          <h5>Обзор</h5>
           <CarouselBox />
+          <p
+            style={{
+              fontSize: '1.3em',
+              color: '#f5f5f5',
+              margin: '3em 0',
+              width: '100%',
+            }}>
+            Собирайте друзей и отправляйтесь в игру Fortnite от Epic Games, в
+            которой вас ждёт грандиозная битва для 100 игроков. В ней вам
+            предстоит искать полезную добычу, добывать материалы, создавать
+            предметы и отстреливаться от врагов. Всё вместе это делает каждый
+            матч совершенно непредсказуемым, а с каждым новым сезоном игра
+            становится ещё больше и интереснее.
+          </p>
+
+          <div className="product-details-genres">
+            <div>
+              <h6>Жанры</h6>
+              <p>Shooter</p>
+            </div>
+            <div>
+              <h6>Особенности</h6>
+              <p>Cooperative</p>
+            </div>
+          </div>
+
+          <div className="product-details-links__block">
+            <h5>Подпишитесь на нас</h5>
+            <div className="product-details-links">
+              <UnrealEngineIcon />
+              <UnrealEngineIcon />
+              <UnrealEngineIcon />
+            </div>
+          </div>
+
+          <div className="product-details__raiting">
+            <h5>Оценки игроков в Epic</h5>
+            <p>На основе отзывов игроков в экосистеме Epic Games</p>
+
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              <h4>4.3</h4>
+            </div>
+          </div>
         </div>
         <div className="product-details-right">
           <div className="product-logo-block">
