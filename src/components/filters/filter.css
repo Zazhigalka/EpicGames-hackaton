@@ -1,0 +1,17 @@
+.filter__container {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter__title {
+  font-size: 15px;
+  letter-spacing: 0.2px;
+  line-height: 1.4;
+  color: rgb(245, 245, 245);
+}
+
+.all__filters {
+}
+
+.price__select {
+}
