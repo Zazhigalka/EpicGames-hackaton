@@ -26,8 +26,16 @@ const NavbarEpic = () => {
   return (
     <Navbar className="navbar" data-bs-theme="dark">
       <Container className="navbar__container">
-        <Navbar.Brand href="/" className="navbar__logo">
-          <img id="epic-games-logo" src={epicGamesLogo} alt="" />
+        <Navbar.Brand className="navbar__logo">
+          <img
+            id="epic-games-logo"
+            src={epicGamesLogo}
+            alt=""
+            onClick={() => {
+              navigate("/");
+              handleElementClick();
+            }}
+          />
         </Navbar.Brand>
         <Nav className="me-auto navbar__titles">
           <Nav.Link

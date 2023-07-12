@@ -7,6 +7,7 @@ import CartPage from "../pages/CartPage";
 import NotFoundPage from "../pages/NotFoundPage";
 import { Route, Routes } from "react-router-dom";
 import DistributionPage from "../pages/DistributionPage";
+import ProductsPage from "../pages/ProductsPage";
 
 const MainRoutes = () => {
   return (
@@ -17,6 +18,7 @@ const MainRoutes = () => {
       <Route path="/product/" element={<ProductDetailsPage />} />
       <Route path="/wish-list" element={<WishListPage />} />
       <Route path="/cart" element={<CartPage />} />
+      <Route path="/products" element={<ProductsPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
