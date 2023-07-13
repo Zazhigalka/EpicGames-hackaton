@@ -1,12 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
 
 .products__container {
-  width: 75%;
+  width: 77%;
   margin: 3% auto;
   color: rgb(245, 245, 245);
   display: flex;
   justify-content: space-between;
-  font-family: Inter, sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .products__catalog {

@@ -2,13 +2,13 @@
 
 .cart__container {
   width: 77%;
-  margin: 5% auto;
+  margin: 0 auto 3%;
   color: rgb(245, 245, 245);
   font-family: "Inter", sans-serif;
 }
 
 .cart__title {
-  margin: 3% 0 1%;
+  margin: 1% 0;
   display: flex;
   justify-content: space-between;
 }
