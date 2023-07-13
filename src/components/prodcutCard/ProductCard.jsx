@@ -28,7 +28,7 @@ const ProductCard = () => {
         <img
           onMouseEnter={handleMouseEnter}
           src={addIcon}
-          id="add__icon"
+          id="card__add_icon"
           alt=""
           title="В список желаемого"
         />

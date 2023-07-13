@@ -22,19 +22,19 @@ const Products = () => {
           <select className="select">
             <option className="options">Все</option>
             <option className="options" value="">
-              <button>Новинка</button>
+              Новинка
             </option>
             <option className="options" value="">
-              <button>Скоро появится</button>
+              Скоро появится
             </option>
             <option className="options" value="">
-              <button>По алфавиту</button>
+              По алфавиту
             </option>
             <option className="options" value="">
-              <button>Цена: По возрастанию</button>
+              Цена: По возрастанию
             </option>
             <option className="options" value="">
-              <button>Цена: По убыванию</button>
+              Цена: По убыванию
             </option>
           </select>
         </p>
