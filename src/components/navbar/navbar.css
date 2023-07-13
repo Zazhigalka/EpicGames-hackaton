@@ -87,7 +87,7 @@
 
 /* user */
 .navbar__user {
-  width: 10%;
+  width: 12%;
   display: flex;
   align-items: center;
   text-align: center;
@@ -106,6 +106,7 @@
 #user__icon {
   width: 25px;
   height: 25px;
+  margin-left: 5px;
 }
 
 .user__menu {
@@ -117,10 +118,6 @@
   border: none !important;
   border-radius: 0px !important;
   margin-right: 20px !important;
-}
-
-.dropdown__user {
-  background-color: #2a2a2a !important;
 }
 
 .dropdown__items {
