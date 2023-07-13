@@ -1,9 +1,20 @@
 import React from "react";
 import "./cart.css";
+import Search from "../search/Search";
 
 const Cart = () => {
   return (
     <div className="cart__container">
+      <div
+        style={{
+          position: "sticky",
+          top: "0px",
+          left: "0",
+          right: "0",
+        }}
+      >
+        <Search />
+      </div>
       <div className="cart__title">
         <p id="cart__title_main">Моя корзина</p>
         <div className="cart__price">

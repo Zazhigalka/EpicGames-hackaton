@@ -2,11 +2,15 @@
 
 .products__container {
   width: 77%;
-  margin: 3% auto;
+  margin: auto;
   color: rgb(245, 245, 245);
+  font-family: "Inter", sans-serif;
+}
+
+.products__inner {
+  margin-top: 3%;
   display: flex;
   justify-content: space-between;
-  font-family: "Inter", sans-serif;
 }
 
 .products__catalog {
