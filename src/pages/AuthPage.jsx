@@ -1,15 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import Auth from "../components/auth/Auth";
 import Search from "../components/search/Search";
+import Register from "../components/auth/Register";
 
 const AuthPage = () => {
   return (
-    <>
-      <div style={{ position: "fixed", left: "0", right: "0" }}>
-        <Search />
-      </div>
-      <Auth />
-    </>
+    <div className="container__auth">
+      <Register />
+    </div>
   );
 };
 

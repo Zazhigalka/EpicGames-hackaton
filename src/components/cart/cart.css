@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
 
 .cart__container {
-  width: 77%;
+  width: 77% !important;
   margin: 0 auto 3%;
   color: rgb(245, 245, 245);
   font-family: "Inter", sans-serif;
