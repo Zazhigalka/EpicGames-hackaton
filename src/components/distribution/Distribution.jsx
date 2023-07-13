@@ -50,6 +50,8 @@ const Distribution = () => {
     setActiveQuestions10(false);
   };
 
+  // <Question title={} body={}
+
   return (
     <div className="distribution">
       <div className="container__head">
