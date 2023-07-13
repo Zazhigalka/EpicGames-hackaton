@@ -83,38 +83,37 @@ const NavbarEpic = () => {
             UNREAL ENGINE
           </Nav.Link>
         </Nav>
-        <Nav
+        <Dropdown
+          show={showUser}
           className="navbar__user"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
+          align="center"
         >
-          <Dropdown show={showUser} className="dropdown__user" align="center">
-            <Dropdown.Toggle as={CustomToggle} className="user-icon">
-              <img src={userIcon} id="user__icon" alt="" />
-            </Dropdown.Toggle>
+          <Dropdown.Toggle as={CustomToggle} className="user-icon">
+            <img src={userIcon} id="user__icon" alt="" />
+          </Dropdown.Toggle>
 
-            <Dropdown.Menu className="user__menu">
-              <Dropdown.Item className="dropdown__items">
-                Учетная запись
-              </Dropdown.Item>
-              <Dropdown.Item
-                className="dropdown__items"
-                onClick={() => navigate("/wish-list")}
-              >
-                Список желаемого
-              </Dropdown.Item>
-              <Dropdown.Item
-                className="dropdown__items"
-                onClick={() => navigate("/cart")}
-              >
-                Корзина
-              </Dropdown.Item>
-              <Dropdown.Item className="dropdown__items">Выйти</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-
+          <Dropdown.Menu className="user__menu">
+            <Dropdown.Item className="dropdown__items">
+              Учетная запись
+            </Dropdown.Item>
+            <Dropdown.Item
+              className="dropdown__items"
+              onClick={() => navigate("/wish-list")}
+            >
+              Список желаемого
+            </Dropdown.Item>
+            <Dropdown.Item
+              className="dropdown__items"
+              onClick={() => navigate("/cart")}
+            >
+              Корзина
+            </Dropdown.Item>
+            <Dropdown.Item className="dropdown__items">Выйти</Dropdown.Item>
+          </Dropdown.Menu>
           <Nav className="navbar__user_name">fantep</Nav>
-        </Nav>
+        </Dropdown>
 
         <a href="https://launcher-public-service-prod06.ol.epicgames.com/launcher/api/installer/download/EpicGamesLauncherInstaller.msi">
           <button className="download">Загрузить</button>
