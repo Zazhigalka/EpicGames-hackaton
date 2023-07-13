@@ -1,16 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+
 .search {
-  background-color: #121212;
+  background-color: #121212 !important;
+  font-family: "Inter", sans-serif !important;
   /* height: 150px; */
 }
 
+.search__container {
+  padding: 0px !important;
+  width: 77% !important;
+  display: flex;
+  justify-content: start !important;
+}
+
 .search__input_group {
-  width: 18%;
   background-color: #202020;
   display: flex;
   height: 35px;
   align-items: center;
   border-radius: 20px;
-  margin-right: 2rem;
   box-shadow: 0px 0px 17px 0px rgba(0, 0, 0, 0.2);
 }
 
@@ -31,23 +39,36 @@
   color: #9b8c73;
 }
 
+.search__items_group {
+  width: 100%;
+  display: flex !important;
+  justify-content: space-between !important;
+}
+
+.search__items_group_left {
+  margin-left: 1%;
+}
+
 .search__items {
   color: #949494;
   font-weight: 600;
-  font-size: 18px;
-  padding: 7px;
+  font-size: 14px;
+  padding: 5px;
+  transition: 0.3s;
 }
 
 .search__items:hover {
-  color: #adadad;
+  color: #e7e7e7;
+  transition: 0.3s;
+}
+
+.search__items:active {
+  transition: 0.3s;
+  border: 1px solid #e7e7e7;
 }
 
 .search__items_active {
-  border: solid 1px white;
+  transition: 0.3s;
   border-radius: 4px;
-  color: white;
-}
-
-.search__items_active:hover {
-  color: white;
+  color: #e7e7e7;
 }
