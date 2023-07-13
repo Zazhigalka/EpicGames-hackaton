@@ -87,7 +87,7 @@
 
 /* user */
 .navbar__user {
-  width: 10%;
+  width: 12%;
   display: flex;
   align-items: center;
   text-align: center;
@@ -100,21 +100,35 @@
   line-height: 22px;
   letter-spacing: 0.075em;
   text-transform: uppercase;
-  margin-top: 5px;
-  margin-left: 5%;
+  margin: 5px 0 0 5%;
 }
 
 #user__icon {
   width: 25px;
   height: 25px;
+  margin-left: 5px;
 }
 
 .user__menu {
-  display: none;
+  background-color: #2a2a2a !important;
+  color: #ccc !important;
+  text-align: center !important;
+  font-size: 11px !important;
+  letter-spacing: 0.075em !important;
+  border: none !important;
+  border-radius: 0px !important;
+  margin-right: 20px !important;
 }
 
-.user__icon:hover .user__menu {
-  display: block;
+.dropdown__items {
+  padding: 5px !important;
+  transition: 0.2s !important;
+}
+
+.dropdown__items:hover {
+  color: #f5f5f5 !important;
+  background-color: #2a2a2a !important;
+  transition: 0.2s !important;
 }
 
 /* user */

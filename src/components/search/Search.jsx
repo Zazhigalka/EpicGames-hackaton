@@ -8,8 +8,11 @@ import {
 } from "react-bootstrap";
 import "./Search.css";
 import search_icon from "../../assets/search.png";
+import { useNavigate } from "react-router-dom";
 
 const Search = () => {
+  const navigate = useNavigate();
+
   const [links1, setLinks1] = useState(false);
   const [links2, setLinks2] = useState(false);
   const [links3, setLinks3] = useState(false);
@@ -67,9 +70,12 @@ const Search = () => {
           />
         </div>
         <Nav className="me-auto search__items_group">
-          <Nav.Link style={{ marginRight: "1rem" }} href="#home">
+          <Nav.Link style={{ marginRight: "1rem" }}>
             <span
-              onClick={link1Active}
+              onClick={() => {
+                link1Active();
+                navigate("/");
+              }}
               className={`search__items ${
                 links1 ? "search__items_active" : ""
               }`}
@@ -77,9 +83,12 @@ const Search = () => {
               Главное
             </span>
           </Nav.Link>
-          <Nav.Link style={{ marginRight: "1rem" }} href="#features">
+          <Nav.Link style={{ marginRight: "1rem" }}>
             <span
-              onClick={link2Active}
+              onClick={() => {
+                link2Active();
+                navigate("/products");
+              }}
               className={`search__items ${
                 links2 ? "search__items_active" : ""
               }`}
@@ -98,9 +107,12 @@ const Search = () => {
             </span>
           </Nav.Link>
 
-          <Nav.Link style={{ marginLeft: "20rem" }} href="/wish-list">
+          <Nav.Link style={{ marginLeft: "20rem" }}>
             <span
-              onClick={link4Active}
+              onClick={() => {
+                link4Active();
+                navigate("/wish-list");
+              }}
               className={`search__items ${
                 links4 ? "search__items_active" : ""
               }`}
@@ -108,9 +120,12 @@ const Search = () => {
               Список желаемого
             </span>
           </Nav.Link>
-          <Nav.Link href="/cart">
+          <Nav.Link>
             <span
-              onClick={link5Active}
+              onClick={() => {
+                link5Active();
+                navigate("/cart");
+              }}
               className={`search__items ${
                 links5 ? "search__items_active" : ""
               }`}

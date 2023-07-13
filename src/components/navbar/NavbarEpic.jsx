@@ -7,6 +7,7 @@ import Navbar from "react-bootstrap/Navbar";
 import epicGamesLogo from "../../assets/epic_games_logo.png";
 import userSigned from "../../assets/user-signed.svg";
 import userIcon from "../../assets/user.svg";
+import { Dropdown } from "react-bootstrap";
 
 const NavbarEpic = () => {
   const navigate = useNavigate();
@@ -21,6 +22,16 @@ const NavbarEpic = () => {
   const handleElementSecond = () => {
     setIsClicked(false);
     setSecond(true);
+  };
+
+  const [showUser, setShowUser] = useState(false);
+
+  const handleMouseEnter = () => {
+    setShowUser(true);
+  };
+
+  const handleMouseLeave = () => {
+    setShowUser(false);
   };
 
   return (
@@ -72,19 +83,37 @@ const NavbarEpic = () => {
             UNREAL ENGINE
           </Nav.Link>
         </Nav>
-        <Nav className="navbar__user">
-          <div className="user-icon">
+        <Dropdown
+          show={showUser}
+          className="navbar__user"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          align="center"
+        >
+          <Dropdown.Toggle as={CustomToggle} className="user-icon">
             <img src={userIcon} id="user__icon" alt="" />
-          </div>
-          <div className="user__menu">
-            <div>
-              <p>Учетная запись</p>
-              <li>Корзина</li>
-              <li>Выйти</li>
-            </div>
-          </div>
+          </Dropdown.Toggle>
+
+          <Dropdown.Menu className="user__menu">
+            <Dropdown.Item className="dropdown__items">
+              Учетная запись
+            </Dropdown.Item>
+            <Dropdown.Item
+              className="dropdown__items"
+              onClick={() => navigate("/wish-list")}
+            >
+              Список желаемого
+            </Dropdown.Item>
+            <Dropdown.Item
+              className="dropdown__items"
+              onClick={() => navigate("/cart")}
+            >
+              Корзина
+            </Dropdown.Item>
+            <Dropdown.Item className="dropdown__items">Выйти</Dropdown.Item>
+          </Dropdown.Menu>
           <Nav className="navbar__user_name">fantep</Nav>
-        </Nav>
+        </Dropdown>
 
         <a href="https://launcher-public-service-prod06.ol.epicgames.com/launcher/api/installer/download/EpicGamesLauncherInstaller.msi">
           <button className="download">Загрузить</button>
@@ -93,5 +122,17 @@ const NavbarEpic = () => {
     </Navbar>
   );
 };
+
+const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
+  <a
+    ref={ref}
+    onClick={(e) => {
+      e.preventDefault();
+      onClick(e);
+    }}
+  >
+    {children}
+  </a>
+));
 
 export default NavbarEpic;
