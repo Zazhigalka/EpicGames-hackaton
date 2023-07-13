@@ -2,7 +2,7 @@
 
 .cart__container {
   width: 77%;
-  margin: 0 auto 3%;
+  margin: 0 auto;
   color: rgb(245, 245, 245);
   font-family: "Inter", sans-serif;
 }
@@ -46,6 +46,7 @@
   align-items: center;
   flex-direction: column;
   margin-top: 5%;
+  padding-bottom: 5%;
 }
 
 .cart__svg {
