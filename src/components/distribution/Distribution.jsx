@@ -13,6 +13,7 @@ import epic_services_logo from "../../assets/epic-online-services-icon.svg";
 import epic_unreal_logo from "../../assets/unreal-engine-icon.svg";
 import plus from "../../assets/plus.png";
 import minus from "../../assets/minus.png";
+import Search from "../search/Search";
 
 const Distribution = () => {
   const [plusMinus, setPlusMinus] = useState(false);
@@ -54,6 +55,9 @@ const Distribution = () => {
 
   return (
     <div className="distribution">
+      <div style={{ position: "sticky", top: "0px", left: "0", right: "0" }}>
+        <Search />
+      </div>
       <div className="container__head">
         <div className="head">
           <img src={distribution_gif} className="head__image" alt="" />
