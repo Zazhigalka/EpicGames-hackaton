@@ -6,7 +6,7 @@ import Register from "../components/auth/Register";
 const AuthPage = () => {
   return (
     <div className="container__auth">
-      <Auth />
+      <Register />
     </div>
   );
 };
