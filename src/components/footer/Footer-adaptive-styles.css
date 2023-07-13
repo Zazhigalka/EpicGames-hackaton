@@ -1,0 +1,23 @@
+@media all and (max-width: 1024px) {
+  footer .footer-copyright__box {
+    width: 100%;
+  }
+
+  .footer__conf {
+    width: 50%;
+    flex-wrap: wrap;
+    font-size: 11px;
+  }
+}
+
+@media all and (max-width: 425px) {
+  footer .section-3 {
+    flex-direction: column;
+  }
+
+  footer .section-3 ul {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import './ProductDetails.css';
-import { Button, Container } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import CarouselBox from '../Carousel/CarouselBox';
 import addTo from '../../assets/add-to.png';
 import shareIcon from '../../assets/share.png';
@@ -64,6 +64,49 @@ const ProductDetails = () => {
               }}>
               <h4>4.3</h4>
             </div>
+          </div>
+
+          <div className="product-details__reviews-block">
+            <h5>Рейтинги</h5>
+            <div className="reviews">
+              <div className="one-review">
+                <div className="about-user">
+                  <h6>GamesRadar+</h6>
+                  <p>Автор: Ford James</p>
+                </div>
+                <div className="stars"></div>
+                <p className="descr">
+                  Nobody thought Fortnite would still be popular this late on,
+                  but it's continued to adapt and fight for its spot at the top
+                  of the battle royale ladder.
+                </p>
+              </div>
+              <div className="one-review">
+                <div className="about-user">
+                  <h6>GamesRadar+</h6>
+                  <p>Автор: Ford James</p>
+                </div>
+                <div className="stars"></div>
+                <p className="descr">
+                  Nobody thought Fortnite would still be popular this late on,
+                  but it's continued to adapt and fight for its spot at the top
+                  of the battle royale ladder.
+                </p>
+              </div>
+              <div className="one-review">
+                <div className="about-user">
+                  <h6>GamesRadar+</h6>
+                  <p>Автор: Ford James</p>
+                </div>
+                <div className="stars"></div>
+                <p className="descr">
+                  Nobody thought Fortnite would still be popular this late on,
+                  but it's continued to adapt and fight for its spot at the top
+                  of the battle royale ladder.
+                </p>
+              </div>
+            </div>
+            <Button variant="secondary">Посмотреть все отзывы</Button>
           </div>
         </div>
         <div className="product-details-right">

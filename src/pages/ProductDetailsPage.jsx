@@ -7,11 +7,12 @@ const ProductDetailsPage = () => {
     <>
       {/* <div
         style={{
-          position: 'fixed',
+          position: 'sticky',
           left: '0',
           right: '0',
+          top: '0',
         }}>
-        <Search style={{ backgroundColor: '#121212' }} />
+        <Search />
       </div> */}
       <ProductDetails />
     </>
