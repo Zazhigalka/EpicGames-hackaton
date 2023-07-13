@@ -6,10 +6,21 @@ import addTo from '../../assets/add-to.png';
 import shareIcon from '../../assets/share.png';
 import reportIcon from '../../assets/flag.png';
 import { ReactComponent as UnrealEngineIcon } from '../../assets/unrealEngine.svg';
+import Search from '../search/Search';
 
 const ProductDetails = () => {
   return (
-    <div style={{ backgroundColor: '#121212', marginTop: '100px' }}>
+    <div style={{ backgroundColor: '#121212' }}>
+      <div
+        style={{
+          position: 'sticky',
+          left: '0',
+          right: '0',
+          top: '0',
+          zIndex: '999',
+        }}>
+        <Search />
+      </div>
       <div className="product-details-container">
         <div className="product-details-left">
           <h3>Fortnite</h3>
@@ -107,6 +118,63 @@ const ProductDetails = () => {
               </div>
             </div>
             <Button variant="secondary">Посмотреть все отзывы</Button>
+          </div>
+
+          <div className="system-requirements__block">
+            <h5>Системные требования</h5>
+            <div className="system-requirements">
+              <div className="minimum">
+                <h5>Минимальные</h5>
+                <div>
+                  <h6>OC</h6>
+                  <p>Windows 10</p>
+                </div>
+                <div>
+                  <h6>Процессор</h6>
+                  <p>Core i3-3225 (3,3 ГГц)</p>
+                </div>
+                <div>
+                  <h6>Оперативная память</h6>
+                  <p>8 ГБ ОЗУ</p>
+                </div>
+              </div>
+
+              <div className="recommendations">
+                <h5>Рекомендуется</h5>
+                <div>
+                  <h6>ОС</h6>
+                  <p>Windows 10</p>
+                </div>
+                <div>
+                  <h6>Процессор</h6>
+                  <p>Core i3-3225 (3,3 ГГц)</p>
+                </div>
+                <div>
+                  <h6>Оперативная память</h6>
+                  <p>8 ГБ ОЗУ</p>
+                </div>
+                <div>
+                  <h6>Видеокарта</h6>
+                  <p>
+                    NVIDIA GTX 960, AMD R9 280 или эквивалентная с поддержкой
+                    DirectX 11
+                  </p>
+                </div>
+                <div>
+                  <h6>Видеопамять</h6>
+                  <p>2 ГБ видеопамяти</p>
+                </div>
+              </div>
+            </div>
+
+            <p className="copyirights">
+              © Epic Games, Inc., 2022 г. Все права защищены. Epic, Epic Games,
+              логотип Epic Games, Unreal, Unreal Engine, логотип Unreal Engine,
+              Fortnite и логотип Fortnite являются товарными знаками или
+              зарегистрированными товарными знаками компании Epic Games, Inc. в
+              США и других странах. Все остальные товарные знаки являются
+              собственностью соответствующих владельцев.
+            </p>
           </div>
         </div>
         <div className="product-details-right">

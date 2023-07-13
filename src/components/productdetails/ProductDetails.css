@@ -133,7 +133,8 @@
   margin: 50px 0;
 }
 
-.product-details__raiting h5 {
+.product-details__raiting h5,
+.system-requirements__block {
   color: #f5f5f5;
   font-size: 1.3em;
 }
