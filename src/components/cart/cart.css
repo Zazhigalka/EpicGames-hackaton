@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
 
 .cart__container {
-  width: 77% !important;
-  margin: 0 auto 3%;
+  width: 77%;
+  margin: 0 auto;
   color: rgb(245, 245, 245);
   font-family: "Inter", sans-serif;
 }
@@ -46,6 +46,7 @@
   align-items: center;
   flex-direction: column;
   margin-top: 5%;
+  padding-bottom: 5%;
 }
 
 .cart__svg {

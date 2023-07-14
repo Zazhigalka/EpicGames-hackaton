@@ -3,12 +3,16 @@ import "./wishList.css";
 import { Form } from "react-bootstrap";
 import mail from "../../assets/mail-icon.svg";
 import { useNavigate } from "react-router-dom";
+import Search from "../search/Search";
 
 const WishList = () => {
   const navigate = useNavigate();
 
   return (
     <div className="wish-list__container">
+      <div style={{ position: "sticky", top: "0px", left: "0", right: "0" }}>
+        <Search />
+      </div>
       <div className="wish-list__title">
         <p>Список желаемого</p>
         <div className="wish-list__rewards">
