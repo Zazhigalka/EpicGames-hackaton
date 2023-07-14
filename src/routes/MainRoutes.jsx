@@ -8,6 +8,7 @@ import NotFoundPage from "../pages/NotFoundPage";
 import { Route, Routes } from "react-router-dom";
 import DistributionPage from "../pages/DistributionPage";
 import ProductsPage from "../pages/ProductsPage";
+import News from "../components/news/News";
 
 const MainRoutes = () => {
   return (
@@ -20,6 +21,7 @@ const MainRoutes = () => {
       <Route path="/cart" element={<CartPage />} />
       <Route path="/products" element={<ProductsPage />} />
       <Route path="*" element={<NotFoundPage />} />
+      <Route path="/news" element={<News/>}/>
     </Routes>
   );
 };
