@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+
+.home__carousel {
+  display: flex;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+  letter-spacing: 0.2px;
+  font-family: "Inter", sans-serif;
+}
+
+/* left side */
+.home__carousel_left {
+  width: 820px;
+  height: 460px;
+  cursor: pointer;
+}
+
+.carousel__left_image {
+  border-radius: 20px;
+}
+
+.carousel__left_descr {
+  text-align: left !important;
+  left: 40px !important;
+  right: auto !important;
+  bottom: 50px !important;
+}
+
+.carousel__left_descr > h3 {
+  font-size: 32px !important;
+}
+
+.carousel__left_descr > p {
+}
+
+/* right side  */
+
+.home__carousel_right {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.carousel__right_items {
+  width: 176px;
+  height: 74px;
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  border-radius: 10px;
+}
+
+.carousel__right_img {
+  border-radius: 10px;
+  width: 40px;
+  height: 53px;
+  border: 4px;
+}
+
+.carousel__right_title {
+  width: 90px;
+  height: 0;
+  font-size: 12px;
+  padding-bottom: 20px;
+}
