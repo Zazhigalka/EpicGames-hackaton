@@ -78,56 +78,68 @@ const Distribution = () => {
         <div className="epic__info">
           <div className="epic__info_item">
             <img src={epic_earth_icon} alt="" className="epic__info_image" />
-            <h4 className="epic__info_title">
-              Выйдите на глобальную аудиторию
-            </h4>
-            <p className="epic__item_descr">
-              Прямой выход на 230 миллионов пользователей Epic в 187 странах, с
-              поддержкой 16 языков.
-            </p>
+            <div>
+              <h4 className="epic__info_title">
+                Выйдите на глобальную аудиторию
+              </h4>
+              <p className="epic__item_descr">
+                Прямой выход на 230 миллионов пользователей Epic в 187 странах,
+                с поддержкой 16 языков.
+              </p>
+            </div>
           </div>
           <div className="epic__info_item">
             <img src={epic_graphic_icon} alt="" className="epic__info_image" />
-            <h4 className="epic__info_title">Разделение дохода 88%/12%</h4>
-            <p className="epic__item_descr">
-              Вам останется 88% прибыли от продаж, и можно будет отслеживать ход
-              торговли с помощью встроенных аналитических инструментов.
-            </p>
+            <div>
+              <h4 className="epic__info_title">Разделение дохода 88%/12%</h4>
+              <p className="epic__item_descr">
+                Вам останется 88% прибыли от продаж, и можно будет отслеживать
+                ход торговли с помощью встроенных аналитических инструментов.
+              </p>
+            </div>
           </div>{" "}
           <div className="epic__info_item">
             <img src={epic_player_icon} alt="" className="epic__info_image" />
-            <h4 className="epic__info_title">Привлекайте игроков</h4>
-            <p className="epic__item_descr">
-              В магазине есть списки желаемого, достижения, общие скидки и
-              прочее!
-            </p>
+            <div>
+              <h4 className="epic__info_title">Привлекайте игроков</h4>
+              <p className="epic__item_descr">
+                В магазине есть списки желаемого, достижения, общие скидки и
+                прочее!
+              </p>
+            </div>
           </div>{" "}
           <div className="epic__info_item">
             <img src={epic_payment_icon} alt="" className="epic__info_image" />
-            <h4 className="epic__info_title">
-              Торговля по всему миру через интернет
-            </h4>
-            <p className="epic__item_descr">
-              Платёжная система Epic поддерживает 76 способов оплаты и 47
-              местных валют, а будет ещё больше.
-            </p>
+            <div>
+              <h4 className="epic__info_title">
+                Торговля по всему миру через интернет
+              </h4>
+              <p className="epic__item_descr">
+                Платёжная система Epic поддерживает 76 способов оплаты и 47
+                местных валют, а будет ещё больше.
+              </p>
+            </div>
           </div>{" "}
           <div className="epic__info_item">
             <img src={epic_wallet_icon} alt="" className="epic__info_image" />
-            <h4 className="epic__info_title">Кошелёк Epic</h4>
-            <p className="epic__item_descr">
-              Пользователи 140 стран могут добавлять деньги в свой кошелёк, а
-              потом тратить их на товары и услуги в магазине.
-            </p>
+            <div>
+              <h4 className="epic__info_title">Кошелёк Epic</h4>
+              <p className="epic__item_descr">
+                Пользователи 140 стран могут добавлять деньги в свой кошелёк, а
+                потом тратить их на товары и услуги в магазине.
+              </p>
+            </div>
           </div>{" "}
           <div className="epic__info_item">
             <img src={epic_rating_icon} alt="" className="epic__info_image" />
-            <h4 className="epic__info_title">Прочие преимущества</h4>
-            <p className="epic__item_descr">
-              На портале разработчиков Epic можно легко дать игре рейтинг IARC,
-              запросить бесплатную локализацию товарной страницы и подключить
-              программу поддержки авторов.
-            </p>
+            <div>
+              <h4 className="epic__info_title">Прочие преимущества</h4>
+              <p className="epic__item_descr">
+                На портале разработчиков Epic можно легко дать игре рейтинг
+                IARC, запросить бесплатную локализацию товарной страницы и
+                подключить программу поддержки авторов.
+              </p>
+            </div>
           </div>
         </div>
       </div>
