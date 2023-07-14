@@ -132,9 +132,12 @@ const NavbarEpic = () => {
           ) : null}
 
           {currentUser ? (
-            `${currentUser}`
+            <Nav style={{ cursor: 'pointer' }}>{currentUser}</Nav>
           ) : (
-            <Nav className="navbar__user_name" onClick={() => navigate('auth')}>
+            <Nav
+              style={{ cursor: 'pointer' }}
+              className="navbar__user_name"
+              onClick={() => navigate('/auth')}>
               Войти
             </Nav>
           )}
