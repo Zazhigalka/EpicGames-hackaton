@@ -304,3 +304,198 @@
 }
 
 /* QUESTIONS */
+
+/* ADAPTIVE START */
+
+@media (max-width: 1100px) {
+  .distribution .head__image {
+    width: 455px;
+    height: 455px;
+  }
+
+  .distribution .head__info_logo {
+    width: 54px;
+    margin-top: 4rem;
+  }
+
+  .distribution .head__info_title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 2rem;
+  }
+
+  .distribution .epic__info_item {
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    border: solid 1px #2a2a2a;
+    border-radius: 10px;
+    padding: 3.5rem 3rem;
+    color: white;
+    align-items: center;
+    text-align: center;
+  }
+
+  .community__descr_p {
+    margin-top: 4rem;
+  }
+
+  .services {
+    flex-direction: column;
+  }
+
+  .services__left,
+  .services__right {
+    width: 100%;
+  }
+
+  .services__right {
+    margin-top: 1rem;
+  }
+
+  .services__left_image,
+  .services__right_image {
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+
+  .services__right_descr_p,
+  .services__left_descr_p {
+    margin-top: 4rem;
+  }
+
+  .services__right_descr,
+  .services__left_descr {
+    width: 60%;
+  }
+
+  .services__right_descr_a {
+    margin-left: 13rem;
+  }
+  .services__left_descr_a {
+    margin-left: 9rem;
+  }
+}
+
+@media (max-width: 980px) {
+  .distribution .head__image {
+    width: 405px;
+    height: 405px;
+  }
+
+  .distribution .head__info_logo {
+    width: 44px;
+    margin-top: 2rem;
+  }
+
+  .distribution .head__info_title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 1rem;
+  }
+
+  .distribution .head__info_btn {
+    width: 200px;
+    height: 50px;
+
+    margin-top: 1rem;
+  }
+
+  .distribution {
+    width: 90%;
+  }
+}
+
+@media (max-width: 840px) {
+  .services__right_descr_p,
+  .services__left_descr_p {
+    margin-top: 3rem;
+  }
+
+  .community__descr_p {
+    margin-top: 3rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .services__right_descr_a {
+    margin-left: 10rem;
+  }
+  .services__left_descr_a {
+    margin-left: 7rem;
+  }
+  .distribution .head__image {
+    display: none;
+  }
+
+  .head {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 690px) {
+  .services__right_descr_a {
+    margin-left: 8rem;
+  }
+  .services__left_descr_a {
+    margin-left: 5rem;
+  }
+  .services__left_image,
+  .services__right_image {
+    margin-top: 3%;
+    margin-bottom: 3%;
+  }
+  .distribution .epic__info_item {
+    padding: 2.5rem 3rem;
+  }
+
+  .services__left_image,
+  .services__right_image {
+    width: 200px;
+  }
+
+  .community {
+    flex-direction: column;
+  }
+
+  .community__main_image {
+    width: 100%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+  }
+
+  .community__main {
+    height: 100px !important;
+  }
+
+  .community__descr_p {
+    margin: auto;
+    margin-top: 0%;
+  }
+
+  .services__left,
+  .services__right {
+    flex-direction: column;
+    align-items: center;
+  }
+  .services__left_image {
+    margin: 0%;
+    height: 100px;
+  }
+
+  .services__left_descr_p {
+    margin: 0%;
+  }
+
+  .services__right_image {
+    margin: 0%;
+    height: 100px;
+  }
+
+  .services__right_descr_p {
+    margin: 0%;
+  }
+}
+
+/* ADAPTIVE END */
