@@ -3,6 +3,7 @@ import './Auth.css';
 import auth__logo from '../../assets/epic_games_logo.png';
 import { InputGroup } from 'react-bootstrap';
 import { useAuth } from '../../contexts/AuthContextProvider';
+import { useNavigate } from 'react-router-dom';
 
 const Auth = () => {
   const [email, setEmail] = useState('');
@@ -21,6 +22,8 @@ const Auth = () => {
     formData.append('password', password);
     handleLogin(formData, email);
   }
+
+  const navigate = useNavigate();
 
   return (
     <div className="auth">
@@ -51,6 +54,18 @@ const Auth = () => {
             </button>
           )}
         </div>
+
+        <a
+          style={{
+            width: '80%',
+            color: '#f2f2f2',
+            alignSelf: 'start',
+            marginTop: '20px',
+          }}
+          href=""
+          onClick={() => navigate('/register')}>
+          Нет аккаунта? Зарегестрирутесь!
+        </a>
       </div>
     </div>
   );
