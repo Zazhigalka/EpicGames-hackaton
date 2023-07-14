@@ -39,7 +39,16 @@ const ProductContextProvider = ({ children }) => {
     }
   }
 
-  const values = {};
+  async function createProduct(newProduct) {
+    try {
+      await axios.post(`${API}/posts/`, newProduct, getTokens());
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const values = { createProduct };
   return (
     <productContext.Provider value={values}>{children}</productContext.Provider>
   );
