@@ -20,10 +20,18 @@ const HomeCarousel = () => {
             />
             <Carousel.Caption className="carousel__left_descr">
               <h3>MARVEL: Spider-Man</h3>
-              <p>
+              <p className="left__descr">
                 Когда его дому грозит страшная опасность, Майлз надевает костюм
                 и становится Человеком-Пауком.
               </p>
+              <p>
+                От <span style={{ fontWeight: 600 }}>39,99$</span>
+              </p>
+              <button>Купить сейчас</button>
+              <div className="home__wish">
+                <img src="" alt="" />
+                <p>В список желаемого</p>
+              </div>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item interval={1000}>
@@ -33,8 +41,20 @@ const HomeCarousel = () => {
               alt="Second slide"
             />
             <Carousel.Caption className="carousel__left_descr">
-              <h3>Second slide label</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <h3>Assassin's Creed: Мираж</h3>
+              <p className="left__descr">
+                Узнайте историю Басима, хитрого вора, который устремился на
+                оживлённые улицы Багдада IX века в поисках ответов и
+                справедливости.
+              </p>
+              <p>
+                От <span style={{ fontWeight: 600 }}>39,99$</span>
+              </p>
+              <button>Купить сейчас</button>
+              <div className="home__wish">
+                <img src="" alt="" />
+                <p>В список желаемого</p>
+              </div>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item interval={1000}>
@@ -44,10 +64,19 @@ const HomeCarousel = () => {
               alt="Third slide"
             />
             <Carousel.Caption className="carousel__left_descr">
-              <h3>Third slide label</h3>
-              <p>
-                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+              <h3>Fortnite</h3>
+              <p className="left__descr">
+                Когда его дому грозит страшная опасность, Майлз надевает костюм
+                и становится Человеком-Пауком.
               </p>
+              <p>
+                От <span style={{ fontWeight: 600 }}>39,99$</span>
+              </p>
+              <button>Купить сейчас</button>
+              <div className="home__wish">
+                <img src="" alt="" />
+                <p>В список желаемого</p>
+              </div>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item interval={1000}>
@@ -58,10 +87,18 @@ const HomeCarousel = () => {
               style={{ opacity: 0.8 }}
             />
             <Carousel.Caption className="carousel__left_descr">
-              <h3>Third slide label</h3>
-              <p>
-                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+              <h3>Grand Theft Auto V</h3>
+              <p className="left__descr">
+                Premium Издание всемирно-известной игры.
               </p>
+              <p>
+                От <span style={{ fontWeight: 600 }}>39,99$</span>
+              </p>
+              <button>Купить сейчас</button>
+              <div className="home__wish">
+                <img src="" alt="" />
+                <p>В список желаемого</p>
+              </div>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item interval={1000}>
@@ -71,10 +108,18 @@ const HomeCarousel = () => {
               alt="Third slide"
             />
             <Carousel.Caption className="carousel__left_descr">
-              <h3>Third slide label</h3>
-              <p>
-                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+              <h3>EA SPORTS FC</h3>
+              <p className="left__descr">
+                EA SPORTS FC - это следующая часть всемирной игры.
               </p>
+              <p>
+                От <span style={{ fontWeight: 600 }}>69,99$</span>
+              </p>
+              <button>Купить сейчас</button>
+              <div className="home__wish">
+                <img src="" alt="" />
+                <p>В список желаемого</p>
+              </div>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item interval={1000}>
@@ -84,25 +129,24 @@ const HomeCarousel = () => {
               alt="Third slide"
             />
             <Carousel.Caption className="carousel__left_descr">
-              <h3>Third slide label</h3>
-              <p>
-                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+              <h3>Prince</h3>
+              <p className="left__descr">
+                Когда его дому грозит страшная опасность, Майлз надевает костюм
+                и становится Человеком-Пауком.
               </p>
+              <p>
+                От <span style={{ fontWeight: 600 }}>39,99$</span>
+              </p>
+              <button>Купить сейчас</button>
+              <div className="home__wish">
+                <img src="" alt="" />
+                <p>В список желаемого</p>
+              </div>
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>
       </div>
       <ul className="home__carousel_right">
-        <li className="carousel__right_items">
-          <img
-            src="https://cdn2.unrealengine.com/fc24set-epic-portrait-product-image-1200x1600-1200x1600-dfe2373ee736.jpg?h=128&quality=medium&resize=1&w=96"
-            alt=""
-            className="carousel__right_img"
-          />
-          <p className="carousel__right_title" style={{ padding: 0 }}>
-            EA SPORTS FC
-          </p>
-        </li>
         <li className="carousel__right_items">
           <img
             src="https://cdn2.unrealengine.com/egs-spider-man-miles-morales-carousel-thumb-1200x1600-b7c0fb2da84b.jpg?h=128&quality=medium&resize=1&w=96"
@@ -121,11 +165,14 @@ const HomeCarousel = () => {
         </li>
         <li className="carousel__right_items">
           <img
-            src="https://cdn2.unrealengine.com/egs-prince-of-persia-lost-crown-deluxe-breaker-1920x1080-44d2c0406308.jpg?h=480&quality=medium&resize=1&w=854"
+            src="https://cdn2.unrealengine.com/01-25br-s25-egs-launcher-pdp-2560x1440-2560x1440-92db8752f5af.jpg"
             alt=""
             className="carousel__right_img"
+            style={{ opacity: 0.7 }}
           />
-          <p className="carousel__right_title">Prince of Persia</p>
+          <p style={{ padding: 0 }} className="carousel__right_title">
+            Fortnite
+          </p>
         </li>
         <li className="carousel__right_items">
           <img
@@ -137,14 +184,21 @@ const HomeCarousel = () => {
         </li>
         <li className="carousel__right_items">
           <img
-            src="https://cdn2.unrealengine.com/01-25br-s25-egs-launcher-pdp-2560x1440-2560x1440-92db8752f5af.jpg"
+            src="https://cdn2.unrealengine.com/fc24set-epic-portrait-product-image-1200x1600-1200x1600-dfe2373ee736.jpg?h=128&quality=medium&resize=1&w=96"
             alt=""
             className="carousel__right_img"
-            style={{ opacity: 0.7 }}
           />
-          <p style={{ padding: 0 }} className="carousel__right_title">
-            Fortnite
+          <p className="carousel__right_title" style={{ padding: 0 }}>
+            EA SPORTS FC
           </p>
+        </li>
+        <li className="carousel__right_items">
+          <img
+            src="https://cdn2.unrealengine.com/egs-prince-of-persia-lost-crown-deluxe-breaker-1920x1080-44d2c0406308.jpg?h=480&quality=medium&resize=1&w=854"
+            alt=""
+            className="carousel__right_img"
+          />
+          <p className="carousel__right_title">Prince of Persia</p>
         </li>
       </ul>
     </div>
