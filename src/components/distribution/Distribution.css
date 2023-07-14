@@ -498,4 +498,16 @@
   }
 }
 
+@media (max-width: 425px) {
+  .epic__info_item {
+    flex-direction: column !important;
+  }
+  .services__left_descr_a {
+    margin-left: 1rem;
+  }
+  .services__right_descr_a {
+    margin-left: 3rem;
+  }
+}
+
 /* ADAPTIVE END */

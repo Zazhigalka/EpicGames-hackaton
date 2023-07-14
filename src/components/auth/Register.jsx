@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import './Register.css';
-import auth__logo from '../../assets/epic_games_logo.png';
-import { Form } from 'react-bootstrap';
-import { useAuth } from '../../contexts/AuthContextProvider';
+import React, { useState } from "react";
+import "./Register.css";
+import auth__logo from "../../assets/epic_games_logo.png";
+import { Form } from "react-bootstrap";
+import { useAuth } from "../../contexts/AuthContextProvider";
 
 const Register = () => {
-  const [email, setEmail] = useState('');
-  const [name, setName] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordConfirm, setPasswordConfirm] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [userName, setUserName] = useState('');
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [userName, setUserName] = useState("");
   const [isSeller, setIsSeller] = useState(false);
 
   const { handleRegister, handleRegisterSeller } = useAuth();
@@ -24,17 +24,17 @@ const Register = () => {
       !password.trim() ||
       !passwordConfirm.trim()
     ) {
-      alert('Заполните поля!');
+      alert("Заполните поля!");
       return;
     }
 
     const formData = new FormData();
-    formData.append('email', email);
-    formData.append('password', password);
-    formData.append('password2', passwordConfirm);
-    formData.append('first_name', name);
-    formData.append('last_name', lastName);
-    formData.append('username', userName);
+    formData.append("email", email);
+    formData.append("password", password);
+    formData.append("password2", passwordConfirm);
+    formData.append("first_name", name);
+    formData.append("last_name", lastName);
+    formData.append("username", userName);
 
     if (isSeller) {
       handleRegisterSeller(formData);
@@ -85,7 +85,6 @@ const Register = () => {
               placeholder=" Подтвердите пароль"
             />
           </div>
-
           <Form.Check
             type="switch"
             id="custom-switch"
@@ -93,7 +92,6 @@ const Register = () => {
             className="register__isSeller"
             onChange={(e) => setIsSeller(e.target.checked)}
           />
-
           <div className="register__btn">
             {!email.trim() ||
             !name.trim() ||

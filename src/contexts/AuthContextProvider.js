@@ -1,13 +1,13 @@
-import axios from 'axios';
-import React, { createContext, useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { API } from '../helpers/consts';
+import axios from "axios";
+import React, { createContext, useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { API } from "../helpers/consts";
 
 export const authContext = createContext();
 export const useAuth = () => useContext(authContext);
 
 const AuthContextProvider = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState('');
+  const [currentUser, setCurrentUser] = useState("");
   const [isSeller, setIsSeller] = useState(false);
 
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ const AuthContextProvider = ({ children }) => {
   async function handleRegister(formData) {
     try {
       await axios.post(`${API}/accounts/register/`, formData);
-      navigate('/');
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
@@ -25,7 +25,7 @@ const AuthContextProvider = ({ children }) => {
     try {
       await axios.post(`${API}/accounts/register_seller/`, formData);
       setIsSeller(true);
-      navigate('/');
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
@@ -34,34 +34,34 @@ const AuthContextProvider = ({ children }) => {
   async function handleLogin(formData, email) {
     try {
       const res = await axios.post(`${API}/accounts/login/`, formData);
-      localStorage.setItem('tokens', JSON.stringify(res.data));
-      localStorage.setItem('email', email);
+      localStorage.setItem("tokens", JSON.stringify(res.data));
+      localStorage.setItem("email", email);
       setCurrentUser(email);
-      navigate('/');
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
   }
 
   function logout() {
-    localStorage.removeItem('tokens');
-    localStorage.removeItem('email');
-    setCurrentUser('');
+    localStorage.removeItem("tokens");
+    localStorage.removeItem("email");
+    setCurrentUser("");
     setIsSeller(false);
-    navigate('/auth');
+    navigate("/auth");
   }
 
   async function checkAuth() {
     try {
-      const tokens = JSON.parse(localStorage.getItem('tokens'));
+      const tokens = JSON.parse(localStorage.getItem("tokens"));
       const res = await axios.post(`${API}/accounts/refresh/`, {
         refresh: tokens.refresh,
       });
       localStorage.setItem(
-        'tokens',
+        "tokens",
         JSON.stringify({ access: res.data.access, refresh: tokens.refresh })
       );
-      const email = localStorage.getItem('email');
+      const email = localStorage.getItem("email");
       if (email) {
         setCurrentUser(email);
       }
