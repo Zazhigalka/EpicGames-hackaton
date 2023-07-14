@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./navbar.css";
 import "./navbarAdaptive.css";
 import Container from "react-bootstrap/Container";
@@ -62,11 +62,7 @@ const NavbarEpic = () => {
         </Navbar.Brand>
         <Nav className="me-auto navbar__titles">
           <Nav.Link
-            className={
-              isClicked && path === "/"
-                ? "navbar__items clicked"
-                : "navbar__items"
-            }
+            className={path === "/" ? "navbar__items clicked" : "navbar__items"}
             onClick={() => {
               navigate("/");
               handleElementClick();
@@ -142,7 +138,12 @@ const NavbarEpic = () => {
         </div>
         {isOpen && (
           <div className="menu__items">
-            <div className="menu__close" onClick={toggleMenu}>
+            <div
+              className="menu__close"
+              onClick={() => {
+                toggleMenu();
+              }}
+            >
               <img src={closeMenu} alt="Закрыть" id="menu__close_icon" />
             </div>
             <ul style={{ width: "100%" }}>
