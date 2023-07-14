@@ -7,10 +7,10 @@ import { useAuth } from '../../contexts/AuthContextProvider';
 const Register = () => {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [userName, setUserName] = useState('');
 
   const { handleRegister } = useAuth();
 

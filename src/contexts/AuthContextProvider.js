@@ -15,13 +15,58 @@ const AuthContextProvider = ({ children }) => {
   async function handleRegister(formData) {
     try {
       await axios.post(`${API}/accounts/register/`, formData);
-      navigate('/home');
+      navigate('/');
     } catch (error) {
       console.log(error);
     }
   }
 
-  const values = { handleRegister };
+  async function handleLogin(formData, email) {
+    try {
+      const res = await axios.post(`${API}/accounts/login/`, formData);
+      localStorage.setItem('tokens', JSON.stringify(res.data));
+      localStorage.setItem('email', email);
+      setCurrentUser(email);
+      navigate('/');
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  function logout() {
+    localStorage.removeItem('tokens');
+    localStorage.removeItem('email');
+    setCurrentUser('');
+    navigate('/auth');
+  }
+
+  async function checkAuth() {
+    try {
+      const tokens = JSON.parse(localStorage.getItem('tokens'));
+      const res = await axios.post(`${API}/accounts/refresh/`, {
+        refresh: tokens.refresh,
+      });
+      localStorage.setItem(
+        'tokens',
+        JSON.stringify({ access: res.data.access, refresh: tokens.refresh })
+      );
+      const email = localStorage.getItem('email');
+      if (email) {
+        setCurrentUser(email);
+      }
+    } catch (error) {
+      console.log(error);
+      logout();
+    }
+  }
+
+  const values = {
+    handleRegister,
+    handleLogin,
+    logout,
+    currentUser,
+    checkAuth,
+  };
   return <authContext.Provider value={values}>{children}</authContext.Provider>;
 };
 
