@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { createContext, useContext, useReducer } from "react";
 import { useNavigate } from "react-router-dom";
 import { API } from "../helpers/consts";
+import { getTokens } from "../helpers/functions";
 export const productContext = createContext();
 export const useProduct = () => useContext(productContext);
 
@@ -29,8 +30,8 @@ const ProductContextProvider = ({ children }) => {
   async function getProducts() {
     try {
       const res = await axios(
-        `${API}/products/${window.location.search}`
-        // getTokens()
+        `${API}/products/${window.location.search}`,
+        getTokens()
       );
       dispatch({ type: "GET_PRODUCTS", payload: res.data });
     } catch (error) {
