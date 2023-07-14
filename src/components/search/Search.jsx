@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {
   Container,
+  Form,
   FormControl,
   FormLabel,
   Nav,
@@ -9,6 +10,8 @@ import {
 import "./Search.css";
 import search_icon from "../../assets/search.png";
 import { useNavigate } from "react-router-dom";
+import cart__icon from "../../assets/cart__icon.png";
+import heart__icon from "../../assets/search__heart_icon.png";
 
 const Search = () => {
   const navigate = useNavigate();
@@ -28,7 +31,19 @@ const Search = () => {
         </div>
         <Nav className="search__items_group">
           <Nav className="search__items_group_left">
-            <Nav.Link>
+            <select
+              className="search__select select"
+              aria-label="Default select example"
+              style={{ fontSize: "14px", height: "30px", margin: "auto" }}
+              onChange={(e) => {
+                navigate(e.target.value);
+              }}
+            >
+              <option value="/">Главное</option>
+              <option value="/products">Все игры</option>
+              <option value="3">Новости</option>
+            </select>
+            <Nav.Link className="search__linkes">
               <span
                 onClick={() => {
                   navigate("/");
@@ -40,7 +55,7 @@ const Search = () => {
                 Главное
               </span>
             </Nav.Link>
-            <Nav.Link>
+            <Nav.Link className="search__linkes">
               <span
                 className={`search__items ${
                   path === "/products" ? "search__items_active" : ""
@@ -52,7 +67,7 @@ const Search = () => {
                 Все игры
               </span>
             </Nav.Link>
-            <Nav.Link href="#pricing">
+            <Nav.Link className="search__linkes" href="#pricing">
               <span
                 className={`search__items ${
                   path === "/news" ? "search__items_active" : ""
@@ -69,25 +84,46 @@ const Search = () => {
                 onClick={() => {
                   navigate("/wish-list");
                 }}
-                className={`search__items ${
+                className={`search__items search__favorites ${
                   path === "/wish-list" ? "search__items_active" : ""
                 }`}
               >
                 Список желаемого
               </span>
+              <img
+                onClick={() => {
+                  navigate("/wish-list");
+                }}
+                className={`search__items search__favorites_icon ${
+                  path === "/wish-list" ? "search__items_active" : ""
+                }`}
+                src={heart__icon}
+                alt=""
+              />
             </Nav.Link>
             <Nav.Link>
               <span
                 onClick={() => {
                   navigate("/cart");
                 }}
-                className={`search__items ${
+                className={`search__items search__cart ${
                   path === "/cart" ? "search__items_active" : ""
                 }`}
                 style={{ justifySelf: "end" }}
               >
                 Корзина
               </span>
+
+              <img
+                onClick={() => {
+                  navigate("/cart");
+                }}
+                className={`search__items search__cart_icon ${
+                  path === "/cart" ? "search__items_active" : ""
+                }`}
+                src={cart__icon}
+                alt=""
+              />
             </Nav.Link>
           </Nav>
         </Nav>
