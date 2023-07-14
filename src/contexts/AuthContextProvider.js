@@ -8,13 +8,23 @@ export const useAuth = () => useContext(authContext);
 
 const AuthContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState('');
-  const [error, setError] = useState('');
+  const [isSeller, setIsSeller] = useState(false);
 
   const navigate = useNavigate();
 
   async function handleRegister(formData) {
     try {
       await axios.post(`${API}/accounts/register/`, formData);
+      navigate('/');
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function handleRegisterSeller(formData) {
+    try {
+      await axios.post(`${API}/accounts/register_seller/`, formData);
+      setIsSeller(true);
       navigate('/');
     } catch (error) {
       console.log(error);
@@ -37,6 +47,7 @@ const AuthContextProvider = ({ children }) => {
     localStorage.removeItem('tokens');
     localStorage.removeItem('email');
     setCurrentUser('');
+    setIsSeller(false);
     navigate('/auth');
   }
 
@@ -62,10 +73,12 @@ const AuthContextProvider = ({ children }) => {
 
   const values = {
     handleRegister,
+    handleRegisterSeller,
     handleLogin,
     logout,
     currentUser,
     checkAuth,
+    isSeller,
   };
   return <authContext.Provider value={values}>{children}</authContext.Provider>;
 };
