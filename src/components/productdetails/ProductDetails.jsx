@@ -7,8 +7,11 @@ import shareIcon from '../../assets/share.png';
 import reportIcon from '../../assets/flag.png';
 import { ReactComponent as UnrealEngineIcon } from '../../assets/unrealEngine.svg';
 import Search from '../search/Search';
+import { useAuth } from '../../contexts/AuthContextProvider';
 
 const ProductDetails = () => {
+  const { currentUser } = useAuth();
+
   return (
     <div style={{ backgroundColor: '#121212' }}>
       <div
@@ -123,58 +126,60 @@ const ProductDetails = () => {
           <div className="system-requirements__block">
             <h5>Системные требования</h5>
             <div className="system-requirements">
-              <div className="minimum">
-                <h5>Минимальные</h5>
-                <div>
-                  <h6>OC</h6>
-                  <p>Windows 10</p>
-                </div>
-                <div>
-                  <h6>Процессор</h6>
-                  <p>Core i3-3225 (3,3 ГГц)</p>
-                </div>
-                <div>
-                  <h6>Оперативная память</h6>
-                  <p>8 ГБ ОЗУ</p>
-                </div>
-              </div>
+              <h4>Windows</h4>
+              <div className="req">
+                <ul className="minimum">
+                  <h5>Минимальные</h5>
+                  <li>
+                    <h6>OC</h6>
+                    <p>Windows 10</p>
+                  </li>
+                  <li>
+                    <h6>Процессор</h6>
+                    <p>Core i3-3225 (3,3 ГГц)</p>
+                  </li>
+                  <li>
+                    <h6>Оперативная память</h6>
+                    <p>8 ГБ ОЗУ</p>
+                  </li>
+                </ul>
 
-              <div className="recommendations">
-                <h5>Рекомендуется</h5>
-                <div>
-                  <h6>ОС</h6>
-                  <p>Windows 10</p>
-                </div>
-                <div>
-                  <h6>Процессор</h6>
-                  <p>Core i3-3225 (3,3 ГГц)</p>
-                </div>
-                <div>
-                  <h6>Оперативная память</h6>
-                  <p>8 ГБ ОЗУ</p>
-                </div>
-                <div>
-                  <h6>Видеокарта</h6>
-                  <p>
-                    NVIDIA GTX 960, AMD R9 280 или эквивалентная с поддержкой
-                    DirectX 11
-                  </p>
-                </div>
-                <div>
-                  <h6>Видеопамять</h6>
-                  <p>2 ГБ видеопамяти</p>
-                </div>
+                <ul className="recommendations">
+                  <h5>Рекомендуется</h5>
+                  <li>
+                    <h6>ОС</h6>
+                    <p>Windows 10</p>
+                  </li>
+                  <li>
+                    <h6>Процессор</h6>
+                    <p>Core i3-3225 (3,3 ГГц)</p>
+                  </li>
+                  <li>
+                    <h6>Оперативная память</h6>
+                    <p>8 ГБ ОЗУ</p>
+                  </li>
+                  <li>
+                    <h6>Видеокарта</h6>
+                    <p>
+                      NVIDIA GTX 960, AMD R9 280 или эквивалентная с поддержкой
+                      DirectX 11
+                    </p>
+                  </li>
+                  <li>
+                    <h6>Видеопамять</h6>
+                    <p>2 ГБ видеопамяти</p>
+                  </li>
+                </ul>
               </div>
+              <p className="copyirights">
+                © Epic Games, Inc., 2022 г. Все права защищены. Epic, Epic
+                Games, логотип Epic Games, Unreal, Unreal Engine, логотип Unreal
+                Engine, Fortnite и логотип Fortnite являются товарными знаками
+                или зарегистрированными товарными знаками компании Epic Games,
+                Inc. в США и других странах. Все остальные товарные знаки
+                являются собственностью соответствующих владельцев.
+              </p>
             </div>
-
-            <p className="copyirights">
-              © Epic Games, Inc., 2022 г. Все права защищены. Epic, Epic Games,
-              логотип Epic Games, Unreal, Unreal Engine, логотип Unreal Engine,
-              Fortnite и логотип Fortnite являются товарными знаками или
-              зарегистрированными товарными знаками компании Epic Games, Inc. в
-              США и других странах. Все остальные товарные знаки являются
-              собственностью соответствующих владельцев.
-            </p>
           </div>
         </div>
         <div className="product-details-right">
@@ -187,17 +192,21 @@ const ProductDetails = () => {
           </div>
           <div className="base-game">Базовая игра</div>
 
-          <Button variant="warning w-100 p-2 mt-3">Получить</Button>
-          <Button
-            className="outlined-btn"
-            variant="outline-light p-2 w-100 mt-3">
-            Добавить в корзину
-          </Button>
-          <Button
-            className="outlined-btn"
-            variant="outline-light w-100 mt-3 p-1">
-            <img width={20} src={addTo} alt="" /> В список желаемого
-          </Button>
+          {currentUser ? (
+            <>
+              <Button variant="warning w-100 p-2 mt-3">Получить</Button>
+              <Button
+                className="outlined-btn"
+                variant="outline-light p-2 w-100 mt-3">
+                Добавить в корзину
+              </Button>
+              <Button
+                className="outlined-btn"
+                variant="outline-light w-100 mt-3 p-1">
+                <img width={20} src={addTo} alt="" /> В список желаемого
+              </Button>
+            </>
+          ) : null}
 
           <ul className="product-details__more-about-product-list">
             <li>
@@ -223,11 +232,14 @@ const ProductDetails = () => {
             </li>
           </ul>
           <Button className="outlined-btn" variant="outline-light w-100 mt-3">
-            <img width={20} src={shareIcon} alt="" /> В список желаемого
+            <img width={20} src={shareIcon} alt="" /> Поделиться
           </Button>
-          <Button className="outlined-btn" variant="outline-light w-100 mt-3">
-            <img width={20} src={reportIcon} alt="" /> В список желаемого
-          </Button>
+
+          {currentUser ? (
+            <Button className="outlined-btn" variant="outline-light w-100 mt-3">
+              <img width={20} src={reportIcon} alt="" /> Пожаловаться
+            </Button>
+          ) : null}
         </div>
       </div>
     </div>
