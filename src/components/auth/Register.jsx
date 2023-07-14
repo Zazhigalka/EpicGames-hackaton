@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Register.css';
 import auth__logo from '../../assets/epic_games_logo.png';
-import { InputGroup } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import { useAuth } from '../../contexts/AuthContextProvider';
 
 const Register = () => {
@@ -11,8 +11,9 @@ const Register = () => {
   const [passwordConfirm, setPasswordConfirm] = useState('');
   const [lastName, setLastName] = useState('');
   const [userName, setUserName] = useState('');
+  const [isSeller, setIsSeller] = useState(false);
 
-  const { handleRegister } = useAuth();
+  const { handleRegister, handleRegisterSeller } = useAuth();
 
   function handleSave() {
     if (
@@ -34,7 +35,12 @@ const Register = () => {
     formData.append('first_name', name);
     formData.append('last_name', lastName);
     formData.append('username', userName);
-    handleRegister(formData);
+
+    if (isSeller) {
+      handleRegisterSeller(formData);
+    } else {
+      handleRegister(formData);
+    }
   }
 
   return (
@@ -79,6 +85,14 @@ const Register = () => {
               placeholder=" Подтвердите пароль"
             />
           </div>
+
+          <Form.Check
+            type="switch"
+            id="custom-switch"
+            label="Вы продавец?"
+            className="register__isSeller"
+            onChange={(e) => setIsSeller(e.target.checked)}
+          />
 
           <div className="register__btn">
             {!email.trim() ||
