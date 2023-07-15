@@ -63,3 +63,60 @@
   margin-top: 2%;
   margin-left: 3%;
 }
+
+/* home third */
+.home__third {
+  margin-top: 7%;
+  display: flex;
+}
+
+.home__third_products {
+  width: 33%;
+}
+.home__third_main-title {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+}
+.home__third_list {
+  display: flex;
+  flex-direction: column;
+}
+
+.home__third_items {
+  padding: 10px 15px 5px;
+  cursor: pointer;
+  margin: 2% auto 0 0;
+  width: 90%;
+  border-radius: 10px;
+  transition: 0.2s;
+  display: flex;
+  justify-content: space-between;
+}
+
+.home__third_items:hover {
+  background-color: #363636;
+  transition: 0.2s;
+}
+
+.home__third_items-img {
+  width: 48px;
+  height: 64px;
+  border-radius: 5px;
+}
+.home__third_items-descr {
+  display: flex;
+  flex-direction: column;
+  width: 73%;
+}
+
+.home__third_items-title {
+  font-size: 14px;
+  font-weight: 500;
+  margin: 10px 0 5px;
+}
+.home__third_items-price {
+  font-size: 12px;
+}
+
+/* home third */
