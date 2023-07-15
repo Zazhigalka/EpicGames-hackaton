@@ -48,10 +48,11 @@ const HomeCarousel = () => {
       setActiveSlideIndex(
         (prevIndex) => (prevIndex + 1) % carouselItems.length
       );
+      setProgressWidth(0);
     }, 10000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [activeSlideIndex]);
 
   useEffect(() => {
     const progressInterval = setInterval(() => {
@@ -72,8 +73,8 @@ const HomeCarousel = () => {
   }, [progressWidth]);
 
   const handleSlideClick = (index) => {
-    setProgressWidth(0);
     setActiveSlideIndex(index);
+    setProgressWidth(100);
   };
 
   return (
@@ -128,9 +129,9 @@ const HomeCarousel = () => {
                 className="carousel__left_descr-img"
                 style={{
                   height: "120px",
-                  width: "240px",
+                  width: "300px",
                   bottom: "105%",
-                  left: "5%",
+                  left: "1%",
                 }}
               />
               <p className="left__descr">
