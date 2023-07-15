@@ -111,12 +111,12 @@
   overflow: hidden;
   margin-bottom: 3px;
   cursor: pointer;
-  transiton: 0.3s;
+  transition: 0.2s;
 }
 
 .carousel__right_items:hover {
   background-color: #363636;
-  transiton: 0.3s;
+  transition: 0.2s;
 }
 
 .carousel__right_img {
