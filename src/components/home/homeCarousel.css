@@ -32,11 +32,21 @@
   font-size: 32px !important;
 }
 
+@keyframes anime {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 .carousel__left_descr-img {
   bottom: 70%;
   position: absolute;
   width: 300px;
   height: 250px;
+  animation: anime 1s forwards;
 }
 
 .left__descr {
@@ -140,22 +150,6 @@
   background-color: #363636;
 }
 
-.filled {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 0;
-  border-radius: 10px;
-  transition: width 10s linear;
-}
-
-.carousel__right_items .filled {
-  opacity: 0.1;
-  background-color: #fff;
-  animation: fillAnimation 10s linear forwards;
-}
-
 @keyframes fillAnimation {
   0% {
     width: 0;
@@ -163,4 +157,16 @@
   100% {
     width: 100%;
   }
+}
+
+.filled {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  transition: width 10s linear;
+  opacity: 0.1;
+  background-color: #fff;
+  animation: fillAnimation 10s linear forwards;
 }

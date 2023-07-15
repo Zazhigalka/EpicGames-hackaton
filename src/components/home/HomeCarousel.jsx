@@ -98,7 +98,7 @@ const HomeCarousel = () => {
               <img
                 src="https://cdn2.unrealengine.com/egs-marvelsspidermanmilesmorales-insomniacgamesnixxessoftware-ic1-400x400-32513a3f95a0.png?h=270&quality=medium&resize=1&w=480"
                 className="carousel__left_descr-img"
-                alt=""
+                alt="Spider Man"
               />
               <p className="left__descr">
                 Когда его дому грозит страшная опасность, Майлз надевает костюм
@@ -125,7 +125,7 @@ const HomeCarousel = () => {
             <Carousel.Caption className="carousel__left_descr">
               <img
                 src="https://cdn2.unrealengine.com/epic-launch-logo-400x172-c0289bc57588.png?h=270&quality=medium&resize=1&w=480"
-                alt=""
+                alt="AC Mirage"
                 className="carousel__left_descr-img"
                 style={{
                   height: "120px",
@@ -155,13 +155,13 @@ const HomeCarousel = () => {
             <img
               className="carousel__left_image d-block w-100"
               src="https://cdnb.artstation.com/p/assets/images/images/006/737/939/large/vitaliy-naymushin-fortnite-keyart-final.jpg?1500907440"
-              alt="Third slide"
+              alt="Fortnite"
               style={{ opacity: 0.8 }}
             />
             <Carousel.Caption className="carousel__left_descr">
               <img
                 src="https://cdn2.unrealengine.com/24br-s24-egs-launcher-logo-350x100-350x100-b63249f937d9.png?h=270&quality=medium&resize=1&w=480"
-                alt=""
+                alt="Fortnite"
                 className="carousel__left_descr-img"
                 style={{ width: "340px", height: "100px", bottom: "100%" }}
               />
@@ -185,14 +185,20 @@ const HomeCarousel = () => {
             <img
               className="carousel__left_image d-block w-100"
               src="https://cdn2.unrealengine.com/Diesel%2Fproductv2%2Fgrand-theft-auto-v%2Fhome%2FGTAV_EGS_Artwork_1920x1080_Hero-Carousel_V06-1920x1080-1503e4b1320d5652dd4f57466c8bcb79424b3fc0.jpg"
-              alt="Third slide"
+              alt="GTA V"
               style={{ opacity: 0.7 }}
             />
             <Carousel.Caption
               className="carousel__left_descr"
               style={{ width: "500px", marginBottom: "10px" }}
             >
-              <h3>Grand Theft Auto V</h3>
+              <h3
+                style={{
+                  animation: "anime 1s forwards",
+                }}
+              >
+                Grand Theft Auto V
+              </h3>
               <p className="left__descr">
                 Premium Издание всемирно-известной игры.
               </p>
@@ -212,7 +218,7 @@ const HomeCarousel = () => {
             <img
               className="carousel__left_image d-block w-100"
               src="https://mms.businesswire.com/media/20230713426786/en/1840766/5/FC24_standardkeyart_16x9.jpg"
-              alt="Third slide"
+              alt="EA SPORTS FC"
             />
             <Carousel.Caption
               className="carousel__left_descr"
@@ -238,7 +244,7 @@ const HomeCarousel = () => {
             <img
               className="carousel__left_image d-block w-100"
               src="https://cdn2.unrealengine.com/epic-featured-carousel-image-1920x1080-1920x1080-8c2394ed0c91.jpg?h=720&quality=medium&resize=1&w=1280"
-              alt="Third slide"
+              alt="NARAKA"
             />
             <Carousel.Caption className="carousel__left_descr">
               <h3 style={{ display: "none" }}>NARAKA: BLADEPOINT</h3>
