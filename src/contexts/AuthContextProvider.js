@@ -8,28 +8,36 @@ export const useAuth = () => useContext(authContext);
 
 const AuthContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
   async function handleRegister(formData) {
+    setLoading(true);
     try {
       await axios.post(`${API}/accounts/register/`, formData);
       navigate("/");
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   }
 
   async function handleRegisterSeller(formData) {
+    setLoading(true);
     try {
       await axios.post(`${API}/accounts/register_seller/`, formData);
       navigate("/");
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   }
 
   async function handleLogin(formData, email) {
+    setLoading(true);
     try {
       const res = await axios.post(`${API}/accounts/login/`, formData);
       localStorage.setItem("tokens", JSON.stringify(res.data));
@@ -38,6 +46,8 @@ const AuthContextProvider = ({ children }) => {
       navigate("/");
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -48,6 +58,7 @@ const AuthContextProvider = ({ children }) => {
   }
 
   async function checkAuth() {
+    setLoading(true);
     try {
       const tokens = JSON.parse(localStorage.getItem("tokens"));
       const res = await axios.post(`${API}/accounts/refresh/`, {
@@ -64,6 +75,8 @@ const AuthContextProvider = ({ children }) => {
     } catch (error) {
       console.log(error);
       logout();
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -74,6 +87,7 @@ const AuthContextProvider = ({ children }) => {
     logout,
     currentUser,
     checkAuth,
+    loading,
   };
   return <authContext.Provider value={values}>{children}</authContext.Provider>;
 };
