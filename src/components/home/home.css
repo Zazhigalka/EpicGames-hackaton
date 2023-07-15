@@ -7,4 +7,59 @@
   flex-direction: column;
   font-family: "Inter", sans-serif;
   color: #f5f5f5;
+  letter-spacing: 0.2px;
+}
+
+/* home second */
+.home__second {
+  margin-top: 7%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.home__second_products {
+  border-radius: 20px;
+  width: 48%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.home__second_img {
+  width: 490px;
+  height: 285px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.home__second_img:hover {
+  transition: 0.2s;
+  filter: brightness(115%);
+}
+
+.home__second_add {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.home__second_title {
+  font-size: 16px;
+  margin-top: 5%;
+  margin-left: 3%;
+  font-weight: 500;
+}
+.home__second_descr {
+  margin-left: 3%;
+  font-size: 14px;
+  color: #f5f5f599;
+}
+
+.home__second_price {
+  margin-top: 2%;
+  margin-left: 3%;
 }
