@@ -1,25 +1,25 @@
-import React, { useState } from 'react';
-import './Auth.css';
-import auth__logo from '../../assets/epic_games_logo.png';
-import { InputGroup } from 'react-bootstrap';
-import { useAuth } from '../../contexts/AuthContextProvider';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import "./Auth.css";
+import auth__logo from "../../assets/epic_games_logo.png";
+import { Button, InputGroup, Spinner } from "react-bootstrap";
+import { useAuth } from "../../contexts/AuthContextProvider";
+import { useNavigate } from "react-router-dom";
 
 const Auth = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const { handleLogin } = useAuth();
+  const { handleLogin, loading } = useAuth();
 
   function handleSave() {
     if (!email.trim() || !password.trim()) {
-      alert('заполните поля!');
+      alert("заполните поля!");
       return;
     }
 
     const formData = new FormData();
-    formData.append('email', email);
-    formData.append('password', password);
+    formData.append("email", email);
+    formData.append("password", password);
     handleLogin(formData, email);
   }
 
@@ -43,27 +43,39 @@ const Auth = () => {
           />
         </div>
 
-        <div className="auth__btn">
-          {!email.trim() || !password.trim() ? (
-            <button className="auth__button-unactive">
-              ВОЙТИ ПРЯМО СЕЙЧАС
-            </button>
-          ) : (
-            <button onClick={handleSave} className="auth__button-active">
-              ВОЙТИ ПРЯМО СЕЙЧАС
-            </button>
-          )}
-        </div>
+        {loading ? (
+          <Button className="auth__btn" variant="primary" disabled>
+            <Spinner
+              as="span"
+              animation="border"
+              role="status"
+              aria-hidden="true"
+            />
+            Загрузка...
+          </Button>
+        ) : (
+          <div className="auth__btn">
+            {!email.trim() || !password.trim() ? (
+              <button className="auth__button-unactive">
+                ВОЙТИ ПРЯМО СЕЙЧАС
+              </button>
+            ) : (
+              <button onClick={handleSave} className="auth__button-active">
+                ВОЙТИ ПРЯМО СЕЙЧАС
+              </button>
+            )}
+          </div>
+        )}
 
         <a
           style={{
-            width: '80%',
-            color: '#f2f2f2',
-            alignSelf: 'start',
-            marginTop: '20px',
+            width: "80%",
+            color: "#f2f2f2",
+            alignSelf: "start",
+            marginTop: "20px",
           }}
           href=""
-          onClick={() => navigate('/register')}>
+          onClick={() => navigate("/register")}>
           Нет аккаунта? Зарегестрирутесь!
         </a>
       </div>
