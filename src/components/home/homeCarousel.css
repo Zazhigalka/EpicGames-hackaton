@@ -14,6 +14,7 @@
   width: 820px;
   height: 460px;
   cursor: pointer;
+  position: relative;
 }
 
 .carousel__left_image {
@@ -24,11 +25,18 @@
   text-align: left !important;
   left: 40px !important;
   right: auto !important;
-  bottom: 1px !important;
+  bottom: 15px !important;
 }
 
 .carousel__left_descr > h3 {
   font-size: 32px !important;
+}
+
+.carousel__left_descr-img {
+  bottom: 70%;
+  position: absolute;
+  width: 300px;
+  height: 250px;
 }
 
 .left__descr {
@@ -36,21 +44,79 @@
   font-size: 17px !important;
 }
 
+.left__descr_bottom {
+  display: flex;
+}
+
+.left__descr_bottom > button {
+  font-size: 13px !important;
+  font-weight: 500;
+  color: black;
+  border: none;
+  border-radius: 3px;
+  background-color: #e7e7e7;
+  padding: 0 25px;
+  height: 40px;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+
+.left__descr_bottom > button:hover {
+  filter: brightness(110%);
+  transition: 0.5s;
+}
+
+.home__wish {
+  margin-left: 2%;
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  font-size: 12px;
+  border: none;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.home__wish:hover {
+  background: rgba(241, 241, 241, 0.3);
+  transition: 0.3s;
+}
+
+.home__wish > img {
+  width: 20px;
+  height: 20px;
+}
+
+.home__wish > p {
+  margin-left: 10px;
+  margin-bottom: 0;
+}
+
 /* right side  */
 
 .home__carousel_right {
   display: flex;
   flex-direction: column;
-  margin-top: 10px;
+  overflow: hidden;
 }
 
 .carousel__right_items {
+  position: relative;
   width: 176px;
   height: 74px;
   align-items: center;
   display: flex;
   justify-content: space-evenly;
   border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 3px;
+  cursor: pointer;
+  transiton: 0.3s;
+}
+
+.carousel__right_items:hover {
+  background-color: #363636;
+  transiton: 0.3s;
 }
 
 .carousel__right_img {
@@ -58,6 +124,7 @@
   width: 40px;
   height: 53px;
   border: 4px;
+  z-index: 2;
 }
 
 .carousel__right_title {
@@ -65,4 +132,35 @@
   height: 0;
   font-size: 12px;
   padding-bottom: 20px;
+  z-index: 2;
+  color: #f5f5f5;
+}
+
+.yea {
+  background-color: #363636;
+}
+
+.filled {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  border-radius: 10px;
+  transition: width 10s linear;
+}
+
+.carousel__right_items .filled {
+  opacity: 0.1;
+  background-color: #fff;
+  animation: fillAnimation 10s linear forwards;
+}
+
+@keyframes fillAnimation {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
 }
