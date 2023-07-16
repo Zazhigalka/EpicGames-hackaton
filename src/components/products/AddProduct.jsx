@@ -10,7 +10,7 @@ const AddProduct = () => {
   const [nameOfDeveloper, setNameOfDeveloper] = useState();
   const [dateOfIssue, setDateOfIssue] = useState();
   const [shortDescr, setShortDescr] = useState();
-  const [shortImage, setShortImage] = useState();
+  const [preview, setPreview] = useState();
   const [fullDescr, setFullDescr] = useState();
   const [fullImage, setFullImage] = useState();
   const [price, setPrice] = useState();
@@ -21,6 +21,7 @@ const AddProduct = () => {
   const [facebook, setFacebook] = useState();
   const [video, setVideo] = useState();
   const [category, setCategory] = useState();
+  const [images, setImages] = useState();
 
   console.log(
     titleOfGame,
@@ -28,7 +29,7 @@ const AddProduct = () => {
     nameOfDeveloper,
     dateOfIssue,
     shortDescr,
-    shortImage,
+    preview,
     fullDescr,
     fullImage,
     price,
@@ -68,7 +69,7 @@ const AddProduct = () => {
     newProduct.append("name_of_developer", nameOfDeveloper);
     newProduct.append("date_of_issue", dateOfIssue);
     newProduct.append("short_description", shortDescr);
-    newProduct.append("image_for_short", shortImage);
+    newProduct.append("preview", preview);
     newProduct.append("full_description", fullDescr);
     newProduct.append("image_for_full", fullImage);
     newProduct.append("price", price);
@@ -79,7 +80,7 @@ const AddProduct = () => {
     newProduct.append("link_on_facebook", facebook);
     newProduct.append("video", video);
     newProduct.append("category", category);
-
+    newProduct.append("images", images);
     createProduct(newProduct);
   };
 
@@ -124,7 +125,7 @@ const AddProduct = () => {
             placeholder="ENTER IMAGE FOR SHORT"
             type="file"
             className="addProduct__inputs"
-            onChange={(e) => setShortImage(e.target.files[0])}
+            onChange={(e) => setPreview(e.target.files[0])}
             encType="multipart/form-data"
           />
           <input
@@ -188,6 +189,12 @@ const AddProduct = () => {
             type="text"
             className="addProduct__inputs"
             onChange={(e) => setCategory(e.target.value)}
+          />
+          <input
+            placeholder="ENTER IMAGES"
+            type="file"
+            className="addProduct__inputs"
+            onChange={(e) => setImages(e.target.files[0])}
           />
         </div>
         <div className="addProduct__btn">
