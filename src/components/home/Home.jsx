@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import Search from "../search/Search";
 import "./home.css";
+import "./homeAdaptive.css";
 import HomeCarousel from "./HomeCarousel";
 import addToWish from "../../assets/add-to.png";
+import ProductsItems from "./ProductsItems";
 
 const Home = () => {
   // home second
   const [iconPlus, setIconPlus] = useState(false);
   const [secondIconPlus, setSecondIconPlus] = useState(false);
+  const [thirdIconPlus, setThirdIconPlus] = useState(false);
+  const [fouthIconPlus, setFourthIconPlus] = useState(false);
 
   const handleMouseEnter = () => {
     setIconPlus(true);
@@ -24,7 +28,37 @@ const Home = () => {
   const handleSecondMouseLeave = () => {
     setSecondIconPlus(false);
   };
+
+  const handleThirdMouseEnter = () => {
+    setThirdIconPlus(true);
+  };
+
+  const handleThirdMouseLeave = () => {
+    setThirdIconPlus(false);
+  };
+
+  const handleFourthMouseEnter = () => {
+    setFourthIconPlus(true);
+  };
+
+  const handleFourthMouseLeave = () => {
+    setFourthIconPlus(false);
+  };
   // home second
+
+  // home fifth
+  const totalSlides = 3;
+  const [currentSlide, setCurrentSlide] = useState(1);
+
+  const handleSlide = (direction) => {
+    if (direction === "left") {
+      setCurrentSlide((prevSlide) => prevSlide - 1 || totalSlides);
+    } else {
+      setCurrentSlide((prevSlide) => (prevSlide % totalSlides) + 1);
+    }
+  };
+
+  // home fifth
 
   return (
     <div className="home__page">
@@ -299,8 +333,8 @@ const Home = () => {
       <div className="home__second">
         <div className="home__second_products">
           <div
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
+            onMouseEnter={handleThirdMouseEnter}
+            onMouseLeave={handleThirdMouseLeave}
             style={{ position: "relative" }}
           >
             <img
@@ -308,7 +342,7 @@ const Home = () => {
               src="https://wallpapershome.ru/images/wallpapers/poster-3840x2160-poster-18222.jpg"
               alt=""
             />
-            {iconPlus ? (
+            {thirdIconPlus ? (
               <img
                 className="home__second_add"
                 src={addToWish}
@@ -327,8 +361,8 @@ const Home = () => {
         </div>
         <div className="home__second_products">
           <div
-            onMouseEnter={handleSecondMouseEnter}
-            onMouseLeave={handleSecondMouseLeave}
+            onMouseEnter={handleFourthMouseEnter}
+            onMouseLeave={handleFourthMouseLeave}
             style={{ position: "relative" }}
           >
             <img
@@ -336,7 +370,7 @@ const Home = () => {
               src="https://image.api.playstation.com/vulcan/img/rnd/202010/2618/itbSm3suGHSSHIpmu9CCPBRy.jpg"
               alt=""
             />
-            {secondIconPlus ? (
+            {fouthIconPlus ? (
               <img
                 className="home__second_add"
                 src={addToWish}
@@ -355,6 +389,97 @@ const Home = () => {
         </div>
       </div>
       {/* home fourth */}
+      {/* home fifth */}
+      <div className="home__fifth">
+        <div className="home__fifth_main-title">
+          <p>Наиболее популярные</p>
+          <div className="home__left_right">
+            <p
+              id={currentSlide !== 1 ? "toLeft" : "disabled-left"}
+              onClick={currentSlide !== 1 ? () => handleSlide("left") : null}
+            >
+              {"<"}
+            </p>
+            <p
+              id={currentSlide !== 3 ? "toRight" : "disabled-right"}
+              onClick={currentSlide !== 3 ? () => handleSlide("right") : null}
+            >
+              {">"}
+            </p>
+          </div>
+        </div>
+        {currentSlide === 1 ? (
+          <div className={`home__fifth_products-${currentSlide}`}>
+            <ProductsItems />
+            <ProductsItems />
+            <ProductsItems />
+            <ProductsItems />
+            <ProductsItems />
+          </div>
+        ) : null}
+
+        {currentSlide === 2 ? (
+          <div className={`home__fifth_products-${currentSlide}`}>
+            <ProductsItems />
+            <ProductsItems />
+            <ProductsItems />
+            <ProductsItems />
+            <ProductsItems />
+          </div>
+        ) : null}
+
+        {currentSlide === 3 ? (
+          <div className={`home__fifth_products-${currentSlide}`}>
+            <ProductsItems />
+            <ProductsItems />
+            <ProductsItems />
+            <ProductsItems />
+            <ProductsItems />
+          </div>
+        ) : null}
+      </div>
+      {/* home fifth */}
+      <div className="home__bottom">
+        <div className="home__bottom_items">
+          <img
+            src="https://cdn2.unrealengine.com/egs-sales-specials-breaker-1280x721-8d81919a48e5.jpg?h=480&quality=medium&resize=1&w=854"
+            alt=""
+            className="home__bottom_img"
+          />
+          <p className="home__bottom_title">
+            Распродажи и специальные предложения
+          </p>
+          <p className="home__bottom_descr">
+            Экономьте по-крупному на популярных играх и настоящих жемчужинах. У
+            нас в Epic Games Store всегда можно найти что-нибудь по
+            привлекательной цене!
+          </p>
+        </div>
+        <div className="home__bottom_items">
+          <img
+            src="https://cdn2.unrealengine.com/egs-free-games-breaker-may-2023-1920x1080-3d7b336fd40c.jpg?h=480&quality=medium&resize=1&w=854"
+            alt=""
+            className="home__bottom_img"
+          />
+          <p className="home__bottom_title">Бесплатные игры</p>
+          <p className="home__bottom_descr">
+            Находите бесплатные и условно бесплатные игры в нашей коллекции.
+            Заглядывайте к нам каждый четверг за очередной бесплатной игрой!
+          </p>
+        </div>
+        <div className="home__bottom_items">
+          <img
+            src="https://cdn2.unrealengine.com/egs-non-game-apppromo-blog-1920x1080-59bd51d9d448.jpg?h=480&quality=medium&resize=1&w=854"
+            alt=""
+            className="home__bottom_img"
+          />
+          <p className="home__bottom_title">Приложения</p>
+          <p className="home__bottom_descr">
+            Наслаждайтесь одними из лучших приложений для музыки, игр,
+            творчества и многого другого!
+          </p>
+        </div>
+      </div>
     </div>
   );
 };

@@ -9,6 +9,10 @@
   font-family: "Inter", sans-serif;
 }
 
+.home__adapt_carousel {
+  display: none;
+}
+
 /* left side */
 .home__carousel_left {
   width: 820px;
@@ -34,18 +38,43 @@
 
 @keyframes anime {
   0% {
-    transform: translateX(100%);
+    transform: translateX(80%);
   }
   100% {
     transform: translateX(0);
   }
 }
 
-.carousel__left_descr-img {
+.carousel__left_descr-img-1 {
   bottom: 70%;
   position: absolute;
   width: 300px;
   height: 250px;
+  animation: anime 1s forwards;
+}
+
+.carousel__left_descr-img-2 {
+  height: 120px;
+  width: 300px;
+  bottom: 105%;
+  left: 1%;
+  position: absolute;
+  animation: anime 1s forwards;
+}
+.carousel__left_descr-img-3 {
+  width: 340px;
+  height: 100px;
+  bottom: 100%;
+  position: absolute;
+  animation: anime 1s forwards;
+}
+
+.carousel__left_descr-img-4 {
+  height: 210px;
+  width: 210px;
+  bottom: 70%;
+  left: 8%;
+  position: absolute;
   animation: anime 1s forwards;
 }
 
