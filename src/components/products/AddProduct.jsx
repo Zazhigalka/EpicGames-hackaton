@@ -22,24 +22,40 @@ const AddProduct = () => {
   const [video, setVideo] = useState();
   const [category, setCategory] = useState();
 
+  console.log(
+    titleOfGame,
+    titleOfPulisher,
+    nameOfDeveloper,
+    dateOfIssue,
+    shortDescr,
+    shortImage,
+    fullDescr,
+    fullImage,
+    price,
+    linkGame,
+    discord,
+    insta,
+    twitter,
+    facebook,
+    video,
+    category
+  );
+
   const handleSave = () => {
     if (
-      !titleOfGame.trim() ||
-      !titleOfPulisher.trim() ||
-      !nameOfDeveloper.trim() ||
-      !dateOfIssue.trim() ||
-      !shortDescr.trim() ||
-      !shortImage ||
-      !fullDescr.trim() ||
-      !fullImage ||
-      !price.trim() ||
-      !linkGame.trim() ||
-      !discord.trim() ||
-      !insta.trim() ||
-      !twitter.trim() ||
-      !facebook.trim() ||
-      !video ||
-      !category.trim()
+      !titleOfGame ||
+      !titleOfPulisher ||
+      !nameOfDeveloper ||
+      !dateOfIssue ||
+      !shortDescr ||
+      !fullDescr ||
+      !price ||
+      !linkGame ||
+      !discord ||
+      !insta ||
+      !twitter ||
+      !facebook ||
+      !category
     ) {
       alert("ЗАПОЛНИТЕ ПОЛЯ!!!");
       return;
