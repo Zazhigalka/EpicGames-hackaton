@@ -28,18 +28,18 @@ const HomeCarousel = () => {
     },
     {
       imgSrc:
-        "https://i.etsystatic.com/13367669/r/il/013579/3107621028/il_570xN.3107621028_hfi8.jpg",
+        "https://cdn1.epicgames.com/0584d2013f0149a791e7b9bad0eec102/offer/GTAV_EGS_Artwork_1200x1600_Portrait%20Store%20Banner-1200x1600-382243057711adf80322ed2aeea42191.jpg?h=480&quality=medium&resize=1&w=360",
       title: "GRAND THEFT AUTO V",
     },
     {
       imgSrc:
         "https://cdn2.unrealengine.com/fc24set-epic-portrait-product-image-1200x1600-1200x1600-dfe2373ee736.jpg?h=128&quality=medium&resize=1&w=96",
-      title: "EA SPORTS FC 24",
+      title: "EA SPORTS FC™ 24",
     },
     {
       imgSrc:
-        "https://cdn2.unrealengine.com/1200x1600-with-logo-1200x1600-6480a248c498.jpg?h=128&quality=medium&resize=1&w=96",
-      title: "NARAKA: BLADEPOINT",
+        "https://cdn1.epicgames.com/undefined/offer/batman-arkham-knight_portrait-1024x1152-78f19e73d3e889c19ca24ab5af0b5fd7.jpg?h=480&quality=medium&resize=1&w=360",
+      title: " Batman™: Arkham Knight",
     },
   ];
 
@@ -203,7 +203,7 @@ const HomeCarousel = () => {
                 Premium Издание всемирно-известной игры.
               </p>
               <p>
-                От <span style={{ fontWeight: 600 }}>39,99$</span>
+                От <span style={{ fontWeight: 600 }}>24,99$</span>
               </p>
               <div className="left__descr_bottom">
                 <button>Добавить в Корзину</button>
@@ -226,7 +226,7 @@ const HomeCarousel = () => {
             >
               <h3 style={{ display: "none" }}>EA SPORTS FC</h3>
               <p className="left__descr" style={{ height: "40px" }}>
-                EA SPORTS FC - это следующая часть всемирной игры.
+                EA SPORTS FC™ 24 - это следующая часть всемирной игры.
               </p>
               <p>
                 От <span style={{ fontWeight: 600 }}>69,99$</span>
@@ -243,17 +243,23 @@ const HomeCarousel = () => {
           <Carousel.Item>
             <img
               className="carousel__left_image d-block w-100"
-              src="https://cdn2.unrealengine.com/epic-featured-carousel-image-1920x1080-1920x1080-8c2394ed0c91.jpg?h=720&quality=medium&resize=1&w=1280"
-              alt="NARAKA"
+              src="https://cdn2.unrealengine.com/Diesel%2Fproductv2%2Fbatman-arkham-knight%2FEGS_WB_Batman_Arkham_Knight_G1_1920x1080_19_0911-1920x1080-1d69e15f00cb5ab57249f208f1f8f45d52cbbc59.jpg"
+              alt="Batman"
+              style={{ opacity: 0.6 }}
             />
             <Carousel.Caption className="carousel__left_descr">
-              <h3 style={{ display: "none" }}>NARAKA: BLADEPOINT</h3>
+              <img
+                src="https://cdn2.unrealengine.com/Diesel%2Fproductv2%2Fbatman-arkham-knight%2FEGS_WB_Batman_Arkham_Knight_IC1_200x200_19_0911-200x200-9d884a41a7b8c6ca1ec20026cf39038b6ffddc2f.png?h=270&quality=medium&resize=1&w=480"
+                alt=""
+                className="carousel__left_descr-img"
+                style={{ height: "210px", width: "210px", left: "8%" }}
+              />
               <p className="left__descr">
-                Предайтесь легендам Дальнего Востока в игре NARAKA: BLADEPOINT,
-                неповторимой королевской битве в с рукопашными боями.
+                Batman™: Arkham Knight — это эпичное завершение признанной
+                критиками трилогии Arkham компании Rocksteady Studios.
               </p>
               <p>
-                <span style={{ fontWeight: 600 }}>Бесплатно</span>
+                <span style={{ fontWeight: 600 }}>19,99 $</span>
               </p>
               <div className="left__descr_bottom">
                 <button>Добавить в корзину</button>
