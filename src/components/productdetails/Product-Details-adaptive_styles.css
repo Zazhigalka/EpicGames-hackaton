@@ -17,7 +17,7 @@
     height: 50px;
   }
 
-  .product-details__main-info {
+  .product-details__section1 {
     flex-direction: column-reverse;
   }
 
@@ -46,6 +46,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .product-details__section2 {
+    width: 100%;
   }
 
   .product-details-container .btn-share__box {
