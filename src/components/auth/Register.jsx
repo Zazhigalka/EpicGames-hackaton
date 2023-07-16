@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Register.css";
 import auth__logo from "../../assets/epic_games_logo.png";
-import { Form } from "react-bootstrap";
+import { Button, Form, Spinner } from "react-bootstrap";
 import { useAuth } from "../../contexts/AuthContextProvider";
 
 const Register = () => {
@@ -13,7 +13,7 @@ const Register = () => {
   const [userName, setUserName] = useState("");
   const [isSeller, setIsSeller] = useState(false);
 
-  const { handleRegister, handleRegisterSeller } = useAuth();
+  const { handleRegister, handleRegisterSeller, loading } = useAuth();
 
   function handleSave() {
     if (
@@ -92,20 +92,37 @@ const Register = () => {
             className="register__isSeller"
             onChange={(e) => setIsSeller(e.target.checked)}
           />
-          <div className="register__btn">
-            {!email.trim() ||
-            !name.trim() ||
-            !lastName.trim() ||
-            !userName.trim() ||
-            !password.trim() ||
-            !passwordConfirm.trim() ? (
-              <button className="register__button-unactive">Продолжить</button>
-            ) : (
-              <button onClick={handleSave} className="register__button-active">
-                Продолжить
-              </button>
-            )}
-          </div>
+
+          {loading ? (
+            <Button className="auth__btn" variant="primary" disabled>
+              <Spinner
+                as="span"
+                animation="border"
+                role="status"
+                aria-hidden="true"
+              />
+              Загрузка...
+            </Button>
+          ) : (
+            <div className="register__btn">
+              {!email.trim() ||
+              !name.trim() ||
+              !lastName.trim() ||
+              !userName.trim() ||
+              !password.trim() ||
+              !passwordConfirm.trim() ? (
+                <button className="register__button-unactive">
+                  Продолжить
+                </button>
+              ) : (
+                <button
+                  onClick={handleSave}
+                  className="register__button-active">
+                  Продолжить
+                </button>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>
