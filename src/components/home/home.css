@@ -120,3 +120,138 @@
 }
 
 /* home third */
+
+/* home fifth */
+.home__fifth {
+  margin-top: 7%;
+}
+
+.home__fifth_main-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.home__fifth_main-title > p {
+  font-size: 18px;
+}
+.home__left_right {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  text-align: center;
+  width: 8%;
+}
+
+#toLeft {
+  width: 37px;
+  padding: 5px 4px;
+  border-radius: 50px;
+  background-color: #363636;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#disabled-left {
+  color: gray;
+  width: 37px;
+  padding: 5px 4px;
+  border-radius: 50px;
+  background-color: #363636;
+}
+
+#toLeft:hover {
+  background-color: #f5f5f599;
+  transition: 0.2s;
+}
+
+#toRight {
+  width: 37px;
+  padding: 5px 4px;
+  border-radius: 50px;
+  background-color: #363636;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+#disabled-right {
+  color: gray;
+  width: 37px;
+  padding: 5px 4px;
+  border-radius: 50px;
+  background-color: #363636;
+}
+
+#toRight:hover {
+  background-color: #f5f5f599;
+  transition: 0.2s;
+}
+
+@keyframes ani {
+  0% {
+    transform: translateX(-10%);
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes anim {
+  0% {
+    transform: translateX(10%);
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.home__fifth_products-1 {
+  margin-top: 1%;
+  display: flex;
+  justify-content: space-between;
+  animation: anim 1s forwards;
+}
+
+.home__fifth_products-2 {
+  margin-top: 1%;
+  display: flex;
+  justify-content: space-between;
+  animation: ani 1s forwards;
+}
+
+.home__fifth_products-3 {
+  margin-top: 1%;
+  display: flex;
+  justify-content: space-between;
+  animation: ani 1s forwards;
+}
+
+/* home fifth */
+/* home bottom */
+.home__bottom {
+  margin: 10% 0 18%;
+  display: flex;
+  justify-content: space-between;
+}
+.home__bottom_items {
+  width: 315px;
+}
+.home__bottom_img {
+  height: 177px;
+  border-radius: 10px;
+}
+.home__bottom_title {
+  font-size: 16px;
+  width: 90%;
+  margin: 8% auto 3%;
+}
+.home__bottom_descr {
+  width: 90%;
+  margin: auto;
+  font-size: 14px;
+  color: #f5f5f599;
+  font-weight: 500;
+}
+
+/* home bottom */
