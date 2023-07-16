@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./homeCarousel.css";
+import "./homeCarouselAdaptive.css";
 import { Carousel } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import addIcon from "../../assets/add-to.png";
@@ -9,6 +10,15 @@ const HomeCarousel = () => {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
   const [progressIndex, setProgressIndex] = useState(0);
   const [progressWidth, setProgressWidth] = useState(0);
+  const [iconPlus, setIconPlus] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIconPlus(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIconPlus(false);
+  };
 
   const carouselItems = [
     {
@@ -77,6 +87,54 @@ const HomeCarousel = () => {
     setProgressWidth(100);
   };
 
+  // adaptive
+  const adaptive = [
+    {
+      imgSrc:
+        "https://cdn2.unrealengine.com/fc24set-epic-portrait-product-image-1200x1600-1200x1600-dfe2373ee736.jpg?h=854&quality=medium&resize=1&w=640",
+      title: "EA SPORTS FC 24",
+      descr: "EA SPORTS FC™ — это следующая глава всемирной игры.",
+      price: "От 69,99 $",
+    },
+    {
+      imgSrc:
+        "https://cdn2.unrealengine.com/egs-spider-man-miles-morales-carousel-mobile-1200x1600-8ba08ab71c0e.jpg?h=854&quality=medium&resize=1&w=640",
+      title: "Spider Man: Miles Morales",
+      descr:
+        "Когда его дому грозит страшная опасность, Майлз надевает костюм и становится Человеком-Пауком.",
+      price: "От 39,99 $",
+    },
+    {
+      imgSrc:
+        "https://image.api.playstation.com/vulcan/ap/rnd/202208/1718/NFf86jgU4AeVYgJBEoEKBpxW.jpg",
+      title: "",
+      descr:
+        "Узнайте историю Басима, хитрого вора, который устремился наоживлённые улицы Багдада IX века в поисках ответов и      справедливости.",
+      price: "От 39,99 $",
+    },
+    {
+      imgSrc: "https://i.ebayimg.com/images/g/3a8AAOSwmetgbgeq/s-l1600.jpg",
+      title: "",
+      descr:
+        "Собирайте друзей и отправляйтесь в игру Fortnite от Epic Games, в которой вас ждёт грандиозная битва для 100 игроков.",
+      price: "Бесплатно",
+    },
+    {
+      imgSrc: "https://i.ebayimg.com/images/g/gXoAAOSwgn1dWpwt/s-l1200.jpg",
+      title: "",
+      descr: "Premium Издание всемирно-известной игры.",
+      price: "От 24,99 $",
+    },
+    {
+      imgSrc:
+        "https://myhotposters.com/cdn/shop/products/mHP0456_1024x1024.jpeg?v=1571444323",
+      title: "",
+      descr:
+        "Batman™: Arkham Knight — это эпичное завершение признанной критиками трилогии Arkham компании Rocksteady Studios.",
+      price: "От 19,99 $",
+    },
+  ];
+
   return (
     <div className="home__carousel">
       <div
@@ -97,7 +155,7 @@ const HomeCarousel = () => {
             <Carousel.Caption className="carousel__left_descr">
               <img
                 src="https://cdn2.unrealengine.com/egs-marvelsspidermanmilesmorales-insomniacgamesnixxessoftware-ic1-400x400-32513a3f95a0.png?h=270&quality=medium&resize=1&w=480"
-                className="carousel__left_descr-img"
+                className="carousel__left_descr-img-1"
                 alt="Spider Man"
               />
               <p className="left__descr">
@@ -126,13 +184,7 @@ const HomeCarousel = () => {
               <img
                 src="https://cdn2.unrealengine.com/epic-launch-logo-400x172-c0289bc57588.png?h=270&quality=medium&resize=1&w=480"
                 alt="AC Mirage"
-                className="carousel__left_descr-img"
-                style={{
-                  height: "120px",
-                  width: "300px",
-                  bottom: "105%",
-                  left: "1%",
-                }}
+                className="carousel__left_descr-img-2"
               />
               <p className="left__descr">
                 Узнайте историю Басима, хитрого вора, который устремился на
@@ -162,8 +214,7 @@ const HomeCarousel = () => {
               <img
                 src="https://cdn2.unrealengine.com/24br-s24-egs-launcher-logo-350x100-350x100-b63249f937d9.png?h=270&quality=medium&resize=1&w=480"
                 alt="Fortnite"
-                className="carousel__left_descr-img"
-                style={{ width: "340px", height: "100px", bottom: "100%" }}
+                className="carousel__left_descr-img-3"
               />
               <p className="left__descr">
                 Собирайте друзей и отправляйтесь в игру Fortnite от Epic Games,
@@ -225,7 +276,7 @@ const HomeCarousel = () => {
               style={{ width: " 80%" }}
             >
               <h3 style={{ display: "none" }}>EA SPORTS FC</h3>
-              <p className="left__descr" style={{ height: "40px" }}>
+              <p className="left__descr ea-sports" style={{ height: "50px" }}>
                 EA SPORTS FC™ 24 - это следующая часть всемирной игры.
               </p>
               <p>
@@ -251,15 +302,14 @@ const HomeCarousel = () => {
               <img
                 src="https://cdn2.unrealengine.com/Diesel%2Fproductv2%2Fbatman-arkham-knight%2FEGS_WB_Batman_Arkham_Knight_IC1_200x200_19_0911-200x200-9d884a41a7b8c6ca1ec20026cf39038b6ffddc2f.png?h=270&quality=medium&resize=1&w=480"
                 alt=""
-                className="carousel__left_descr-img"
-                style={{ height: "210px", width: "210px", left: "8%" }}
+                className="carousel__left_descr-img-4"
               />
               <p className="left__descr">
                 Batman™: Arkham Knight — это эпичное завершение признанной
                 критиками трилогии Arkham компании Rocksteady Studios.
               </p>
               <p>
-                От<span style={{ fontWeight: 600 }}>19,99 $</span>
+                От <span style={{ fontWeight: 600 }}>19,99 $</span>
               </p>
               <div className="left__descr_bottom">
                 <button>Добавить в корзину</button>
@@ -287,6 +337,38 @@ const HomeCarousel = () => {
           </li>
         ))}
       </ul>
+      <div className="home__adapt_carousel">
+        <Carousel>
+          {adaptive.map((item) => (
+            <Carousel.Item
+              interval={5000}
+              style={{ position: "relative" }}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
+              <img
+                className="home__adapt_img"
+                src={item.imgSrc}
+                alt="Ea Sports FC "
+              />
+              {iconPlus ? (
+                <img
+                  src={addIcon}
+                  alt=""
+                  className="home__adapt_add"
+                  title="В список желания"
+                />
+              ) : null}
+
+              <Carousel.Caption className="home__adapt_descr">
+                <p className="home__adapt_title">{item.title}</p>
+                <p className="home__adapt_description">{item.descr}</p>
+                <p className="home__adapt_price">{item.price}</p>
+              </Carousel.Caption>
+            </Carousel.Item>
+          ))}
+        </Carousel>
+      </div>
     </div>
   );
 };
