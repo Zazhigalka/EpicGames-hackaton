@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Search from "../search/Search";
 import "./home.css";
+import "./homeAdaptive.css";
 import HomeCarousel from "./HomeCarousel";
 import addToWish from "../../assets/add-to.png";
 import ProductsItems from "./ProductsItems";
