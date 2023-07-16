@@ -4,53 +4,41 @@ import { useProduct } from "../../contexts/ProductContextProvider";
 
 const AddProduct = () => {
   const { createProduct } = useProduct();
-  const [slug, setSlug] = useState();
+
   const [titleOfGame, setTitleOfGame] = useState();
   const [titleOfPulisher, setTitleOfPulisher] = useState();
   const [nameOfDeveloper, setNameOfDeveloper] = useState();
   const [dateOfIssue, setDateOfIssue] = useState();
   const [shortDescr, setShortDescr] = useState();
+  const [shortImage, setShortImage] = useState();
   const [fullDescr, setFullDescr] = useState();
+  const [fullImage, setFullImage] = useState();
   const [price, setPrice] = useState();
   const [linkGame, setLinkGame] = useState();
   const [discord, setDiscord] = useState();
   const [insta, setInsta] = useState();
   const [twitter, setTwitter] = useState();
   const [facebook, setFacebook] = useState();
+  const [video, setVideo] = useState();
   const [category, setCategory] = useState();
-
-  //   console.log(
-  //     slug,
-  //     titleOfGame,
-  //     titleOfPulifher,
-  //     nameOfDeveloper,
-  //     dateOfIssue,
-  //     shortDescr,
-  //     fullDescr,
-  //     price,
-  //     linkGame,
-  //     discord,
-  //     insta,
-  //     twitter,
-  //     facebook,
-  //     category
-  //   );
 
   const handleSave = () => {
     if (
-      !slug.trim() ||
       !titleOfGame.trim() ||
       !titleOfPulisher.trim() ||
       !nameOfDeveloper.trim() ||
       !dateOfIssue.trim() ||
       !shortDescr.trim() ||
+      !shortImage ||
       !fullDescr.trim() ||
+      !fullImage ||
       !price.trim() ||
       !linkGame.trim() ||
       !discord.trim() ||
       !insta.trim() ||
       !twitter.trim() ||
       !facebook.trim() ||
+      !video ||
       !category.trim()
     ) {
       alert("ЗАПОЛНИТЕ ПОЛЯ!!!");
@@ -58,19 +46,22 @@ const AddProduct = () => {
     }
 
     const newProduct = new FormData();
-    newProduct.append("slug", slug);
+
     newProduct.append("title_of_game", titleOfGame);
     newProduct.append("title_of_publisher", titleOfPulisher);
     newProduct.append("name_of_developer", nameOfDeveloper);
     newProduct.append("date_of_issue", dateOfIssue);
     newProduct.append("short_description", shortDescr);
+    newProduct.append("image_for_short", shortImage);
     newProduct.append("full_description", fullDescr);
+    newProduct.append("image_for_full", fullImage);
     newProduct.append("price", price);
     newProduct.append("link_on_game", linkGame);
     newProduct.append("link_on_discord", discord);
     newProduct.append("link_on_instagram", insta);
     newProduct.append("link_on_twitter", twitter);
     newProduct.append("link_on_facebook", facebook);
+    newProduct.append("video", video);
     newProduct.append("category", category);
 
     createProduct(newProduct);
@@ -83,12 +74,6 @@ const AddProduct = () => {
           <h3 className="addProduct__title_h3">ADD PRODUCT</h3>
         </div>
         <div className="addProduct__input_group">
-          <input
-            placeholder="ENTER SLUG"
-            type="text"
-            className="addProduct__inputs"
-            onChange={(e) => setSlug(e.target.value)}
-          />
           <input
             placeholder="ENTER TITLE OF GAME"
             type="text"
@@ -120,10 +105,24 @@ const AddProduct = () => {
             onChange={(e) => setShortDescr(e.target.value)}
           />
           <input
+            placeholder="ENTER IMAGE FOR SHORT"
+            type="file"
+            className="addProduct__inputs"
+            onChange={(e) => setShortImage(e.target.files[0])}
+            encType="multipart/form-data"
+          />
+          <input
             placeholder="ENTER FULL DESCRIPTION"
             type="text"
             className="addProduct__inputs"
             onChange={(e) => setFullDescr(e.target.value)}
+          />
+          <input
+            placeholder="ENTER IMAGE FOR FULL"
+            type="file"
+            className="addProduct__inputs"
+            onChange={(e) => setFullImage(e.target.files[0])}
+            encType="multipart/form-data"
           />
           <input
             placeholder="ENTER PRICE"
@@ -160,6 +159,13 @@ const AddProduct = () => {
             type="text"
             className="addProduct__inputs"
             onChange={(e) => setFacebook(e.target.value)}
+          />
+          <input
+            placeholder="ENTER FILE TO VIDEO"
+            type="file"
+            className="addProduct__inputs"
+            onChange={(e) => setVideo(e.target.files[0])}
+            encType="multipart/form-data"
           />
           <input
             placeholder="ENTER CATEGORY"
