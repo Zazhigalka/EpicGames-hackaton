@@ -80,6 +80,22 @@ const AuthContextProvider = ({ children }) => {
     }
   }
 
+  async function getUsername(email) {
+    try {
+      const response = await axios.get(`${API}/accounts/`, {
+        params: {
+          search: email,
+        },
+      });
+
+      const user = response.data[0];
+      return user;
+    } catch (error) {
+      console.error(error.message);
+      return null;
+    }
+  }
+
   const values = {
     handleRegister,
     handleRegisterSeller,
@@ -88,6 +104,7 @@ const AuthContextProvider = ({ children }) => {
     currentUser,
     checkAuth,
     loading,
+    getUsername,
   };
   return <authContext.Provider value={values}>{children}</authContext.Provider>;
 };
