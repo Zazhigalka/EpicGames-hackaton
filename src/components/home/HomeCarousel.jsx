@@ -259,7 +259,7 @@ const HomeCarousel = () => {
                 критиками трилогии Arkham компании Rocksteady Studios.
               </p>
               <p>
-                <span style={{ fontWeight: 600 }}>19,99 $</span>
+                От<span style={{ fontWeight: 600 }}>19,99 $</span>
               </p>
               <div className="left__descr_bottom">
                 <button>Добавить в корзину</button>
