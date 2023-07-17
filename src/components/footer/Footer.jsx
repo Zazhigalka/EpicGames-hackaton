@@ -1,6 +1,6 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-import "./footer.css";
+import "./Footer.css";
 import "./Footer-adaptive-styles.css";
 import { ReactComponent as YoutubeIcon } from "../../assets/youtube.svg";
 import { ReactComponent as TwitterIcon } from "../../assets/twitter.svg";
@@ -130,8 +130,7 @@ const Footer = () => {
         <div className="section-3">
           <ul
             className="footer__conf"
-            style={{ display: "flex", gap: "0.7em", padding: "0" }}
-          >
+            style={{ display: "flex", gap: "0.7em", padding: "0" }}>
             <li>
               <a href="#">Условия предоставления услуг</a>{" "}
             </li>
