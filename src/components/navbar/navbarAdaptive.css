@@ -1,45 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap");
 
-@media all and (max-width: 1440px) {
-  .home__carousel {
-    justify-content: space-evenly;
-  }
-}
-
-@media all and (max-width: 1024px) {
-  .home__left_right {
-    width: 10%;
-  }
-}
-@media all and (max-width: 768px) {
-  .home__left_right {
-    width: 11%;
-  }
-}
-@media all and (max-width: 425px) {
-  .home__third_items {
-    width: 100px;
-  }
-
-  .home__left_right {
-    width: 20%;
-  }
-}
-@media all and (max-width: 375px) {
-  .home__third_items {
-    justify-content: start;
-  }
-
-  .home__left_right {
-    width: 22%;
-  }
-}
-@media all and (max-width: 320px) {
-  .home__left_right {
-    width: 25%;
-  }
-}
-
 @media all and (max-width: 1100px) {
   .navbar__titles {
     width: 50%;
