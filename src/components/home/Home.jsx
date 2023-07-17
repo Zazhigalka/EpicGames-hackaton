@@ -147,9 +147,7 @@ const Home = () => {
                 className="home__third_items-img"
               />
               <div className="home__third_items-descr">
-                <p className="home__third_items-title">
-                  Red Dead Redemption II
-                </p>
+                <p className="home__third_items-title">RDR II</p>
                 <p className="home__third_items-price">39,99 $</p>
               </div>
             </li>
