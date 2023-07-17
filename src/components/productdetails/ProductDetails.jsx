@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ProductDetails.css";
 import "./Product-Details-adaptive_styles.css";
 import { Button } from "react-bootstrap";
@@ -12,6 +12,12 @@ import { useAuth } from "../../contexts/AuthContextProvider";
 
 const ProductDetails = () => {
   const { currentUser } = useAuth();
+
+  const [showMore, setShowMore] = useState(false);
+
+  const toggleShowMore = () => {
+    setShowMore(!showMore);
+  };
 
   return (
     <div style={{ backgroundColor: "#121212" }}>
@@ -27,7 +33,7 @@ const ProductDetails = () => {
       </div>
       <div>
         <div className="product-details-container">
-          <div className="product-details__main-info">
+          <section className="product-details__section1">
             <div className="product-details-left">
               <h3>Fortnite</h3>
               <div className="product-details-rating__title">
@@ -48,6 +54,50 @@ const ProductDetails = () => {
                 каждый матч совершенно непредсказуемым, а с каждым новым сезоном
                 игра становится ещё больше и интереснее.
               </p>
+
+              {showMore && (
+                <p
+                  style={{
+                    fontSize: "1.3em",
+                    color: "rgba(245, 245, 245, 0.6)",
+                    margin: "3em 0",
+                    width: "100%",
+                  }}>
+                  Исследуйте большой разрушаемый мир, в котором каждого игрока
+                  ждут неповторимые приключения. Объединяйтесь с друзьями,
+                  ускоряйтесь, карабкайтесь и пробивайте себе путь к победе при
+                  любых условиях: со строительством в «Королевской битве» или
+                  без строительства в «Нулевой высоте». Откройте для себя новые
+                  способы игры: здесь вы найдёте тысячи самых разных игр от
+                  наших авторов — приключения, ролевые игры, игры на выживание и
+                  многое другое. Или отбивайтесь от полчищ монстров с тремя
+                  друзьями в «Сражении с Бурей». Дикие земли ждут вас в третьем
+                  сезоне четвёртой главы Королевской битвы Fortnite. Центральная
+                  часть острова разрушилась, явив свету огромный неизведанный
+                  мир джунглей, полный древних тайн. Забирайтесь в кроны
+                  деревьев, катайтесь на ящерах, прыгайте в грязь, чтобы
+                  ускориться или для маскировки. Вычисляйте врагов с помощью
+                  винтовки с тепловизором, скользите по лианам, стреляя из
+                  автомата с дисковым магазином, и превращайте оппонентов в
+                  зрителей с помощью кибертронской пушки. Откройте для себя
+                  моду, неподвластную времени, с экипировкой боевого пропуска
+                  третьего сезона четвёртой главы. С покупкой нового боевого
+                  пропуска вы сразу получите устремлённую в будущее Эру.
+                  Повышайте уровень боевого пропуска, чтобы открыть экипировку
+                  рокерши Риан и лидера автоботов Оптимуса Прайма. Позже в этом
+                  сезоне обладателей боевого пропуска встретит большой любитель
+                  отдыха, Тропический Мяускул! Опыт для боевого пропуска можно
+                  заработать в «Королевской битве» и «Нулевой высоте». Но знали
+                  ли вы, что очки опыта также можно получить в некоторых играх
+                  творческого режима? Авторские игры, которые приносят очки
+                  опыта, отмечены соответствующим значком в их описании в меню
+                  «Поиск». Играйте так, как нравится вам, и откройте Риан,
+                  Оптимуса Прайма и других героев!
+                </p>
+              )}
+              <button className="show-more" onClick={toggleShowMore}>
+                {showMore ? "Скрыть" : "Показать больше"}
+              </button>
 
               <div className="product-details-genres">
                 <div>
@@ -128,18 +178,17 @@ const ProductDetails = () => {
                 ) : null}
               </div>
             </div>
-          </div>
-
-          <div className="product-details-links__block">
-            <h5>Подпишитесь на нас</h5>
-            <div className="product-details-links">
-              <UnrealEngineIcon />
-              <UnrealEngineIcon />
-              <UnrealEngineIcon />
+          </section>
+          <section className="product-details__section2">
+            <div className="product-details-links__block">
+              <h5>Подпишитесь на нас</h5>
+              <div className="product-details-links">
+                <UnrealEngineIcon />
+                <UnrealEngineIcon />
+                <UnrealEngineIcon />
+              </div>
             </div>
-          </div>
 
-          <div>
             <div className="product-details__raiting">
               <h5>Оценки игроков в Epic</h5>
               <p>На основе отзывов игроков в экосистеме Epic Games</p>
@@ -256,7 +305,7 @@ const ProductDetails = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </section>
         </div>
       </div>
     </div>
