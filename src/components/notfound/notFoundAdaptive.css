@@ -1,0 +1,47 @@
+@media all and (max-width: 1024px) {
+  #rex {
+    z-index: 11;
+  }
+}
+@media all and (max-width: 768px) {
+  .error > h2 {
+    font-size: 250px;
+  }
+
+  .page__not_found-new {
+    z-index: 12;
+  }
+}
+@media all and (max-width: 425px) {
+  .error > h2 {
+    font-size: 110px;
+    margin-top: 25px;
+  }
+
+  .page__not_found-new {
+    top: 20%;
+    left: 23%;
+  }
+
+  .page__not_found-new > h1 {
+    font-size: 18px;
+  }
+
+  #button__home {
+    font-size: 14px;
+  }
+}
+@media all and (max-width: 375px) {
+  .page__not_found-new {
+    top: 17%;
+  }
+}
+@media all and (max-width: 320px) {
+  .page__not_found-new > h1 {
+    font-size: 16px;
+  }
+
+  #button__home {
+    font-size: 12px;
+  }
+}
