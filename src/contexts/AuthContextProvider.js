@@ -54,6 +54,7 @@ const AuthContextProvider = ({ children }) => {
   function logout() {
     localStorage.removeItem("tokens");
     localStorage.removeItem("email");
+    setCurrentUser("");
     navigate("/auth");
   }
 
