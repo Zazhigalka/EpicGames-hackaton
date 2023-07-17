@@ -6,7 +6,6 @@ const News = () => {
     <div className="container__news">
         <div className="news">
             <div className="news__main">
-
             <h6 className="news__title">Новости Epic Games</h6>
             <img className="news__img" src="https://cdn2.unrealengine.com/cozy-sim-fae-farm-will-let-you-cultivate-crops-and-friendships-1920x1080-fcca16bc1fac.jpg" alt="" />
             <div className="news__text">

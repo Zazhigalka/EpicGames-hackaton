@@ -1,5 +1,6 @@
 import React from "react";
 import "./wishList.css";
+import "./wishListAdaptive.css";
 import { Form } from "react-bootstrap";
 import mail from "../../assets/mail-icon.svg";
 import { useNavigate } from "react-router-dom";
@@ -21,7 +22,7 @@ const WishList = () => {
         </div>
       </div>
       <div className="wish-list__subscribe">
-        <div>
+        <div className="wishList">
           <img src={mail} id="mail" alt="" />
           <span>
             Подписаться на уведомления о списке желаемого по электронной почте.
