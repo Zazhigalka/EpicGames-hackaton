@@ -1,6 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
 
 @media all and (max-width: 768px){
+    .wish-list__container{
+        width: 90%;
+    }
     .wish-list__catalog_title{
         font-size: 25px;
     }
@@ -26,13 +29,65 @@
     }
 }
 
-@media all and (max-width: 426px){
+@media (max-width: 500px) {
+    .wishList span {
+        font-size: 16px;
+        line-height: 20px;
+    }
     .wish-list__title > p{
         font-size: 19px;
         line-height: 20px;
     }
     .wish-list__rewards > p{
         line-height: 20px;
+        font-size: 15px;
+    }
+    #mail{
+        width: 30px;
+        height: 30px;
+        margin-right: 15px;
+        margin-top: 13px;
+    }
+    .wish-list__subscribe > span {
+        margin-left: 20px;
+    }
+    .wish-list__subscribe{
+        font-size: 18px;
+        display: flex;
+        height: 80px;
+    }
+    .wish-list__catalog_title{
+        font-size: 23px;
+        width: 80%;
+    }
+}
+
+@media all and (max-width: 426px){
+    .wishList span{
+        font-size: 15px;
+        line-height: 17px;
+        margin-top: 4px;
+    }
+    .wish-list__rewards > p{
+        line-height: 20px;
         font-size: 16px;
     }
+    #mail{
+        width: 30px;
+        height: 53px;
+        margin-right: 10px;
+        margin-top: 5px;
+    }
+    .wish-list__catalog_title{
+        font-size: 20px;
+    }
+    .wish-list__catalog_desc{
+        font-size: 20px;
+    }
+}
+@media all and (max-width: 376px){
+    .wish-list__catalog_title{
+        font-size: 18px;
+    }
+    
 }

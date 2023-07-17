@@ -1,6 +1,6 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-import "./Footer.css";
+import "./footer.css";
 import "./Footer-adaptive-styles.css";
 import { ReactComponent as YoutubeIcon } from "../../assets/youtube.svg";
 import { ReactComponent as TwitterIcon } from "../../assets/twitter.svg";
