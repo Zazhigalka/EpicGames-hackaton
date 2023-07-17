@@ -20,6 +20,9 @@
   }
 }
 @media all and (max-width: 1050px) {
+  .home__carousel {
+    margin-bottom: -10%;
+  }
   .home__carousel_left {
     width: 620px;
   }
@@ -139,6 +142,9 @@
   }
 }
 @media all and (max-width: 850px) {
+  .home__carousel {
+    margin-bottom: 0;
+  }
   .home__carousel_left {
     display: none;
   }

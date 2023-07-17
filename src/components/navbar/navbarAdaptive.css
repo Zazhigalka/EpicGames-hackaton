@@ -57,7 +57,7 @@
     top: 2px;
     width: 680px;
     overflow: hidden;
-    z-index: 10;
+    z-index: 20;
     display: flex;
     flex-direction: column;
     background-color: #2a2a2a;
@@ -257,8 +257,12 @@
   }
 }
 @media all and (max-width: 250px) {
-  .menu__items {
-    width: 190px;
+  .navbar__container {
+    width: 100% !important;
+  }
+
+  .burger__menu {
+    margin-right: 52px;
   }
 }
 
@@ -266,5 +270,9 @@
   .menu__items {
     width: 140px;
     font-size: 7px;
+  }
+
+  .burger__menu {
+    margin-right: 100px;
   }
 }
