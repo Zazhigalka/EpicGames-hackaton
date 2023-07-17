@@ -44,7 +44,7 @@ const NavbarEpic = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [currentUser]);
 
   const path = document.location.pathname;
 
