@@ -1,44 +1,258 @@
 @media all and (max-width: 1200px) {
+  .home__second_img {
+    width: 100%;
+  }
+
+  .home__fifth_items {
+    width: 24% !important;
+    margin-left: 1%;
+  }
+
+  .home__fifth_items-img {
+    width: 95%;
+  }
+
+  .home__bottom_img {
+    width: 90%;
+  }
 }
-@media all and (max-width: 1200px) {
+@media all and (max-width: 1050px) {
+  .home__second_img {
+    height: 100%;
+  }
+
+  .home__fifth_items-img {
+    height: 75% !important;
+  }
+
+  .home__third_items-descr {
+    width: 65%;
+  }
+
+  .home__third_items-title {
+    font-size: 12px;
+  }
+
+  .home__third_items-price {
+    font-size: 10px;
+  }
 }
-@media all and (max-width: 1200px) {
-}
-@media all and (max-width: 1200px) {
+@media all and (max-width: 900px) {
+  .home__third_items-descr {
+    width: 55%;
+  }
+
+  .home__second_title {
+    font-size: 14px;
+  }
+  .home__second_descr {
+    font-size: 12px;
+  }
+  .home__second_price {
+    font-size: 14px;
+  }
+
+  .home__third_main-title {
+    font-size: 15px;
+  }
+
+  .home__fifth_main-title {
+    font-size: 15px;
+  }
+
+  .home__fifth_items-game {
+    font-size: 10px !important;
+  }
+  .home__fifth_items-title {
+    font-size: 12px !important;
+  }
+  .home__fifth_items-price {
+    font-size: 12px !important;
+  }
+
+  .home__bottom_title {
+    font-size: 14px;
+  }
+
+  .home__bottom_descr {
+    font-size: 12px;
+  }
 }
 @media all and (max-width: 850px) {
   .home__page {
     width: 90%;
   }
 }
-@media all and (max-width: 1200px) {
+@media all and (max-width: 750px) {
+  .home__third_items-img {
+    width: 38px;
+    height: 54px;
+  }
+
+  .home__third_items-descr {
+    width: 67%;
+  }
+
+  .home__bottom_img {
+    height: 150px;
+  }
 }
-@media all and (max-width: 1200px) {
+@media all and (max-width: 700px) {
+  .home__bottom_img {
+    height: 130px;
+  }
 }
-@media all and (max-width: 1200px) {
+@media all and (max-width: 650px) {
+  .home__third_items-descr {
+    width: 60%;
+  }
+
+  .home__left_right {
+    width: 15%;
+  }
 }
-@media all and (max-width: 1200px) {
+@media all and (max-width: 550px) {
+  .home__third_items {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .home__third_main-title {
+    font-size: 12px;
+  }
+
+  .home__bottom_img {
+    height: 120px;
+  }
 }
 @media all and (max-width: 500px) {
   .home__page {
     width: 95%;
   }
 }
-@media all and (max-width: 1200px) {
+@media all and (max-width: 450px) {
+  .home__bottom {
+    flex-direction: column;
+    margin-top: 20%;
+  }
+
+  .home__bottom_items {
+    width: 100%;
+    margin-bottom: 15%;
+    text-align: center;
+  }
+
+  .home__bottom_img {
+    margin-left: 3%;
+    height: 177px;
+  }
 }
-@media all and (max-width: 1200px) {
+@media all and (max-width: 400px) {
+  .home__second {
+    flex-direction: column;
+  }
+
+  .home__second_products {
+    width: 100%;
+    margin-top: 15%;
+  }
+
+  .home__third {
+    flex-direction: column;
+  }
+
+  .home__third_products {
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .home__third_main-title {
+    margin-top: 5%;
+    font-size: 12px;
+  }
+  .home__third_list {
+    flex-direction: row;
+    padding-left: 0;
+  }
+
+  .home__third_items-descr {
+    width: 100%;
+  }
+  .home__third_items-title {
+    font-size: 9px;
+  }
+  .home__third_items-price {
+    font-size: 8px;
+  }
+
+  .home__fifth_items-img {
+    height: 90px !important;
+  }
+  .home__fifth_items-game {
+    font-size: 8px !important;
+  }
+  .home__fifth_items-price {
+    font-size: 9px !important;
+  }
+  .home__fifth_items-title {
+    font-size: 9px !important;
+  }
 }
-@media all and (max-width: 1200px) {
+@media all and (max-width: 350px) {
+  .home__third_items {
+    padding: 5px;
+  }
 }
-@media all and (max-width: 1200px) {
+@media all and (max-width: 250px) {
+  .home__third_items {
+    padding: 0;
+  }
+
+  .home__third_list {
+    flex-direction: column;
+    margin-left: 20px;
+  }
+
+  .home__third_items {
+    padding-top: 5px;
+    flex-direction: row;
+  }
+  .home__left_right {
+    width: 40%;
+  }
+
+  #disabled-left {
+    height: 40px !important;
+  }
+
+  #toLeft {
+    height: 40px;
+  }
+  #toRight {
+    height: 40px;
+  }
+  #disabled-right {
+    height: 40px !important;
+  }
+
+  .home__fifth_items-img {
+    height: 60px !important;
+  }
+
+  .home__fifth_items-game {
+    display: none;
+  }
+  .home__fifth_items-title {
+    font-size: 8px !important;
+  }
+
+  .home__fifth_items-price {
+    font-size: 8px !important;
+  }
 }
-@media all and (max-width: 1200px) {
-}
-@media all and (max-width: 1200px) {
-}
-@media all and (max-width: 1200px) {
-}
-@media all and (max-width: 1200px) {
-}
-@media all and (max-width: 1200px) {
+@media all and (max-width: 200px) {
+  .home__third_list {
+    margin-left: 15px;
+  }
 }

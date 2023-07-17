@@ -1,29 +1,49 @@
-import { useNavigate } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
-import './navbar.css';
-import './navbarAdaptive.css';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import epicGamesLogo from '../../assets/epic_games_logo.png';
-import userSigned from '../../assets/user-signed.svg';
-import userIcon from '../../assets/user.svg';
-import { Dropdown } from 'react-bootstrap';
-import burgerMenu from '../../assets/burger-menu.svg';
-import closeMenu from '../../assets/close.svg';
-import { useAuth } from '../../contexts/AuthContextProvider';
+import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import "./navbar.css";
+import "./navbarAdaptive.css";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import epicGamesLogo from "../../assets/epic_games_logo.png";
+import userSigned from "../../assets/user-signed.svg";
+import userIcon from "../../assets/user.svg";
+import { Dropdown } from "react-bootstrap";
+import burgerMenu from "../../assets/burger-menu.svg";
+import closeMenu from "../../assets/close.svg";
+import { useAuth } from "../../contexts/AuthContextProvider";
 
 const NavbarEpic = () => {
   const navigate = useNavigate();
   const [isClicked, setIsClicked] = useState(false);
   const [second, setSecond] = useState(false);
+  const [username, setUsername] = useState("");
 
-  const { currentUser, logout, checkAuth } = useAuth();
+  const { currentUser, logout, checkAuth, getUsername } = useAuth();
 
   useEffect(() => {
-    if (localStorage.getItem('tokens')) {
+    if (localStorage.getItem("tokens")) {
       checkAuth();
     }
+  }, []);
+
+  async function fetchData() {
+    try {
+      const email = localStorage.getItem("email");
+      if (email) {
+        const user = await getUsername(email);
+        if (user) {
+          const username = user.username;
+          setUsername(username);
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    fetchData();
   }, []);
 
   const path = document.location.pathname;
@@ -64,24 +84,24 @@ const NavbarEpic = () => {
             src={epicGamesLogo}
             alt=""
             onClick={() => {
-              navigate('/');
+              navigate("/");
               handleElementClick();
             }}
           />
         </Navbar.Brand>
         <Nav className="me-auto navbar__titles">
           <Nav.Link
-            className={path === '/' ? 'navbar__items clicked' : 'navbar__items'}
+            className={path === "/" ? "navbar__items clicked" : "navbar__items"}
             onClick={() => {
-              navigate('/');
+              navigate("/");
               handleElementClick();
             }}>
             МАГАЗИН
           </Nav.Link>
           <Nav.Link
-            className={second ? 'navbar__items clicked' : 'navbar__items'}
+            className={second ? "navbar__items clicked" : "navbar__items"}
             onClick={() => {
-              navigate('/distribution');
+              navigate("/distribution");
               handleElementSecond();
             }}>
             ДИСТРИБУЦИЯ
@@ -117,12 +137,12 @@ const NavbarEpic = () => {
               </Dropdown.Item>
               <Dropdown.Item
                 className="dropdown__items"
-                onClick={() => navigate('/wish-list')}>
+                onClick={() => navigate("/wish-list")}>
                 Список желаемого
               </Dropdown.Item>
               <Dropdown.Item
                 className="dropdown__items"
-                onClick={() => navigate('/cart')}>
+                onClick={() => navigate("/cart")}>
                 Корзина
               </Dropdown.Item>
               <Dropdown.Item className="dropdown__items" onClick={logout}>
@@ -132,12 +152,12 @@ const NavbarEpic = () => {
           ) : null}
 
           {currentUser ? (
-            <Nav style={{ cursor: 'pointer' }}>{currentUser}</Nav>
+            <Nav style={{ cursor: "pointer" }}>{username}</Nav>
           ) : (
             <Nav
-              style={{ cursor: 'pointer' }}
+              style={{ cursor: "pointer" }}
               className="navbar__user_name"
-              onClick={() => navigate('/auth')}>
+              onClick={() => navigate("/auth")}>
               Войти
             </Nav>
           )}
@@ -161,11 +181,11 @@ const NavbarEpic = () => {
               }}>
               <img src={closeMenu} alt="Закрыть" id="menu__close_icon" />
             </div>
-            <ul style={{ width: '100%' }}>
+            <ul style={{ width: "100%" }}>
               <li
                 className="menu__titles"
                 onClick={() => {
-                  navigate('/');
+                  navigate("/");
                   toggleMenu();
                 }}>
                 магазин
@@ -175,7 +195,7 @@ const NavbarEpic = () => {
               <li
                 className="menu__titles"
                 onClick={() => {
-                  navigate('/distribution');
+                  navigate("/distribution");
                   toggleMenu();
                 }}>
                 ДИСТРИБУЦИЯ
@@ -200,7 +220,7 @@ const NavbarEpic = () => {
               <div className="menu__left">
                 <img src={userIcon} alt="" id="menu__user_icon" />
                 <p id="menu__user_name">
-                  {currentUser ? `${currentUser}` : 'No auth user'}
+                  {currentUser ? `${currentUser}` : "No auth user"}
                 </p>
               </div>
               <a
