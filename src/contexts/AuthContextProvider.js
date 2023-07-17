@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { API } from "../helpers/consts";
+import { getTokens } from "../helpers/functions";
 
 export const authContext = createContext();
 export const useAuth = () => useContext(authContext);
@@ -58,6 +59,22 @@ const AuthContextProvider = ({ children }) => {
     navigate("/auth");
   }
 
+  async function handleChangePassword(formData) {
+    setLoading(true);
+    try {
+      await axios.patch(
+        `${API}/accounts/change-password/`,
+        formData,
+        getTokens()
+      );
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  }
+
   async function checkAuth() {
     setLoading(true);
     try {
@@ -101,6 +118,7 @@ const AuthContextProvider = ({ children }) => {
     handleRegister,
     handleRegisterSeller,
     handleLogin,
+    handleChangePassword,
     logout,
     currentUser,
     checkAuth,
