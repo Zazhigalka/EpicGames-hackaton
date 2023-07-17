@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./products.css";
 import ProductCard from "../prodcutCard/ProductCard";
 import Filter from "../filters/Filter";
 import Search from "../search/Search";
+import { useProduct } from "../../contexts/ProductContextProvider";
 
 const Products = () => {
+  const { getProducts, products } = useProduct();
+  useEffect(() => {
+    getProducts();
+  }, []);
+
   return (
     <div className="products__container">
       <div
@@ -52,12 +58,9 @@ const Products = () => {
             </select>
           </p>
           <div className="all__products">
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
+            {products.map((item) => (
+              <ProductCard key={item.id} item={item} />
+            ))}
           </div>
         </div>
         <div className="products__filter">

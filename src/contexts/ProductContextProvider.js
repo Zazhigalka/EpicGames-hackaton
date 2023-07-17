@@ -30,7 +30,7 @@ const ProductContextProvider = ({ children }) => {
   async function getProducts() {
     try {
       const res = await axios(
-        `${API}/products/${window.location.search}`,
+        `${API}/posts/${window.location.search}`,
         getTokens()
       );
       dispatch({ type: "GET_PRODUCTS", payload: res.data });
@@ -48,7 +48,7 @@ const ProductContextProvider = ({ children }) => {
     }
   }
 
-  const values = { createProduct };
+  const values = { createProduct, getProducts, products: state.products };
   return (
     <productContext.Provider value={values}>{children}</productContext.Provider>
   );
