@@ -130,8 +130,7 @@ const Footer = () => {
         <div className="section-3">
           <ul
             className="footer__conf"
-            style={{ display: "flex", gap: "0.7em", padding: "0" }}
-          >
+            style={{ display: "flex", gap: "0.7em", padding: "0" }}>
             <li>
               <a href="#">Условия предоставления услуг</a>{" "}
             </li>
