@@ -9,6 +9,7 @@ export const useProduct = () => useContext(productContext);
 const INIT_STATE = {
   products: [],
   oneProduct: null,
+  favorites: [],
 };
 
 function reducer(state = INIT_STATE, action) {
@@ -21,6 +22,10 @@ function reducer(state = INIT_STATE, action) {
 
     case "GET_ONE_PRODUCT":
       return { ...state, oneProduct: action.payload };
+
+    case "GET_FAVORITES": {
+      return { ...state, favorites: action.payload };
+    }
 
     default:
       return state;
@@ -70,10 +75,48 @@ const ProductContextProvider = ({ children }) => {
     }
   }
 
-  async function updateProduct(id, editedProduct) {
+  // favorite
+  async function toggleFavorites(id) {
     try {
-      await axios.patch(`${API}/posts/${id}/`, editedProduct, getTokens());
-      navigate("/products");
+      await axios(`${API}/posts/${id}/toggle_favorite/`, getTokens());
+      getProducts();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function getFavorites(id) {
+    try {
+      const res = await axios(`${API}/accounts/${id}/favorites/`, getTokens());
+      dispatch({ type: "GET_FAVORITES", payload: res.data });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  async function deleteFromFavorites(id) {
+    try {
+      await axios(`${API}/posts/${id}/delete_favorite/`, getTokens());
+      getFavorites();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function toggleLike(id, setIsLiked) {
+    try {
+      await axios.get(`${API}/posts/${id}/toggle_like/`, getTokens());
+      getProducts();
+      setIsLiked(true);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function toggleLikeDelete(id, setIsLiked) {
+    try {
+      await axios.get(`${API}/posts/${id}/delete_like/`, getTokens());
+      getProducts();
+      setIsLiked(false);
     } catch (error) {
       console.log(error);
     }
@@ -106,9 +149,13 @@ const ProductContextProvider = ({ children }) => {
     getOneProduct,
     oneProduct: state.oneProduct,
     deleteProduct,
+
+    toggleFavorites,
+    getFavorites,
     toggleLike,
     toggleLikeDelete,
-    updateProduct,
+    favorites: state.favorites,
+    deleteFromFavorites,
   };
   return (
     <productContext.Provider value={values}>{children}</productContext.Provider>

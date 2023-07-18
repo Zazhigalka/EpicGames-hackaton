@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
 import "./card.css";
 import addIcon from "../../assets/add-to.png";
 import { useNavigate } from "react-router-dom";
+import { useProduct } from "../../contexts/ProductContextProvider";
 
 const ProductCard = ({ item }) => {
   const [iconPlus, setIconPlus] = useState(false);
@@ -16,16 +17,21 @@ const ProductCard = ({ item }) => {
   };
   const navigate = useNavigate();
 
+  const { toggleFavorites } = useProduct();
+  const path = document.location.pathname;
+
   return (
     <Card
       className="card__container"
-      onClick={() => navigate(`/product/${item.id}`)}>
+      onClick={() => navigate(`/product/${item.id}`)}
+    >
       <Card.Img
         className="card__image"
         variant="top"
         onMouseEnter={handleMouseEnter}
         src={item.preview}
         onMouseLeave={handleMouseLeave}
+        onClick={() => navigate(`/product/${item.id}`)}
       />
       <div id="card__back"></div>
       {iconPlus ? (
@@ -35,6 +41,7 @@ const ProductCard = ({ item }) => {
           id="card__add_icon"
           alt=""
           title="В список желаемого"
+          onClick={() => toggleFavorites(item.id)}
         />
       ) : null}
       <Card.Body className="card__body">
