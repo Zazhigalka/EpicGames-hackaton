@@ -16,32 +16,35 @@ import { ReactComponent as LikeIcon } from "../../assets/heart.svg";
 const ProductDetails = () => {
   const {
     getOneProduct,
-    getProducts,
     oneProduct,
     deleteProduct,
     toggleLike,
     toggleLikeDelete,
   } = useProduct();
 
+  console.log(oneProduct);
+
   const { currentUser } = useAuth();
   const navigate = useNavigate();
-
-  const [showMore, setShowMore] = useState(false);
-  const [isLiked, setIsLiked] = useState(false);
-
-  useEffect(() => {
-    getProducts();
-  }, [isLiked]);
-
-  const toggleShowMore = () => {
-    setShowMore(!showMore);
-  };
 
   const { id } = useParams();
 
   useEffect(() => {
     getOneProduct(id);
-  }, []);
+  }, [id]);
+
+  const [showMore, setShowMore] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
+  const [totalLikes, setTotalLikes] = useState(0);
+
+  useEffect(() => {
+    setIsLiked(oneProduct?.is_liked);
+    setTotalLikes(oneProduct?.likes_count);
+  }, [oneProduct]);
+
+  const toggleShowMore = () => {
+    setShowMore(!showMore);
+  };
 
   console.log(oneProduct);
   return (
@@ -60,7 +63,7 @@ const ProductDetails = () => {
         <div className="product-details-container">
           <section className="product-details__section1">
             <div className="product-details-left">
-              <h3>Fortnite</h3>
+              <h3>{oneProduct?.title_of_game}</h3>
               <div className="product-details-rating__title">
                 <div className="raiting-on-num">4.3</div>
               </div>
@@ -72,12 +75,7 @@ const ProductDetails = () => {
                   margin: "3em 0",
                   width: "100%",
                 }}>
-                Собирайте друзей и отправляйтесь в игру Fortnite от Epic Games,
-                в которой вас ждёт грандиозная битва для 100 игроков. В ней вам
-                предстоит искать полезную добычу, добывать материалы, создавать
-                предметы и отстреливаться от врагов. Всё вместе это делает
-                каждый матч совершенно непредсказуемым, а с каждым новым сезоном
-                игра становится ещё больше и интереснее.
+                {oneProduct?.short_description}
               </p>
 
               {showMore && (
@@ -88,36 +86,7 @@ const ProductDetails = () => {
                     margin: "3em 0",
                     width: "100%",
                   }}>
-                  Исследуйте большой разрушаемый мир, в котором каждого игрока
-                  ждут неповторимые приключения. Объединяйтесь с друзьями,
-                  ускоряйтесь, карабкайтесь и пробивайте себе путь к победе при
-                  любых условиях: со строительством в «Королевской битве» или
-                  без строительства в «Нулевой высоте». Откройте для себя новые
-                  способы игры: здесь вы найдёте тысячи самых разных игр от
-                  наших авторов — приключения, ролевые игры, игры на выживание и
-                  многое другое. Или отбивайтесь от полчищ монстров с тремя
-                  друзьями в «Сражении с Бурей». Дикие земли ждут вас в третьем
-                  сезоне четвёртой главы Королевской битвы Fortnite. Центральная
-                  часть острова разрушилась, явив свету огромный неизведанный
-                  мир джунглей, полный древних тайн. Забирайтесь в кроны
-                  деревьев, катайтесь на ящерах, прыгайте в грязь, чтобы
-                  ускориться или для маскировки. Вычисляйте врагов с помощью
-                  винтовки с тепловизором, скользите по лианам, стреляя из
-                  автомата с дисковым магазином, и превращайте оппонентов в
-                  зрителей с помощью кибертронской пушки. Откройте для себя
-                  моду, неподвластную времени, с экипировкой боевого пропуска
-                  третьего сезона четвёртой главы. С покупкой нового боевого
-                  пропуска вы сразу получите устремлённую в будущее Эру.
-                  Повышайте уровень боевого пропуска, чтобы открыть экипировку
-                  рокерши Риан и лидера автоботов Оптимуса Прайма. Позже в этом
-                  сезоне обладателей боевого пропуска встретит большой любитель
-                  отдыха, Тропический Мяускул! Опыт для боевого пропуска можно
-                  заработать в «Королевской битве» и «Нулевой высоте». Но знали
-                  ли вы, что очки опыта также можно получить в некоторых играх
-                  творческого режима? Авторские игры, которые приносят очки
-                  опыта, отмечены соответствующим значком в их описании в меню
-                  «Поиск». Играйте так, как нравится вам, и откройте Риан,
-                  Оптимуса Прайма и других героев!
+                  {oneProduct?.full_description}
                 </p>
               )}
               <button className="show-more" onClick={toggleShowMore}>
@@ -138,7 +107,7 @@ const ProductDetails = () => {
             <div className="product-details-right">
               <div className="product-logo-block">
                 <img
-                  src="https://cdn2.unrealengine.com/24br-s24-egs-launcher-logo-350x100-350x100-b63249f937d9.png?h=270&quality=medium&resize=1&w=480"
+                  src={oneProduct?.preview}
                   alt=""
                   className="product-logo"
                 />
@@ -172,45 +141,70 @@ const ProductDetails = () => {
                     Добавить в корзину
                   </Button>
                   {isLiked ? (
-                    <Button
-                      className="outlined-btn d-flex align-content-center justify-content-center"
-                      variant="outline-light p-2 w-100 mt-3"
-                      onClick={() =>
-                        toggleLikeDelete(oneProduct.id, setIsLiked)
-                      }>
-                      <div
-                        style={{
-                          width: "27%",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "space-between",
-                        }}>
-                        <LikeIcon className="like-icon-active" />
-                        Нравится
-                      </div>
-                    </Button>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        flexDirection: "column",
+                      }}>
+                      <Button
+                        className="outlined-btn d-flex align-content-center justify-content-center"
+                        variant="outline-light p-2 w-100 mt-3"
+                        onClick={() =>
+                          toggleLikeDelete(
+                            oneProduct.id,
+                            setIsLiked,
+                            setTotalLikes
+                          )
+                        }>
+                        <div
+                          style={{
+                            width: "27%",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "space-between",
+                          }}>
+                          <LikeIcon className="like-icon-active" />
+                          Нравится
+                        </div>
+                      </Button>
+                      <p style={{ color: "#f2f2f2", fontSize: "10px" }}>
+                        (Понравилось {totalLikes} пользователям)
+                      </p>
+                    </div>
                   ) : (
-                    <Button
-                      className="outlined-btn d-flex align-content-center justify-content-center"
-                      variant="outline-light p-2 w-100 mt-3"
-                      onClick={() => toggleLike(oneProduct.id, setIsLiked)}>
-                      <div
-                        style={{
-                          width: "27%",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "space-between",
-                        }}>
-                        <LikeIcon className="like-icon-unactive" />
-                        Нравится
-                        <p>{oneProduct?.likes_count}</p>
-                      </div>
-                    </Button>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        flexDirection: "column",
+                      }}>
+                      <Button
+                        className="outlined-btn d-flex align-content-center justify-content-center"
+                        variant="outline-light p-2 w-100 mt-3"
+                        onClick={() =>
+                          toggleLike(oneProduct.id, setIsLiked, setTotalLikes)
+                        }>
+                        <div
+                          style={{
+                            width: "27%",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "space-between",
+                          }}>
+                          <LikeIcon className="like-icon-unactive" />
+                          Нравится
+                        </div>
+                      </Button>
+                      <p style={{ color: "#f2f2f2", fontSize: "10px" }}>
+                        (Понравилось {totalLikes} пользователям)
+                      </p>
+                    </div>
                   )}
 
                   <Button
                     className="outlined-btn"
-                    variant="outline-light w-100 mt-3 p-1">
+                    variant="outline-light w-100 p-1">
                     <img width={20} src={addTo} alt="" /> В список желаемого
                   </Button>
                 </>

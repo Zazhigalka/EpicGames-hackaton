@@ -15,6 +15,7 @@ const ProductCard = ({ item }) => {
   useEffect(() => {
     getFavorites();
   }, []);
+  console.log(item);
 
   const handleMouseEnter = () => {
     setIconPlus(true);

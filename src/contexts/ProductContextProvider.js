@@ -3,6 +3,7 @@ import React, { createContext, useContext, useReducer } from "react";
 import { useNavigate } from "react-router-dom";
 import { API } from "../helpers/consts";
 import { getTokens } from "../helpers/functions";
+
 export const productContext = createContext();
 export const useProduct = () => useContext(productContext);
 
@@ -23,25 +24,22 @@ function reducer(state = INIT_STATE, action) {
     case "GET_ONE_PRODUCT":
       return { ...state, oneProduct: action.payload };
 
-    case "GET_FAVORITES": {
+    case "GET_FAVORITES":
       return { ...state, favorites: action.payload };
-    }
 
     default:
       return state;
   }
 }
 
+// console.log(products);
 const ProductContextProvider = ({ children }) => {
   const navigate = useNavigate();
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
 
   async function getProducts() {
     try {
-      const res = await axios(
-        `${API}/posts/${window.location.search}`,
-        getTokens()
-      );
+      const res = await axios(`${API}/posts/`, getTokens());
       dispatch({ type: "GET_PRODUCTS", payload: res.data });
     } catch (error) {
       console.log(error);
@@ -52,6 +50,15 @@ const ProductContextProvider = ({ children }) => {
     try {
       await axios.post(`${API}/posts/`, newProduct, getTokens());
       navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function updateProduct(id, editedProduct) {
+    try {
+      await axios.patch(`${API}/posts/${id}/`, editedProduct, getTokens());
+      navigate("/products");
     } catch (error) {
       console.log(error);
     }
@@ -103,21 +110,23 @@ const ProductContextProvider = ({ children }) => {
     }
   }
 
-  async function toggleLike(id, setIsLiked) {
+  async function toggleLike(id, setIsLiked, setTotalLikes) {
     try {
       await axios.get(`${API}/posts/${id}/toggle_like/`, getTokens());
-      getProducts();
+      const res = await axios(`${API}/posts/${id}/`, getTokens());
       setIsLiked(true);
+      setTotalLikes(res.data.likes_count);
     } catch (error) {
       console.log(error);
     }
   }
 
-  async function toggleLikeDelete(id, setIsLiked) {
+  async function toggleLikeDelete(id, setIsLiked, setTotalLikes) {
     try {
       await axios.get(`${API}/posts/${id}/delete_like/`, getTokens());
-      getProducts();
+      const res = await axios(`${API}/posts/${id}/`, getTokens());
       setIsLiked(false);
+      setTotalLikes(res.data.likes_count);
     } catch (error) {
       console.log(error);
     }
@@ -130,7 +139,7 @@ const ProductContextProvider = ({ children }) => {
     getOneProduct,
     oneProduct: state.oneProduct,
     deleteProduct,
-
+    updateProduct,
     toggleFavorites,
     getFavorites,
     toggleLike,
@@ -138,6 +147,7 @@ const ProductContextProvider = ({ children }) => {
     favorites: state.favorites,
     deleteFromFavorites,
   };
+
   return (
     <productContext.Provider value={values}>{children}</productContext.Provider>
   );
