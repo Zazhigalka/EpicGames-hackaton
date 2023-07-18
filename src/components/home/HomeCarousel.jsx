@@ -9,7 +9,6 @@ const HomeCarousel = () => {
   const navigate = useNavigate();
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
   const [progressIndex, setProgressIndex] = useState(0);
-  const [progressWidth, setProgressWidth] = useState(0);
   const [iconPlus, setIconPlus] = useState(false);
 
   const handleMouseEnter = () => {
@@ -58,7 +57,6 @@ const HomeCarousel = () => {
       setActiveSlideIndex(
         (prevIndex) => (prevIndex + 1) % carouselItems.length
       );
-      setProgressWidth(0);
     }, 10000);
 
     return () => clearInterval(interval);
@@ -68,7 +66,6 @@ const HomeCarousel = () => {
     const progressInterval = setInterval(() => {
       setProgressIndex((prevIndex) => {
         const newIndex = (prevIndex + 1) % carouselItems.length;
-        setProgressWidth(0);
         return newIndex;
       });
     }, 5000);
@@ -76,15 +73,8 @@ const HomeCarousel = () => {
     return () => clearInterval(progressInterval);
   }, []);
 
-  useEffect(() => {
-    if (progressWidth >= 100) {
-      setProgressWidth(0);
-    }
-  }, [progressWidth]);
-
   const handleSlideClick = (index) => {
     setActiveSlideIndex(index);
-    setProgressWidth(100);
   };
 
   // adaptive

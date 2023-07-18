@@ -13,10 +13,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useProduct } from "../../contexts/ProductContextProvider";
 
 const ProductDetails = () => {
-  const { getOneProduct, oneProduct } = useProduct();
+  const { getOneProduct, oneProduct, deleteProduct } = useProduct();
   const { currentUser } = useAuth();
-
-  console.log(oneProduct);
 
   const [showMore, setShowMore] = useState(false);
 
@@ -136,15 +134,21 @@ const ProductDetails = () => {
                 <p className="price">Бесплатно</p>
                 <div className="base-game">Базовая игра</div>
               </div>
-              <Button variant="primary w-100 p-2 mt-3">
-                Редактировать продукт
-              </Button>
-              <Button
-                variant="danger
+
+              {currentUser === oneProduct?.owner_email ? (
+                <>
+                  <Button variant="primary w-100 p-2 mt-3">
+                    Редактировать продукт
+                  </Button>
+                  <Button
+                    variant="danger
                w-100 p-2 mt-3"
-              >
-                Удалить Продукт
-              </Button>
+                    onClick={() => deleteProduct(oneProduct.id)}
+                  >
+                    Удалить Продукт
+                  </Button>
+                </>
+              ) : null}
 
               {currentUser ? (
                 <>

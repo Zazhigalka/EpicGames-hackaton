@@ -61,12 +61,22 @@ const ProductContextProvider = ({ children }) => {
     }
   }
 
+  async function deleteProduct(id) {
+    try {
+      await axios.delete(`${API}/posts/${id}/`, getTokens());
+      getProducts();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const values = {
     createProduct,
     getProducts,
     products: state.products,
     getOneProduct,
     oneProduct: state.oneProduct,
+    deleteProduct,
   };
   return (
     <productContext.Provider value={values}>{children}</productContext.Provider>
