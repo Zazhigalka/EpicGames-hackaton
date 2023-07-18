@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./ProductDetails.css";
 import "./Product-Details-adaptive_styles.css";
-import { Button } from "react-bootstrap";
+import { Button, Form, InputGroup } from "react-bootstrap";
 import CarouselBox from "../Carousel/CarouselBox";
 import addTo from "../../assets/add-to.png";
 import shareIcon from "../../assets/share.png";
@@ -12,14 +12,19 @@ import { useAuth } from "../../contexts/AuthContextProvider";
 import { useNavigate, useParams } from "react-router-dom";
 import { useProduct } from "../../contexts/ProductContextProvider";
 import { ReactComponent as LikeIcon } from "../../assets/heart.svg";
+import moment from "moment/moment";
 
 const ProductDetails = () => {
   const {
     getOneProduct,
     oneProduct,
     deleteProduct,
+
     toggleLike,
     toggleLikeDelete,
+
+    addComment,
+    deleteComment,
   } = useProduct();
 
   const { currentUser } = useAuth();
@@ -44,6 +49,19 @@ const ProductDetails = () => {
     setShowMore(!showMore);
   };
 
+  const [comment, setComment] = useState("");
+
+  const handleAddComment = (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append("id", id);
+    formData.append("body", comment);
+
+    addComment(formData);
+    setComment("");
+  };
+
   return (
     <div style={{ backgroundColor: "#121212" }}>
       <div
@@ -53,8 +71,7 @@ const ProductDetails = () => {
           right: "0",
           top: "0",
           zIndex: "999",
-        }}
-      >
+        }}>
         <Search />
       </div>
       <div>
@@ -63,7 +80,7 @@ const ProductDetails = () => {
             <div className="product-details-left">
               <h3>{oneProduct?.title_of_game}</h3>
               <div className="product-details-rating__title">
-                <div className="raiting-on-num">4.3</div>
+                <div className="raiting-on-num">{oneProduct?.rating}</div>
               </div>
               <CarouselBox />
               <p
@@ -72,8 +89,7 @@ const ProductDetails = () => {
                   color: "#f5f5f5",
                   margin: "3em 0",
                   width: "100%",
-                }}
-              >
+                }}>
                 {oneProduct?.short_description}
               </p>
 
@@ -84,8 +100,7 @@ const ProductDetails = () => {
                     color: "rgba(245, 245, 245, 0.6)",
                     margin: "3em 0",
                     width: "100%",
-                  }}
-                >
+                  }}>
                   {oneProduct?.full_description}
                 </p>
               )}
@@ -121,14 +136,12 @@ const ProductDetails = () => {
                 <>
                   <Button
                     variant="primary w-100 p-2 mt-3"
-                    onClick={() => navigate(`/editproduct/${oneProduct.id}`)}
-                  >
+                    onClick={() => navigate(`/editproduct/${oneProduct.id}`)}>
                     Редактировать продукт
                   </Button>
                   <Button
                     variant="danger w-100 p-2 mt-3"
-                    onClick={() => deleteProduct(oneProduct.id)}
-                  >
+                    onClick={() => deleteProduct(oneProduct.id)}>
                     Удалить Продукт
                   </Button>
                 </>
@@ -139,8 +152,7 @@ const ProductDetails = () => {
                   <Button variant="warning w-100 p-2 mt-3">Получить</Button>
                   <Button
                     className="outlined-btn"
-                    variant="outline-light p-2 w-100 mt-3"
-                  >
+                    variant="outline-light p-2 w-100 mt-3">
                     Добавить в корзину
                   </Button>
                   {isLiked ? (
@@ -149,8 +161,7 @@ const ProductDetails = () => {
                         display: "flex",
                         alignItems: "center",
                         flexDirection: "column",
-                      }}
-                    >
+                      }}>
                       <Button
                         className="outlined-btn d-flex align-content-center justify-content-center"
                         variant="outline-light p-2 w-100 mt-3"
@@ -160,16 +171,14 @@ const ProductDetails = () => {
                             setIsLiked,
                             setTotalLikes
                           )
-                        }
-                      >
+                        }>
                         <div
                           style={{
                             width: "27%",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "space-between",
-                          }}
-                        >
+                          }}>
                           <LikeIcon className="like-icon-active" />
                           Нравится
                         </div>
@@ -184,23 +193,20 @@ const ProductDetails = () => {
                         display: "flex",
                         alignItems: "center",
                         flexDirection: "column",
-                      }}
-                    >
+                      }}>
                       <Button
                         className="outlined-btn d-flex align-content-center justify-content-center"
                         variant="outline-light p-2 w-100 mt-3"
                         onClick={() =>
                           toggleLike(oneProduct.id, setIsLiked, setTotalLikes)
-                        }
-                      >
+                        }>
                         <div
                           style={{
                             width: "27%",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "space-between",
-                          }}
-                        >
+                          }}>
                           <LikeIcon className="like-icon-unactive" />
                           Нравится
                         </div>
@@ -213,8 +219,7 @@ const ProductDetails = () => {
 
                   <Button
                     className="outlined-btn"
-                    variant="outline-light w-100 p-1"
-                  >
+                    variant="outline-light w-100 p-1">
                     <img width={20} src={addTo} alt="" /> В список желаемого
                   </Button>
                 </>
@@ -246,16 +251,14 @@ const ProductDetails = () => {
               <div className="btn-share__box">
                 <Button
                   className="outlined-btn"
-                  variant="outline-light w-100 mt-3"
-                >
+                  variant="outline-light w-100 mt-3">
                   <img width={20} src={shareIcon} alt="" /> Поделиться
                 </Button>
 
                 {currentUser ? (
                   <Button
                     className="outlined-btn"
-                    variant="outline-light w-100 mt-3"
-                  >
+                    variant="outline-light w-100 mt-3">
                     <img width={20} src={reportIcon} alt="" /> Пожаловаться
                   </Button>
                 ) : null}
@@ -281,8 +284,7 @@ const ProductDetails = () => {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                }}
-              >
+                }}>
                 <h4>4.3</h4>
               </div>
             </div>
@@ -290,44 +292,41 @@ const ProductDetails = () => {
             <div className="product-details__reviews-block">
               <h5>Рейтинги</h5>
               <div className="reviews">
-                <div className="one-review">
-                  <div className="about-user">
-                    <h6>GamesRadar+</h6>
-                    <p>Автор: Ford James</p>
+                {oneProduct?.comments.map((comment) => (
+                  <div key={comment.id} className="one-review">
+                    <div className="about-user">
+                      <h6>GamesRadar+</h6>
+                      <p>
+                        Дата создания:
+                        {moment(comment.created_at).format("DD/MM/YYYY")}
+                      </p>
+                      <p>
+                        Время создания:
+                        {moment(comment.created_at).format("hh:mm")}
+                      </p>
+                    </div>
+                    <div className="stars"></div>
+                    <p className="descr">{comment.body}</p>
                   </div>
-                  <div className="stars"></div>
-                  <p className="descr">
-                    Nobody thought Fortnite would still be popular this late on,
-                    but it's continued to adapt and fight for its spot at the
-                    top of the battle royale ladder.
-                  </p>
-                </div>
-                <div className="one-review">
-                  <div className="about-user">
-                    <h6>GamesRadar+</h6>
-                    <p>Автор: Ford James</p>
-                  </div>
-                  <div className="stars"></div>
-                  <p className="descr">
-                    Nobody thought Fortnite would still be popular this late on,
-                    but it's continued to adapt and fight for its spot at the
-                    top of the battle royale ladder.
-                  </p>
-                </div>
-                <div className="one-review">
-                  <div className="about-user">
-                    <h6>GamesRadar+</h6>
-                    <p>Автор: Ford James</p>
-                  </div>
-                  <div className="stars"></div>
-                  <p className="descr">
-                    Nobody thought Fortnite would still be popular this late on,
-                    but it's continued to adapt and fight for its spot at the
-                    top of the battle royale ladder.
-                  </p>
-                </div>
+                ))}
               </div>
-              <Button variant="secondary">Посмотреть все отзывы</Button>
+              {currentUser ? (
+                <InputGroup size="sm" className="mb-3">
+                  <Form.Control
+                    className="comment_input"
+                    type="text"
+                    value={comment}
+                    onChange={(e) => setComment(e.target.value)}
+                    aria-label="Small"
+                    aria-describedby="inputGroup-sizing-sm"
+                  />
+                  <Button
+                    className="add-comment-btn"
+                    onClick={handleAddComment}>
+                    Добавить комментарии
+                  </Button>
+                </InputGroup>
+              ) : null}
             </div>
 
             <div className="system-requirements__block">

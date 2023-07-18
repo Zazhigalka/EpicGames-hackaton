@@ -131,6 +131,25 @@ const ProductContextProvider = ({ children }) => {
     }
   }
 
+  async function addComment(formData) {
+    try {
+      const id = `${formData.get("id")}`;
+      await axios.post(`${API}/posts/${id}/comment/`, formData, getTokens());
+      getOneProduct(id);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function deleteComment(commentId, productId) {
+    try {
+      await axios.delete(`${API}/posts/${commentId}/comment_delete`);
+      getOneProduct(productId);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const values = {
     createProduct,
     getProducts,
@@ -139,12 +158,17 @@ const ProductContextProvider = ({ children }) => {
     oneProduct: state.oneProduct,
     deleteProduct,
     updateProduct,
+
     toggleFavorites,
     getFavorites,
-    toggleLike,
-    toggleLikeDelete,
     favorites: state.favorites,
     deleteFromFavorites,
+
+    toggleLike,
+    toggleLikeDelete,
+
+    addComment,
+    deleteComment,
   };
 
   return (
