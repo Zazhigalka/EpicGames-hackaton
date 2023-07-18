@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./ProductDetails.css";
 import "./Product-Details-adaptive_styles.css";
-import { Button } from "react-bootstrap";
+import { Button, Form, InputGroup } from "react-bootstrap";
 import CarouselBox from "../Carousel/CarouselBox";
 import addTo from "../../assets/add-to.png";
 import shareIcon from "../../assets/share.png";
@@ -18,8 +18,12 @@ const ProductDetails = () => {
     getOneProduct,
     oneProduct,
     deleteProduct,
+
     toggleLike,
     toggleLikeDelete,
+
+    addComment,
+    deleteComment,
   } = useProduct();
 
   console.log(oneProduct);
@@ -46,6 +50,20 @@ const ProductDetails = () => {
     setShowMore(!showMore);
   };
 
+  const [comment, setComment] = useState("");
+
+  const handleAddComment = (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append("id", id);
+    formData.append("body", comment);
+
+    addComment(formData);
+    // getOneProduct(id);
+    setComment("");
+  };
+
   console.log(oneProduct);
   return (
     <div style={{ backgroundColor: "#121212" }}>
@@ -65,7 +83,7 @@ const ProductDetails = () => {
             <div className="product-details-left">
               <h3>{oneProduct?.title_of_game}</h3>
               <div className="product-details-rating__title">
-                <div className="raiting-on-num">4.3</div>
+                <div className="raiting-on-num">{oneProduct?.rating}</div>
               </div>
               <CarouselBox />
               <p
@@ -213,12 +231,12 @@ const ProductDetails = () => {
               <ul className="product-details__more-about-product-list">
                 <li>
                   <h6>Разработчик</h6>
-                  <p>Epic Games</p>
+                  <p>{oneProduct?.name_of_developer}</p>
                 </li>
 
                 <li>
                   <h6>Издатель</h6>
-                  <p>Epic Games</p>
+                  <p>{oneProduct?.name_of_developer}</p>
                 </li>
                 <li>
                   <h6>Дата выхода</h6>
@@ -314,7 +332,27 @@ const ProductDetails = () => {
                   </p>
                 </div>
               </div>
-              <Button variant="secondary">Посмотреть все отзывы</Button>
+              {/* <form onSubmit={handleAddComment}>
+                <input
+                  type="text"
+                  value={comment}
+                  onChange={(e) => setComment(e.target.value)}
+                />
+                <button>add review</button>
+              </form> */}
+              <InputGroup size="sm" className="mb-3">
+                <Form.Control
+                  className="comment_input"
+                  type="text"
+                  value={comment}
+                  onChange={(e) => setComment(e.target.value)}
+                  aria-label="Small"
+                  aria-describedby="inputGroup-sizing-sm"
+                />
+                <Button className="add-comment-btn" onClick={handleAddComment}>
+                  Добавить комментарии
+                </Button>
+              </InputGroup>
             </div>
 
             <div className="system-requirements__block">
