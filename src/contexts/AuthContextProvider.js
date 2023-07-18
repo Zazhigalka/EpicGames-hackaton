@@ -9,6 +9,7 @@ export const useAuth = () => useContext(authContext);
 
 const AuthContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState("");
+
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
