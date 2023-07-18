@@ -51,6 +51,20 @@
   font-size: 1em !important;
 }
 
+.product-details-container .like-icon-unactive:hover path {
+  fill: red;
+  stroke: red;
+}
+
+.product-details-container .like-icon-unactive path {
+  stroke: #fff;
+}
+
+.product-details-container .like-icon-active path {
+  fill: red;
+  stroke: red;
+}
+
 .product-details-rating__title {
   margin: 20px 0;
 }

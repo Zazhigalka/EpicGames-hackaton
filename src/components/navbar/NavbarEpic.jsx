@@ -102,7 +102,11 @@ const NavbarEpic = () => {
             МАГАЗИН
           </Nav.Link>
           <Nav.Link
-            className={second ? "navbar__items clicked" : "navbar__items"}
+            className={
+              path === "/distribution"
+                ? "navbar__items clicked"
+                : "navbar__items"
+            }
             onClick={() => {
               navigate("/distribution");
               handleElementSecond();
@@ -139,9 +143,6 @@ const NavbarEpic = () => {
 
           {currentUser ? (
             <Dropdown.Menu className="user__menu">
-              <Dropdown.Item className="dropdown__items">
-                Учетная запись
-              </Dropdown.Item>
               {isSeller ? (
                 <Dropdown.Item
                   className="dropdown__items"
