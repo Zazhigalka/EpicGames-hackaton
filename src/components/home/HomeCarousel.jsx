@@ -147,6 +147,7 @@ const HomeCarousel = () => {
               className="carousel__left_image d-block w-100"
               src="https://cdn2.unrealengine.com/egs-spider-man-miles-morales-carousel-desktop-1248x702-0cbd7e91abd2.jpg?h=720&quality=medium&resize=1&w=1280"
               alt="Spider-Man"
+              onClick={() => navigate("/product/14")}
             />
             <Carousel.Caption className="carousel__left_descr">
               <img
@@ -177,13 +178,13 @@ const HomeCarousel = () => {
               className="carousel__left_image d-block w-100"
               src="https://cdn2.unrealengine.com/egs-ac-mirage-carousel-desktop-1920x1080-b74b6e380b4d.jpg?h=720&quality=medium&resize=1&w=1280"
               alt="Second slide"
+              onClick={() => navigate("/product/11")}
             />
             <Carousel.Caption className="carousel__left_descr">
               <img
                 src="https://cdn2.unrealengine.com/epic-launch-logo-400x172-c0289bc57588.png?h=270&quality=medium&resize=1&w=480"
                 alt="AC Mirage"
                 className="carousel__left_descr-img-2"
-                onClick={() => navigate("/product/11")}
               />
               <p className="left__descr">
                 Узнайте историю Басима, хитрого вора, который устремился на
@@ -208,6 +209,7 @@ const HomeCarousel = () => {
               src="https://cdnb.artstation.com/p/assets/images/images/006/737/939/large/vitaliy-naymushin-fortnite-keyart-final.jpg?1500907440"
               alt="Fortnite"
               style={{ opacity: 0.8 }}
+              onClick={() => navigate("/product/12")}
             />
             <Carousel.Caption className="carousel__left_descr">
               <img
@@ -297,6 +299,7 @@ const HomeCarousel = () => {
               src="https://cdn2.unrealengine.com/Diesel%2Fproductv2%2Fbatman-arkham-knight%2FEGS_WB_Batman_Arkham_Knight_G1_1920x1080_19_0911-1920x1080-1d69e15f00cb5ab57249f208f1f8f45d52cbbc59.jpg"
               alt="Batman"
               style={{ opacity: 0.6 }}
+              onClick={() => navigate("/product/13")}
             />
             <Carousel.Caption className="carousel__left_descr">
               <img

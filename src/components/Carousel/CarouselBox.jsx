@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Carousel, CarouselItem } from "react-bootstrap";
 import { useProduct } from "../../contexts/ProductContextProvider";
-import { useInView } from "react-intersection-observer";
+// import { useInView } from "react-intersection-observer";
 
 const CarouselBox = () => {
   const { oneProduct } = useProduct();
