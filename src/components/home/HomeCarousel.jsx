@@ -4,12 +4,18 @@ import "./homeCarouselAdaptive.css";
 import { Carousel } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import addIcon from "../../assets/add-to.png";
+import { useProduct } from "../../contexts/ProductContextProvider";
 
 const HomeCarousel = () => {
   const navigate = useNavigate();
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
   const [progressIndex, setProgressIndex] = useState(0);
   const [iconPlus, setIconPlus] = useState(false);
+  const { getFavorites, toggleFavorites } = useProduct();
+
+  useEffect(() => {
+    getFavorites();
+  }, []);
 
   const handleMouseEnter = () => {
     setIconPlus(true);
@@ -156,7 +162,9 @@ const HomeCarousel = () => {
                 От <span style={{ fontWeight: 600 }}>39,99$</span>
               </p>
               <div className="left__descr_bottom">
-                <button>Добавить в Корзину</button>
+                <button onClick={() => toggleFavorites()}>
+                  Добавить в Корзину
+                </button>
                 <div className="home__wish">
                   <img src={addIcon} alt="" />
                   <p>В список желаемого</p>
@@ -175,6 +183,7 @@ const HomeCarousel = () => {
                 src="https://cdn2.unrealengine.com/epic-launch-logo-400x172-c0289bc57588.png?h=270&quality=medium&resize=1&w=480"
                 alt="AC Mirage"
                 className="carousel__left_descr-img-2"
+                onClick={() => navigate("/product/11")}
               />
               <p className="left__descr">
                 Узнайте историю Басима, хитрого вора, который устремился на
@@ -260,6 +269,7 @@ const HomeCarousel = () => {
               className="carousel__left_image d-block w-100"
               src="https://mms.businesswire.com/media/20230713426786/en/1840766/5/FC24_standardkeyart_16x9.jpg"
               alt="EA SPORTS FC"
+              onClick={() => navigate("/product/10")}
             />
             <Carousel.Caption
               className="carousel__left_descr"

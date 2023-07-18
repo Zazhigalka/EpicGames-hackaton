@@ -93,30 +93,11 @@ const ProductContextProvider = ({ children }) => {
       console.log(error);
     }
   }
+
   async function deleteFromFavorites(id) {
     try {
       await axios(`${API}/posts/${id}/delete_favorite/`, getTokens());
       getFavorites();
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  async function toggleLike(id, setIsLiked) {
-    try {
-      await axios.get(`${API}/posts/${id}/toggle_like/`, getTokens());
-      getProducts();
-      setIsLiked(true);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  async function toggleLikeDelete(id, setIsLiked) {
-    try {
-      await axios.get(`${API}/posts/${id}/delete_like/`, getTokens());
-      getProducts();
-      setIsLiked(false);
     } catch (error) {
       console.log(error);
     }
