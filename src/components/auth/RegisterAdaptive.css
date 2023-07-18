@@ -1,0 +1,37 @@
+@media all and (max-width: 1350px){
+    .register {
+        width: 35%;
+    }
+}
+@media all and (max-width: 1020px){
+    .register {
+        width: 40%;
+    }
+}
+@media all and (max-width: 900px){
+    .register {
+        width: 50%;
+    }
+}
+@media all and (max-width: 700px){
+    .register {
+        width: 60%;
+    }
+}
+@media all and (max-width: 430px){
+    .register {
+        width: 70%;
+    }
+}
+@media all and (max-width: 376px){
+    .register__name{
+        flex-direction: column;
+    }
+    .register__name input {
+        width: 100%;
+        margin-top: 1.3rem;
+      }
+      .register__title{
+        font-size: 18px;
+      }
+}

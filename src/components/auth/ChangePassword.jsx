@@ -20,9 +20,9 @@ const ChangePassword = () => {
   }
 
   return (
-    <div className="auth">
+    <div className="changepassword">
       <img className="auth__logo" src={auth__logo} alt="" />
-      <h6 className="auth__title">Изменить пароль</h6>
+      <h6 className="changepassword__title">Изменить пароль</h6>
       <div className="auth__inputs">
         <div className="auth__emailPassword">
           <input

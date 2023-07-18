@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Auth.css";
+import "./AuthAdaptive.css"
 import auth__logo from "../../assets/epic_games_logo.png";
 import { Button, InputGroup, Spinner } from "react-bootstrap";
 import { useAuth } from "../../contexts/AuthContextProvider";
