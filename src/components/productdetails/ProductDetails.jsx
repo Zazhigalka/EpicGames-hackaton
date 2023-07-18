@@ -22,8 +22,6 @@ const ProductDetails = () => {
     toggleLikeDelete,
   } = useProduct();
 
-  console.log(oneProduct);
-
   const { currentUser } = useAuth();
   const navigate = useNavigate();
 
@@ -46,7 +44,6 @@ const ProductDetails = () => {
     setShowMore(!showMore);
   };
 
-  console.log(oneProduct);
   return (
     <div style={{ backgroundColor: "#121212" }}>
       <div
@@ -99,7 +96,7 @@ const ProductDetails = () => {
               <div className="product-details-genres">
                 <div>
                   <h6>Жанры</h6>
-                  <p>Shooter</p>
+                  <p>{oneProduct?.category}</p>
                 </div>
                 <div>
                   <h6>Особенности</h6>
@@ -110,7 +107,7 @@ const ProductDetails = () => {
             <div className="product-details-right">
               <div className="product-logo-block">
                 <img
-                  src={oneProduct?.image_five}
+                  src={oneProduct?.game_logo}
                   alt=""
                   className="product-logo"
                 />
@@ -226,16 +223,16 @@ const ProductDetails = () => {
               <ul className="product-details__more-about-product-list">
                 <li>
                   <h6>Разработчик</h6>
-                  <p>{oneProduct?.title_of_publisher}</p>
+                  <p>{oneProduct?.name_of_developer}</p>
                 </li>
 
                 <li>
                   <h6>Издатель</h6>
-                  <p>Epic Games</p>
+                  <p>{oneProduct?.title_of_publisher}</p>
                 </li>
                 <li>
                   <h6>Дата выхода</h6>
-                  <p>21.07.17</p>
+                  <p>{oneProduct?.date_of_issue}</p>
                 </li>
                 <li>
                   <h6>Изначальный выпуск</h6>

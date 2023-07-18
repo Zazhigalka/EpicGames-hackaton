@@ -16,6 +16,7 @@ const EditProduct = () => {
   useEffect(() => {
     if (oneProduct) {
       setTitleOfGame(oneProduct.title_of_game);
+      setGameLogo(oneProduct.game_logo);
       setTitleOfPulisher(oneProduct.title_of_publisher);
       setNameOfDeveloper(oneProduct.name_of_developer);
       setDateOfIssue(oneProduct.date_of_issue);
@@ -27,10 +28,16 @@ const EditProduct = () => {
       setLinkGame(oneProduct.link_on_game);
       setVideo(oneProduct.video);
       setCategory(oneProduct.category);
+      setImage1(oneProduct.image_one);
+      setImage2(oneProduct.image_two);
+      setImage3(oneProduct.image_three);
+      setImage4(oneProduct.image_four);
+      setImage5(oneProduct.image_five);
     }
   }, [oneProduct]);
 
   const [titleOfGame, setTitleOfGame] = useState("");
+  const [gameLogo, setGameLogo] = useState("");
   const [titleOfPulisher, setTitleOfPulisher] = useState("");
   const [nameOfDeveloper, setNameOfDeveloper] = useState("");
   const [dateOfIssue, setDateOfIssue] = useState("");
@@ -42,25 +49,17 @@ const EditProduct = () => {
   const [linkGame, setLinkGame] = useState("");
   const [video, setVideo] = useState("");
   const [category, setCategory] = useState("");
-
-  console.log(
-    titleOfGame,
-    titleOfPulisher,
-    nameOfDeveloper,
-    dateOfIssue,
-    shortDescr,
-    preview,
-    fullDescr,
-    fullImage,
-    price,
-    linkGame,
-    video,
-    category
-  );
+  const [image1, setImage1] = useState("");
+  const [image2, setImage2] = useState("");
+  const [image3, setImage3] = useState("");
+  const [image4, setImage4] = useState("");
+  const [image5, setImage5] = useState("");
+  console.log(gameLogo);
 
   const handleSave = () => {
     if (
       !titleOfGame ||
+      !gameLogo ||
       !titleOfPulisher ||
       !nameOfDeveloper ||
       !dateOfIssue ||
@@ -68,7 +67,9 @@ const EditProduct = () => {
       !fullDescr ||
       !price ||
       !linkGame ||
-      !category
+      !category ||
+      !image1 ||
+      !image2
     ) {
       alert("ЗАПОЛНИТЕ ПОЛЯ!!!");
       return;
@@ -77,6 +78,7 @@ const EditProduct = () => {
     const newProduct = new FormData();
 
     newProduct.append("title_of_game", titleOfGame);
+    newProduct.append("game_logo", gameLogo);
     newProduct.append("title_of_publisher", titleOfPulisher);
     newProduct.append("name_of_developer", nameOfDeveloper);
     newProduct.append("date_of_issue", dateOfIssue);
@@ -88,6 +90,11 @@ const EditProduct = () => {
     newProduct.append("link_on_game", linkGame);
     newProduct.append("video", video);
     newProduct.append("category", category);
+    newProduct.append("image_one", image1);
+    newProduct.append("image_two", image2);
+    newProduct.append("image_three", image3);
+    newProduct.append("image_four", image4);
+    newProduct.append("image_five", image5);
     updateProduct(id, newProduct);
   };
 
@@ -105,6 +112,13 @@ const EditProduct = () => {
             className="addProduct__inputs"
             onChange={(e) => setTitleOfGame(e.target.value)}
             value={titleOfGame}
+          />
+          <input
+            placeholder="ENTER GAME LOGO"
+            type="text"
+            className="addProduct__inputs"
+            onChange={(e) => setGameLogo(e.target.value)}
+            value={gameLogo}
           />
           <input
             placeholder="ENTER TITLE OF PULISHER"
@@ -170,7 +184,6 @@ const EditProduct = () => {
             onChange={(e) => setLinkGame(e.target.value)}
             value={linkGame}
           />
-
           <input
             placeholder="ENTER FILE TO VIDEO"
             type="text"
@@ -185,6 +198,41 @@ const EditProduct = () => {
             className="addProduct__inputs"
             onChange={(e) => setCategory(e.target.value)}
             value={category}
+          />
+          <input
+            placeholder="ENTER FIRST IMAGE"
+            type="text"
+            className="addProduct__inputs"
+            onChange={(e) => setImage1(e.target.value)}
+            value={image1}
+          />
+          <input
+            placeholder="ENTER SECOND IMAGE"
+            type="text"
+            className="addProduct__inputs"
+            onChange={(e) => setImage2(e.target.value)}
+            value={image2}
+          />{" "}
+          <input
+            placeholder="ENTER THIRT IMAGE"
+            type="text"
+            className="addProduct__inputs"
+            onChange={(e) => setImage3(e.target.value)}
+            value={image3}
+          />{" "}
+          <input
+            placeholder="ENTER FOUR IMAGE"
+            type="text"
+            className="addProduct__inputs"
+            onChange={(e) => setImage4(e.target.value)}
+            value={image4}
+          />{" "}
+          <input
+            placeholder="ENTER FIFTH IMAGE"
+            type="text"
+            className="addProduct__inputs"
+            onChange={(e) => setImage5(e.target.value)}
+            value={image5}
           />
         </div>
         <div className="addProduct__btn">

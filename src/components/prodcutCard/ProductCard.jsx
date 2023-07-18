@@ -15,7 +15,6 @@ const ProductCard = ({ item }) => {
   useEffect(() => {
     getFavorites();
   }, []);
-  console.log(item);
 
   const handleMouseEnter = () => {
     setIconPlus(true);
@@ -44,7 +43,7 @@ const ProductCard = ({ item }) => {
         className="card__image"
         variant="top"
         onMouseEnter={handleMouseEnter}
-        src={item.preview}
+        src={item?.preview}
         onMouseLeave={handleMouseLeave}
         onClick={() => navigate(`/product/${item.id}`)}
       />
