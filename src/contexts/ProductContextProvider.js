@@ -102,6 +102,46 @@ const ProductContextProvider = ({ children }) => {
     }
   }
 
+  async function toggleLike(id, setIsLiked) {
+    try {
+      await axios.get(`${API}/posts/${id}/toggle_like/`, getTokens());
+      getProducts();
+      setIsLiked(true);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function toggleLikeDelete(id, setIsLiked) {
+    try {
+      await axios.get(`${API}/posts/${id}/delete_like/`, getTokens());
+      getProducts();
+      setIsLiked(false);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function toggleLike(id, setIsLiked) {
+    try {
+      await axios.get(`${API}/posts/${id}/toggle_like/`, getTokens());
+      getProducts();
+      setIsLiked(true);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function toggleLikeDelete(id, setIsLiked) {
+    try {
+      await axios.get(`${API}/posts/${id}/delete_like/`, getTokens());
+      getProducts();
+      setIsLiked(false);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const values = {
     createProduct,
     getProducts,
@@ -112,6 +152,8 @@ const ProductContextProvider = ({ children }) => {
 
     toggleFavorites,
     getFavorites,
+    toggleLike,
+    toggleLikeDelete,
     favorites: state.favorites,
     deleteFromFavorites,
   };

@@ -21,7 +21,10 @@ const ProductCard = ({ item }) => {
   const path = document.location.pathname;
 
   return (
-    <Card className="card__container">
+    <Card
+      className="card__container"
+      onClick={() => navigate(`/product/${item.id}`)}
+    >
       <Card.Img
         className="card__image"
         variant="top"
