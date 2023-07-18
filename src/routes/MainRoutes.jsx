@@ -13,6 +13,7 @@ import News from "../components/news/News";
 import AddProductPage from "../pages/AddProductPage";
 import ChangePasswordPage from "../pages/ChangePasswordPage";
 import { useAuth } from "../contexts/AuthContextProvider";
+import RegisterSuccess from "../components/auth/RegisterSuccess";
 
 const MainRoutes = () => {
   const [isSeller, setIsSeller] = useState(false);
@@ -78,6 +79,11 @@ const MainRoutes = () => {
       element: <NotFoundPage />,
       id: "8",
     },
+    {
+      link: "/RegisterSuccess",
+      element: <RegisterSuccess />,
+      id: "13",
+    },
   ];
 
   const USER_ROTES = [
@@ -96,6 +102,7 @@ const MainRoutes = () => {
       element: <CartPage />,
       id: "11",
     },
+   
   ];
 
   const SELLER_ROTES = [

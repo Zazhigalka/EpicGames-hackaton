@@ -1,0 +1,26 @@
+@media all and (max-width: 769px){
+  .register__success_title{
+    font-size: 17px;
+  }
+  .register__success_p{
+    font-size: 17px;
+  }
+  .register__success_container{
+    width: 60%;
+}
+}
+@media all and (max-width: 500px){
+    .register__success_title{
+        font-size: 14px;
+      }
+    .register__success_p{
+        font-size: 14px;
+      }
+    .register__success_logo {
+        width: 40px;
+      }
+    .register__success_container{
+        height: 350px;
+        width: 70%;
+    }
+}
