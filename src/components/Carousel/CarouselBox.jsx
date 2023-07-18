@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Carousel, CarouselItem } from "react-bootstrap";
 import { useProduct } from "../../contexts/ProductContextProvider";
+import { useInView } from "react-intersection-observer";
 
 const CarouselBox = () => {
   const { oneProduct } = useProduct();
+
   return (
     <Carousel style={{ width: "90%" }}>
       <CarouselItem>
-        <video className="d-block" style={{ width: "100%" }} autoPlay controls>
+        <video
+          className="d-block"
+          style={{ width: "100%" }}
+          autoPlay="true"
+          controls
+        >
           <source src={oneProduct?.video} type="video/mp4" />
           Ваш браузер не поддерживает воспроизведение видео.
         </video>
