@@ -98,7 +98,7 @@ const AuthContextProvider = ({ children }) => {
     }
   }
 
-  async function getUsername(email) {
+  async function getUserData(email) {
     try {
       const response = await axios.get(`${API}/accounts/`, {
         params: {
@@ -123,7 +123,7 @@ const AuthContextProvider = ({ children }) => {
     currentUser,
     checkAuth,
     loading,
-    getUsername,
+    getUserData,
   };
   return <authContext.Provider value={values}>{children}</authContext.Provider>;
 };
