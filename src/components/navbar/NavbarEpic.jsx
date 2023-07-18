@@ -250,6 +250,7 @@ const NavbarEpic = () => {
 
 const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
   <a
+    style={{ width: "20%" }}
     ref={ref}
     onClick={(e) => {
       e.preventDefault();

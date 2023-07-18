@@ -104,13 +104,11 @@
   line-height: 22px;
   letter-spacing: 0.075em;
   text-transform: uppercase;
-  margin: 5px 0 0 5%;
 }
 
 #user__icon {
   width: 25px;
   height: 25px;
-  margin-left: 5px;
 }
 
 .user__menu {
