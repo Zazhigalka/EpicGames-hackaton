@@ -32,16 +32,14 @@ function reducer(state = INIT_STATE, action) {
   }
 }
 
+// console.log(products);
 const ProductContextProvider = ({ children }) => {
   const navigate = useNavigate();
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
 
   async function getProducts() {
     try {
-      const res = await axios(
-        `${API}/posts/${window.location.search}`,
-        getTokens()
-      );
+      const res = await axios(`${API}/posts/`, getTokens());
       dispatch({ type: "GET_PRODUCTS", payload: res.data });
     } catch (error) {
       console.log(error);
@@ -52,6 +50,15 @@ const ProductContextProvider = ({ children }) => {
     try {
       await axios.post(`${API}/posts/`, newProduct, getTokens());
       navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function updateProduct(id, editedProduct) {
+    try {
+      await axios.patch(`${API}/posts/${id}/`, editedProduct, getTokens());
+      navigate("/products");
     } catch (error) {
       console.log(error);
     }
@@ -149,7 +156,7 @@ const ProductContextProvider = ({ children }) => {
     getOneProduct,
     oneProduct: state.oneProduct,
     deleteProduct,
-
+    updateProduct,
     toggleFavorites,
     getFavorites,
     toggleLike,
