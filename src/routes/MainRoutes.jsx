@@ -13,6 +13,7 @@ import News from "../components/news/News";
 import AddProductPage from "../pages/AddProductPage";
 import ChangePasswordPage from "../pages/ChangePasswordPage";
 import { useAuth } from "../contexts/AuthContextProvider";
+import EditProduct from "../components/products/EditProduct";
 import RegisterSuccess from "../components/auth/RegisterSuccess";
 
 const MainRoutes = () => {
@@ -110,6 +111,11 @@ const MainRoutes = () => {
       link: "/addproduct",
       element: <AddProductPage />,
       id: "12",
+    },
+    {
+      link: "/editproduct/:id",
+      element: <EditProduct />,
+      id: "13",
     },
   ];
 

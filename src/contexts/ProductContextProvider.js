@@ -70,6 +70,15 @@ const ProductContextProvider = ({ children }) => {
     }
   }
 
+  async function updateProduct(id, editedProduct) {
+    try {
+      await axios.patch(`${API}/posts/${id}/`, editedProduct, getTokens());
+      navigate("/products");
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const values = {
     createProduct,
     getProducts,
@@ -77,6 +86,7 @@ const ProductContextProvider = ({ children }) => {
     getOneProduct,
     oneProduct: state.oneProduct,
     deleteProduct,
+    updateProduct,
   };
   return (
     <productContext.Provider value={values}>{children}</productContext.Provider>

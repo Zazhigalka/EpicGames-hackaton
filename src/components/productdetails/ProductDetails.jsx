@@ -15,6 +15,7 @@ import { useProduct } from "../../contexts/ProductContextProvider";
 const ProductDetails = () => {
   const { getOneProduct, oneProduct, deleteProduct } = useProduct();
   const { currentUser } = useAuth();
+  const navigate = useNavigate();
 
   const [showMore, setShowMore] = useState(false);
 
@@ -137,7 +138,10 @@ const ProductDetails = () => {
 
               {currentUser === oneProduct?.owner_email ? (
                 <>
-                  <Button variant="primary w-100 p-2 mt-3">
+                  <Button
+                    variant="primary w-100 p-2 mt-3"
+                    onClick={() => navigate(`/editproduct/${oneProduct.id}`)}
+                  >
                     Редактировать продукт
                   </Button>
                   <Button

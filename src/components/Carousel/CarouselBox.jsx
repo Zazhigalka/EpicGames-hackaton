@@ -7,7 +7,7 @@ const CarouselBox = () => {
   return (
     <Carousel style={{ width: "90%" }}>
       <CarouselItem>
-        <video className="d-block" style={{ width: "100%" }} controls>
+        <video className="d-block" style={{ width: "100%" }} autoPlay controls>
           <source src={oneProduct?.video} type="video/mp4" />
           Ваш браузер не поддерживает воспроизведение видео.
         </video>
@@ -21,14 +21,14 @@ const CarouselBox = () => {
         <img
           className="d-block"
           style={{ width: "100%" }}
-          src="https://cdn2.unrealengine.com/05-cinematicstill003-3840x2160-3840x2160-97121fdfb6d2.png"
+          src={oneProduct?.image_one}
         />
       </CarouselItem>
       <CarouselItem>
         <img
           className="d-block"
           style={{ width: "100%" }}
-          src="https://cdn2.unrealengine.com/06-gameplaystill007-3840x2160-3840x2160-0a9808f757e3.png"
+          src={oneProduct?.image_two}
         />
       </CarouselItem>
     </Carousel>
