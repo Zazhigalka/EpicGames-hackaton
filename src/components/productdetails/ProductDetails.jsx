@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./ProductDetails.css";
 import "./Product-Details-adaptive_styles.css";
 import { Button } from "react-bootstrap";
@@ -9,9 +9,14 @@ import reportIcon from "../../assets/flag.png";
 import { ReactComponent as UnrealEngineIcon } from "../../assets/unrealEngine.svg";
 import Search from "../search/Search";
 import { useAuth } from "../../contexts/AuthContextProvider";
+import { useNavigate, useParams } from "react-router-dom";
+import { useProduct } from "../../contexts/ProductContextProvider";
 
 const ProductDetails = () => {
+  const { getOneProduct, oneProduct } = useProduct();
   const { currentUser } = useAuth();
+
+  console.log(oneProduct);
 
   const [showMore, setShowMore] = useState(false);
 
@@ -19,6 +24,12 @@ const ProductDetails = () => {
     setShowMore(!showMore);
   };
 
+  const { id } = useParams();
+  useEffect(() => {
+    getOneProduct(id);
+  }, []);
+
+  console.log(oneProduct);
   return (
     <div style={{ backgroundColor: "#121212" }}>
       <div
@@ -28,7 +39,8 @@ const ProductDetails = () => {
           right: "0",
           top: "0",
           zIndex: "999",
-        }}>
+        }}
+      >
         <Search />
       </div>
       <div>
@@ -46,7 +58,8 @@ const ProductDetails = () => {
                   color: "#f5f5f5",
                   margin: "3em 0",
                   width: "100%",
-                }}>
+                }}
+              >
                 Собирайте друзей и отправляйтесь в игру Fortnite от Epic Games,
                 в которой вас ждёт грандиозная битва для 100 игроков. В ней вам
                 предстоит искать полезную добычу, добывать материалы, создавать
@@ -62,7 +75,8 @@ const ProductDetails = () => {
                     color: "rgba(245, 245, 245, 0.6)",
                     margin: "3em 0",
                     width: "100%",
-                  }}>
+                  }}
+                >
                   Исследуйте большой разрушаемый мир, в котором каждого игрока
                   ждут неповторимые приключения. Объединяйтесь с друзьями,
                   ускоряйтесь, карабкайтесь и пробивайте себе путь к победе при
@@ -122,18 +136,29 @@ const ProductDetails = () => {
                 <p className="price">Бесплатно</p>
                 <div className="base-game">Базовая игра</div>
               </div>
+              <Button variant="primary w-100 p-2 mt-3">
+                Редактировать продукт
+              </Button>
+              <Button
+                variant="danger
+               w-100 p-2 mt-3"
+              >
+                Удалить Продукт
+              </Button>
 
               {currentUser ? (
                 <>
                   <Button variant="warning w-100 p-2 mt-3">Получить</Button>
                   <Button
                     className="outlined-btn"
-                    variant="outline-light p-2 w-100 mt-3">
+                    variant="outline-light p-2 w-100 mt-3"
+                  >
                     Добавить в корзину
                   </Button>
                   <Button
                     className="outlined-btn"
-                    variant="outline-light w-100 mt-3 p-1">
+                    variant="outline-light w-100 mt-3 p-1"
+                  >
                     <img width={20} src={addTo} alt="" /> В список желаемого
                   </Button>
                 </>
@@ -165,14 +190,16 @@ const ProductDetails = () => {
               <div className="btn-share__box">
                 <Button
                   className="outlined-btn"
-                  variant="outline-light w-100 mt-3">
+                  variant="outline-light w-100 mt-3"
+                >
                   <img width={20} src={shareIcon} alt="" /> Поделиться
                 </Button>
 
                 {currentUser ? (
                   <Button
                     className="outlined-btn"
-                    variant="outline-light w-100 mt-3">
+                    variant="outline-light w-100 mt-3"
+                  >
                     <img width={20} src={reportIcon} alt="" /> Пожаловаться
                   </Button>
                 ) : null}
@@ -198,7 +225,8 @@ const ProductDetails = () => {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                }}>
+                }}
+              >
                 <h4>4.3</h4>
               </div>
             </div>

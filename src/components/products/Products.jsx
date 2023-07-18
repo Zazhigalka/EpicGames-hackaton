@@ -11,6 +11,8 @@ const Products = () => {
     getProducts();
   }, []);
 
+  console.log(products);
+
   return (
     <div className="products__container">
       <div

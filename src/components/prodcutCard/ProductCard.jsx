@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import "./card.css";
 import addIcon from "../../assets/add-to.png";
+import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ item }) => {
   const [iconPlus, setIconPlus] = useState(false);
@@ -13,9 +14,13 @@ const ProductCard = ({ item }) => {
   const handleMouseLeave = () => {
     setIconPlus(false);
   };
+  const navigate = useNavigate();
 
   return (
-    <Card className="card__container">
+    <Card
+      className="card__container"
+      onClick={() => navigate(`/product/${item.id}`)}
+    >
       <Card.Img
         className="card__image"
         variant="top"
@@ -36,7 +41,7 @@ const ProductCard = ({ item }) => {
       <Card.Body className="card__body">
         <Card.Text className="card__osob">Особенности</Card.Text>
         <Card.Title className="card__title">{item.title_of_game}</Card.Title>
-        <Card.Text className="card__price">14,99 $</Card.Text>
+        <Card.Text className="card__price">{item.price} $</Card.Text>
       </Card.Body>
     </Card>
   );

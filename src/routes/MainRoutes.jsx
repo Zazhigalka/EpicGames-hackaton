@@ -19,7 +19,7 @@ const MainRoutes = () => {
       <Route path="/auth" element={<AuthPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/distribution" element={<DistributionPage />} />
-      <Route path="/product/" element={<ProductDetailsPage />} />
+      <Route path="/product/:id" element={<ProductDetailsPage />} />
       <Route path="/wish-list" element={<WishListPage />} />
       <Route path="/cart" element={<CartPage />} />
       <Route path="/products" element={<ProductsPage />} />

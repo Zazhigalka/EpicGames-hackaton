@@ -123,9 +123,9 @@ const AddProduct = () => {
           />
           <input
             placeholder="ENTER IMAGE FOR SHORT"
-            type="file"
+            type="text"
             className="addProduct__inputs"
-            onChange={(e) => setPreview(e.target.files[0])}
+            onChange={(e) => setPreview(e.target.value)}
             encType="multipart/form-data"
           />
           <input
@@ -136,9 +136,9 @@ const AddProduct = () => {
           />
           <input
             placeholder="ENTER IMAGE FOR FULL"
-            type="file"
+            type="text"
             className="addProduct__inputs"
-            onChange={(e) => setFullImage(e.target.files[0])}
+            onChange={(e) => setFullImage(e.target.value)}
             encType="multipart/form-data"
           />
           <input
@@ -179,9 +179,9 @@ const AddProduct = () => {
           />
           <input
             placeholder="ENTER FILE TO VIDEO"
-            type="file"
+            type="text"
             className="addProduct__inputs"
-            onChange={(e) => setVideo(e.target.files[0])}
+            onChange={(e) => setVideo(e.target.value)}
             encType="multipart/form-data"
           />
           <input
@@ -192,9 +192,9 @@ const AddProduct = () => {
           />
           <input
             placeholder="ENTER IMAGES"
-            type="file"
+            type="text"
             className="addProduct__inputs"
-            onChange={(e) => setImages(e.target.files[0])}
+            onChange={(e) => setImages(e.target.value)}
           />
         </div>
         <div className="addProduct__btn">

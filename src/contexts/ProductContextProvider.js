@@ -8,6 +8,7 @@ export const useProduct = () => useContext(productContext);
 
 const INIT_STATE = {
   products: [],
+  oneProduct: null,
 };
 
 function reducer(state = INIT_STATE, action) {
@@ -17,6 +18,9 @@ function reducer(state = INIT_STATE, action) {
         ...state,
         products: action.payload.results,
       };
+
+    case "GET_ONE_PRODUCT":
+      return { ...state, oneProduct: action.payload };
 
     default:
       return state;
@@ -48,7 +52,22 @@ const ProductContextProvider = ({ children }) => {
     }
   }
 
-  const values = { createProduct, getProducts, products: state.products };
+  async function getOneProduct(id) {
+    try {
+      const res = await axios(`${API}/posts/${id}/`, getTokens());
+      dispatch({ type: "GET_ONE_PRODUCT", payload: res.data });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const values = {
+    createProduct,
+    getProducts,
+    products: state.products,
+    getOneProduct,
+    oneProduct: state.oneProduct,
+  };
   return (
     <productContext.Provider value={values}>{children}</productContext.Provider>
   );
