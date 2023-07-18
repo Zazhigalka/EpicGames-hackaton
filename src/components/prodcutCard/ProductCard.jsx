@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ item }) => {
   const [iconPlus, setIconPlus] = useState(false);
+  console.log(item);
 
   const handleMouseEnter = () => {
     setIconPlus(true);
