@@ -53,7 +53,8 @@ const ProductDetails = () => {
           right: "0",
           top: "0",
           zIndex: "999",
-        }}>
+        }}
+      >
         <Search />
       </div>
       <div>
@@ -71,7 +72,8 @@ const ProductDetails = () => {
                   color: "#f5f5f5",
                   margin: "3em 0",
                   width: "100%",
-                }}>
+                }}
+              >
                 {oneProduct?.short_description}
               </p>
 
@@ -82,7 +84,8 @@ const ProductDetails = () => {
                     color: "rgba(245, 245, 245, 0.6)",
                     margin: "3em 0",
                     width: "100%",
-                  }}>
+                  }}
+                >
                   {oneProduct?.full_description}
                 </p>
               )}
@@ -93,7 +96,7 @@ const ProductDetails = () => {
               <div className="product-details-genres">
                 <div>
                   <h6>Жанры</h6>
-                  <p>Shooter</p>
+                  <p>{oneProduct?.category}</p>
                 </div>
                 <div>
                   <h6>Особенности</h6>
@@ -118,12 +121,14 @@ const ProductDetails = () => {
                 <>
                   <Button
                     variant="primary w-100 p-2 mt-3"
-                    onClick={() => navigate(`/editproduct/${oneProduct.id}`)}>
+                    onClick={() => navigate(`/editproduct/${oneProduct.id}`)}
+                  >
                     Редактировать продукт
                   </Button>
                   <Button
                     variant="danger w-100 p-2 mt-3"
-                    onClick={() => deleteProduct(oneProduct.id)}>
+                    onClick={() => deleteProduct(oneProduct.id)}
+                  >
                     Удалить Продукт
                   </Button>
                 </>
@@ -134,7 +139,8 @@ const ProductDetails = () => {
                   <Button variant="warning w-100 p-2 mt-3">Получить</Button>
                   <Button
                     className="outlined-btn"
-                    variant="outline-light p-2 w-100 mt-3">
+                    variant="outline-light p-2 w-100 mt-3"
+                  >
                     Добавить в корзину
                   </Button>
                   {isLiked ? (
@@ -143,7 +149,8 @@ const ProductDetails = () => {
                         display: "flex",
                         alignItems: "center",
                         flexDirection: "column",
-                      }}>
+                      }}
+                    >
                       <Button
                         className="outlined-btn d-flex align-content-center justify-content-center"
                         variant="outline-light p-2 w-100 mt-3"
@@ -153,14 +160,16 @@ const ProductDetails = () => {
                             setIsLiked,
                             setTotalLikes
                           )
-                        }>
+                        }
+                      >
                         <div
                           style={{
                             width: "27%",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "space-between",
-                          }}>
+                          }}
+                        >
                           <LikeIcon className="like-icon-active" />
                           Нравится
                         </div>
@@ -175,20 +184,23 @@ const ProductDetails = () => {
                         display: "flex",
                         alignItems: "center",
                         flexDirection: "column",
-                      }}>
+                      }}
+                    >
                       <Button
                         className="outlined-btn d-flex align-content-center justify-content-center"
                         variant="outline-light p-2 w-100 mt-3"
                         onClick={() =>
                           toggleLike(oneProduct.id, setIsLiked, setTotalLikes)
-                        }>
+                        }
+                      >
                         <div
                           style={{
                             width: "27%",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "space-between",
-                          }}>
+                          }}
+                        >
                           <LikeIcon className="like-icon-unactive" />
                           Нравится
                         </div>
@@ -201,7 +213,8 @@ const ProductDetails = () => {
 
                   <Button
                     className="outlined-btn"
-                    variant="outline-light w-100 p-1">
+                    variant="outline-light w-100 p-1"
+                  >
                     <img width={20} src={addTo} alt="" /> В список желаемого
                   </Button>
                 </>
@@ -210,16 +223,16 @@ const ProductDetails = () => {
               <ul className="product-details__more-about-product-list">
                 <li>
                   <h6>Разработчик</h6>
-                  <p>Epic Games</p>
+                  <p>{oneProduct?.name_of_developer}</p>
                 </li>
 
                 <li>
                   <h6>Издатель</h6>
-                  <p>Epic Games</p>
+                  <p>{oneProduct?.title_of_publisher}</p>
                 </li>
                 <li>
                   <h6>Дата выхода</h6>
-                  <p>21.07.17</p>
+                  <p>{oneProduct?.date_of_issue}</p>
                 </li>
                 <li>
                   <h6>Изначальный выпуск</h6>
@@ -233,14 +246,16 @@ const ProductDetails = () => {
               <div className="btn-share__box">
                 <Button
                   className="outlined-btn"
-                  variant="outline-light w-100 mt-3">
+                  variant="outline-light w-100 mt-3"
+                >
                   <img width={20} src={shareIcon} alt="" /> Поделиться
                 </Button>
 
                 {currentUser ? (
                   <Button
                     className="outlined-btn"
-                    variant="outline-light w-100 mt-3">
+                    variant="outline-light w-100 mt-3"
+                  >
                     <img width={20} src={reportIcon} alt="" /> Пожаловаться
                   </Button>
                 ) : null}
@@ -266,7 +281,8 @@ const ProductDetails = () => {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                }}>
+                }}
+              >
                 <h4>4.3</h4>
               </div>
             </div>
