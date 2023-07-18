@@ -75,28 +75,10 @@ const ProductContextProvider = ({ children }) => {
     }
   }
 
-  // favorite
-  async function toggleFavorites(id) {
+  async function updateProduct(id, editedProduct) {
     try {
-      await axios(`${API}/posts/${id}/toggle_favorite/`, getTokens());
-      getProducts();
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  async function getFavorites(id) {
-    try {
-      const res = await axios(`${API}/accounts/${id}/favorites/`, getTokens());
-      dispatch({ type: "GET_FAVORITES", payload: res.data });
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  async function deleteFromFavorites(id) {
-    try {
-      await axios(`${API}/posts/${id}/delete_favorite/`, getTokens());
-      getFavorites();
+      await axios.patch(`${API}/posts/${id}/`, editedProduct, getTokens());
+      navigate("/products");
     } catch (error) {
       console.log(error);
     }
@@ -109,11 +91,6 @@ const ProductContextProvider = ({ children }) => {
     getOneProduct,
     oneProduct: state.oneProduct,
     deleteProduct,
-
-    toggleFavorites,
-    getFavorites,
-    favorites: state.favorites,
-    deleteFromFavorites,
   };
   return (
     <productContext.Provider value={values}>{children}</productContext.Provider>
