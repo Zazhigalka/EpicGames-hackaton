@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { API } from "../helpers/consts";
+import { getTokens } from "../helpers/functions";
 
 export const authContext = createContext();
 export const useAuth = () => useContext(authContext);
@@ -54,7 +55,24 @@ const AuthContextProvider = ({ children }) => {
   function logout() {
     localStorage.removeItem("tokens");
     localStorage.removeItem("email");
+    setCurrentUser("");
     navigate("/auth");
+  }
+
+  async function handleChangePassword(formData) {
+    setLoading(true);
+    try {
+      await axios.patch(
+        `${API}/accounts/change-password/`,
+        formData,
+        getTokens()
+      );
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
   }
 
   async function checkAuth() {
@@ -80,7 +98,7 @@ const AuthContextProvider = ({ children }) => {
     }
   }
 
-  async function getUsername(email) {
+  async function getUserData(email) {
     try {
       const response = await axios.get(`${API}/accounts/`, {
         params: {
@@ -100,11 +118,12 @@ const AuthContextProvider = ({ children }) => {
     handleRegister,
     handleRegisterSeller,
     handleLogin,
+    handleChangePassword,
     logout,
     currentUser,
     checkAuth,
     loading,
-    getUsername,
+    getUserData,
   };
   return <authContext.Provider value={values}>{children}</authContext.Provider>;
 };

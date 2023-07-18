@@ -17,24 +17,20 @@ const NavbarEpic = () => {
   const navigate = useNavigate();
   const [isClicked, setIsClicked] = useState(false);
   const [second, setSecond] = useState(false);
+
   const [username, setUsername] = useState("");
+  const [isSeller, setIsSeller] = useState(false);
 
-  const { currentUser, logout, checkAuth, getUsername } = useAuth();
-
-  useEffect(() => {
-    if (localStorage.getItem("tokens")) {
-      checkAuth();
-    }
-  }, []);
+  const { currentUser, logout, checkAuth, getUserData } = useAuth();
 
   async function fetchData() {
     try {
       const email = localStorage.getItem("email");
       if (email) {
-        const user = await getUsername(email);
+        const user = await getUserData(email);
         if (user) {
-          const username = user.username;
-          setUsername(username);
+          setUsername(user.username);
+          setIsSeller(user.is_seller);
         }
       }
     } catch (error) {
@@ -43,8 +39,14 @@ const NavbarEpic = () => {
   }
 
   useEffect(() => {
-    fetchData();
+    if (localStorage.getItem("tokens")) {
+      checkAuth();
+    }
   }, []);
+
+  useEffect(() => {
+    fetchData();
+  }, [currentUser]);
 
   const path = document.location.pathname;
 
@@ -135,6 +137,14 @@ const NavbarEpic = () => {
               <Dropdown.Item className="dropdown__items">
                 Учетная запись
               </Dropdown.Item>
+              {isSeller ? (
+                <Dropdown.Item
+                  className="dropdown__items"
+                  onClick={() => navigate("/addproduct")}>
+                  Добавить продукт
+                </Dropdown.Item>
+              ) : null}
+
               <Dropdown.Item
                 className="dropdown__items"
                 onClick={() => navigate("/wish-list")}>
@@ -152,7 +162,9 @@ const NavbarEpic = () => {
           ) : null}
 
           {currentUser ? (
-            <Nav style={{ cursor: "pointer" }}>{username}</Nav>
+            <Nav className="navbar__user_name" style={{ cursor: "pointer" }}>
+              {username}
+            </Nav>
           ) : (
             <Nav
               style={{ cursor: "pointer" }}
@@ -238,6 +250,7 @@ const NavbarEpic = () => {
 
 const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
   <a
+    style={{ width: "20%" }}
     ref={ref}
     onClick={(e) => {
       e.preventDefault();

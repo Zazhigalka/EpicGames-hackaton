@@ -12,14 +12,11 @@ const Auth = () => {
   const { handleLogin, loading } = useAuth();
 
   function handleSave() {
-    if (!email.trim() || !password.trim()) {
-      alert("заполните поля!");
-      return;
-    }
-
     const formData = new FormData();
+
     formData.append("email", email);
     formData.append("password", password);
+
     handleLogin(formData, email);
   }
 
@@ -66,18 +63,14 @@ const Auth = () => {
             )}
           </div>
         )}
-
-        <a
-          style={{
-            width: "80%",
-            color: "#f2f2f2",
-            alignSelf: "start",
-            marginTop: "20px",
-          }}
-          href=""
-          onClick={() => navigate("/register")}>
-          Нет аккаунта? Зарегестрирутесь!
-        </a>
+        <div className="auth-links">
+          <a href="" onClick={() => navigate("/register")}>
+            Нет аккаунта? Зарегестрирутесь!
+          </a>
+          <a href="" onClick={() => navigate("/change-password")}>
+            Забыли пароль?
+          </a>
+        </div>
       </div>
     </div>
   );
