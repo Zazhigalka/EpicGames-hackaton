@@ -100,7 +100,7 @@ const WishList = () => {
           </option>
         </select>
         <div className="wish-list__catalog">
-          {favorites.length > 0 ? (
+          {wishListProducts.length > 0 ? (
             <div className="wish-list__products">
               {wishListProducts.map((item) => (
                 <WishListCard key={item.id} item={item} />
