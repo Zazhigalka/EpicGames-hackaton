@@ -16,7 +16,6 @@ import { ReactComponent as LikeIcon } from "../../assets/heart.svg";
 const ProductDetails = () => {
   const {
     getOneProduct,
-    getProducts,
     oneProduct,
     deleteProduct,
     toggleLike,
@@ -26,22 +25,24 @@ const ProductDetails = () => {
   const { currentUser } = useAuth();
   const navigate = useNavigate();
 
-  const [showMore, setShowMore] = useState(false);
-  const [isLiked, setIsLiked] = useState(false);
-
-  useEffect(() => {
-    getProducts();
-  }, [isLiked]);
-
-  const toggleShowMore = () => {
-    setShowMore(!showMore);
-  };
-
   const { id } = useParams();
 
   useEffect(() => {
     getOneProduct(id);
-  }, []);
+  }, [id]);
+
+  const [showMore, setShowMore] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
+  const [totalLikes, setTotalLikes] = useState(0);
+
+  useEffect(() => {
+    setIsLiked(oneProduct?.is_liked);
+    setTotalLikes(oneProduct?.likes_count);
+  }, [oneProduct]);
+
+  const toggleShowMore = () => {
+    setShowMore(!showMore);
+  };
 
   return (
     <div style={{ backgroundColor: "#121212" }}>
@@ -52,8 +53,7 @@ const ProductDetails = () => {
           right: "0",
           top: "0",
           zIndex: "999",
-        }}
-      >
+        }}>
         <Search />
       </div>
       <div>
@@ -71,8 +71,7 @@ const ProductDetails = () => {
                   color: "#f5f5f5",
                   margin: "3em 0",
                   width: "100%",
-                }}
-              >
+                }}>
                 {oneProduct?.short_description}
               </p>
 
@@ -83,8 +82,7 @@ const ProductDetails = () => {
                     color: "rgba(245, 245, 245, 0.6)",
                     margin: "3em 0",
                     width: "100%",
-                  }}
-                >
+                  }}>
                   {oneProduct?.full_description}
                 </p>
               )}
@@ -120,14 +118,12 @@ const ProductDetails = () => {
                 <>
                   <Button
                     variant="primary w-100 p-2 mt-3"
-                    onClick={() => navigate(`/editproduct/${oneProduct.id}`)}
-                  >
+                    onClick={() => navigate(`/editproduct/${oneProduct.id}`)}>
                     Редактировать продукт
                   </Button>
                   <Button
                     variant="danger w-100 p-2 mt-3"
-                    onClick={() => deleteProduct(oneProduct.id)}
-                  >
+                    onClick={() => deleteProduct(oneProduct.id)}>
                     Удалить Продукт
                   </Button>
                 </>
@@ -138,55 +134,74 @@ const ProductDetails = () => {
                   <Button variant="warning w-100 p-2 mt-3">Получить</Button>
                   <Button
                     className="outlined-btn"
-                    variant="outline-light p-2 w-100 mt-3"
-                  >
+                    variant="outline-light p-2 w-100 mt-3">
                     Добавить в корзину
                   </Button>
                   {isLiked ? (
-                    <Button
-                      className="outlined-btn d-flex align-content-center justify-content-center"
-                      variant="outline-light p-2 w-100 mt-3"
-                      onClick={() =>
-                        toggleLikeDelete(oneProduct.id, setIsLiked)
-                      }
-                    >
-                      <div
-                        style={{
-                          width: "27%",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "space-between",
-                        }}
-                      >
-                        <LikeIcon className="like-icon-active" />
-                        Нравится
-                      </div>
-                    </Button>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        flexDirection: "column",
+                      }}>
+                      <Button
+                        className="outlined-btn d-flex align-content-center justify-content-center"
+                        variant="outline-light p-2 w-100 mt-3"
+                        onClick={() =>
+                          toggleLikeDelete(
+                            oneProduct.id,
+                            setIsLiked,
+                            setTotalLikes
+                          )
+                        }>
+                        <div
+                          style={{
+                            width: "27%",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "space-between",
+                          }}>
+                          <LikeIcon className="like-icon-active" />
+                          Нравится
+                        </div>
+                      </Button>
+                      <p style={{ color: "#f2f2f2", fontSize: "10px" }}>
+                        (Понравилось {totalLikes} пользователям)
+                      </p>
+                    </div>
                   ) : (
-                    <Button
-                      className="outlined-btn d-flex align-content-center justify-content-center"
-                      variant="outline-light p-2 w-100 mt-3"
-                      onClick={() => toggleLike(oneProduct.id, setIsLiked)}
-                    >
-                      <div
-                        style={{
-                          width: "27%",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "space-between",
-                        }}
-                      >
-                        <LikeIcon className="like-icon-unactive" />
-                        Нравится
-                        <p>{oneProduct?.likes_count}</p>
-                      </div>
-                    </Button>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        flexDirection: "column",
+                      }}>
+                      <Button
+                        className="outlined-btn d-flex align-content-center justify-content-center"
+                        variant="outline-light p-2 w-100 mt-3"
+                        onClick={() =>
+                          toggleLike(oneProduct.id, setIsLiked, setTotalLikes)
+                        }>
+                        <div
+                          style={{
+                            width: "27%",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "space-between",
+                          }}>
+                          <LikeIcon className="like-icon-unactive" />
+                          Нравится
+                        </div>
+                      </Button>
+                      <p style={{ color: "#f2f2f2", fontSize: "10px" }}>
+                        (Понравилось {totalLikes} пользователям)
+                      </p>
+                    </div>
                   )}
 
                   <Button
                     className="outlined-btn"
-                    variant="outline-light w-100 mt-3 p-1"
-                  >
+                    variant="outline-light w-100 p-1">
                     <img width={20} src={addTo} alt="" /> В список желаемого
                   </Button>
                 </>
@@ -218,16 +233,14 @@ const ProductDetails = () => {
               <div className="btn-share__box">
                 <Button
                   className="outlined-btn"
-                  variant="outline-light w-100 mt-3"
-                >
+                  variant="outline-light w-100 mt-3">
                   <img width={20} src={shareIcon} alt="" /> Поделиться
                 </Button>
 
                 {currentUser ? (
                   <Button
                     className="outlined-btn"
-                    variant="outline-light w-100 mt-3"
-                  >
+                    variant="outline-light w-100 mt-3">
                     <img width={20} src={reportIcon} alt="" /> Пожаловаться
                   </Button>
                 ) : null}
@@ -253,8 +266,7 @@ const ProductDetails = () => {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                }}
-              >
+                }}>
                 <h4>4.3</h4>
               </div>
             </div>
