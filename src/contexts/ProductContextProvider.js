@@ -70,19 +70,30 @@ const ProductContextProvider = ({ children }) => {
     }
   }
 
-  async function toggleLike(id) {
+  async function updateProduct(id, editedProduct) {
     try {
-      await axios.get(`${API}/posts/${id}/toggle_like/`, getTokens());
-      getProducts();
+      await axios.patch(`${API}/posts/${id}/`, editedProduct, getTokens());
+      navigate("/products");
     } catch (error) {
       console.log(error);
     }
   }
 
-  async function toggleLikeDelete(id) {
+  async function toggleLike(id, setIsLiked) {
+    try {
+      await axios.get(`${API}/posts/${id}/toggle_like/`, getTokens());
+      getProducts();
+      setIsLiked(true);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function toggleLikeDelete(id, setIsLiked) {
     try {
       await axios.get(`${API}/posts/${id}/delete_like/`, getTokens());
       getProducts();
+      setIsLiked(false);
     } catch (error) {
       console.log(error);
     }
@@ -97,6 +108,7 @@ const ProductContextProvider = ({ children }) => {
     deleteProduct,
     toggleLike,
     toggleLikeDelete,
+    updateProduct,
   };
   return (
     <productContext.Provider value={values}>{children}</productContext.Provider>

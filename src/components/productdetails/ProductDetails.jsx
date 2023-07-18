@@ -16,6 +16,7 @@ import { ReactComponent as LikeIcon } from "../../assets/heart.svg";
 const ProductDetails = () => {
   const {
     getOneProduct,
+    getProducts,
     oneProduct,
     deleteProduct,
     toggleLike,
@@ -23,14 +24,21 @@ const ProductDetails = () => {
   } = useProduct();
 
   const { currentUser } = useAuth();
+  const navigate = useNavigate();
 
   const [showMore, setShowMore] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
+
+  useEffect(() => {
+    getProducts();
+  }, [isLiked]);
 
   const toggleShowMore = () => {
     setShowMore(!showMore);
   };
 
   const { id } = useParams();
+
   useEffect(() => {
     getOneProduct(id);
   }, []);
@@ -142,7 +150,9 @@ const ProductDetails = () => {
 
               {currentUser === oneProduct?.owner_email ? (
                 <>
-                  <Button variant="primary w-100 p-2 mt-3">
+                  <Button
+                    variant="primary w-100 p-2 mt-3"
+                    onClick={() => navigate(`/editproduct/${oneProduct.id}`)}>
                     Редактировать продукт
                   </Button>
                   <Button
@@ -161,11 +171,13 @@ const ProductDetails = () => {
                     variant="outline-light p-2 w-100 mt-3">
                     Добавить в корзину
                   </Button>
-                  {/* {oneProduct.is_liked ? (
+                  {isLiked ? (
                     <Button
                       className="outlined-btn d-flex align-content-center justify-content-center"
                       variant="outline-light p-2 w-100 mt-3"
-                      onClick={() => toggleLikeDelete(oneProduct.id)}>
+                      onClick={() =>
+                        toggleLikeDelete(oneProduct.id, setIsLiked)
+                      }>
                       <div
                         style={{
                           width: "27%",
@@ -173,9 +185,7 @@ const ProductDetails = () => {
                           alignItems: "center",
                           justifyContent: "space-between",
                         }}>
-                        {oneProduct && (
-                          <LikeIcon className="like-icon-active" />
-                        )}
+                        <LikeIcon className="like-icon-active" />
                         Нравится
                       </div>
                     </Button>
@@ -183,7 +193,7 @@ const ProductDetails = () => {
                     <Button
                       className="outlined-btn d-flex align-content-center justify-content-center"
                       variant="outline-light p-2 w-100 mt-3"
-                      onClick={() => toggleLike(oneProduct.id)}>
+                      onClick={() => toggleLike(oneProduct.id, setIsLiked)}>
                       <div
                         style={{
                           width: "27%",
@@ -191,13 +201,12 @@ const ProductDetails = () => {
                           alignItems: "center",
                           justifyContent: "space-between",
                         }}>
-                        {oneProduct && (
-                          <LikeIcon className="like-icon-unactive" />
-                        )}
+                        <LikeIcon className="like-icon-unactive" />
                         Нравится
+                        <p>{oneProduct?.likes_count}</p>
                       </div>
                     </Button>
-                  )} */}
+                  )}
 
                   <Button
                     className="outlined-btn"
