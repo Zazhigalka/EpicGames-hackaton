@@ -143,9 +143,6 @@ const NavbarEpic = () => {
 
           {currentUser ? (
             <Dropdown.Menu className="user__menu">
-              <Dropdown.Item className="dropdown__items">
-                Учетная запись
-              </Dropdown.Item>
               {isSeller ? (
                 <Dropdown.Item
                   className="dropdown__items"
