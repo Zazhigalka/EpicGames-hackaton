@@ -12,6 +12,7 @@ import { useAuth } from "../../contexts/AuthContextProvider";
 import { useNavigate, useParams } from "react-router-dom";
 import { useProduct } from "../../contexts/ProductContextProvider";
 import { ReactComponent as LikeIcon } from "../../assets/heart.svg";
+import moment from "moment/moment";
 
 const ProductDetails = () => {
   const {
@@ -25,8 +26,6 @@ const ProductDetails = () => {
     addComment,
     deleteComment,
   } = useProduct();
-
-  console.log(oneProduct);
 
   const { currentUser } = useAuth();
   const navigate = useNavigate();
@@ -60,11 +59,9 @@ const ProductDetails = () => {
     formData.append("body", comment);
 
     addComment(formData);
-    // getOneProduct(id);
     setComment("");
   };
 
-  console.log(oneProduct);
   return (
     <div style={{ backgroundColor: "#121212" }}>
       <div
@@ -114,7 +111,7 @@ const ProductDetails = () => {
               <div className="product-details-genres">
                 <div>
                   <h6>Жанры</h6>
-                  <p>Shooter</p>
+                  <p>{oneProduct?.category}</p>
                 </div>
                 <div>
                   <h6>Особенности</h6>
@@ -125,7 +122,7 @@ const ProductDetails = () => {
             <div className="product-details-right">
               <div className="product-logo-block">
                 <img
-                  src={oneProduct?.preview}
+                  src={oneProduct?.game_logo}
                   alt=""
                   className="product-logo"
                 />
@@ -236,11 +233,11 @@ const ProductDetails = () => {
 
                 <li>
                   <h6>Издатель</h6>
-                  <p>{oneProduct?.name_of_developer}</p>
+                  <p>{oneProduct?.title_of_publisher}</p>
                 </li>
                 <li>
                   <h6>Дата выхода</h6>
-                  <p>21.07.17</p>
+                  <p>{oneProduct?.date_of_issue}</p>
                 </li>
                 <li>
                   <h6>Изначальный выпуск</h6>
@@ -295,64 +292,41 @@ const ProductDetails = () => {
             <div className="product-details__reviews-block">
               <h5>Рейтинги</h5>
               <div className="reviews">
-                <div className="one-review">
-                  <div className="about-user">
-                    <h6>GamesRadar+</h6>
-                    <p>Автор: Ford James</p>
+                {oneProduct?.comments.map((comment) => (
+                  <div key={comment.id} className="one-review">
+                    <div className="about-user">
+                      <h6>GamesRadar+</h6>
+                      <p>
+                        Дата создания:
+                        {moment(comment.created_at).format("DD/MM/YYYY")}
+                      </p>
+                      <p>
+                        Время создания:
+                        {moment(comment.created_at).format("hh:mm")}
+                      </p>
+                    </div>
+                    <div className="stars"></div>
+                    <p className="descr">{comment.body}</p>
                   </div>
-                  <div className="stars"></div>
-                  <p className="descr">
-                    Nobody thought Fortnite would still be popular this late on,
-                    but it's continued to adapt and fight for its spot at the
-                    top of the battle royale ladder.
-                  </p>
-                </div>
-                <div className="one-review">
-                  <div className="about-user">
-                    <h6>GamesRadar+</h6>
-                    <p>Автор: Ford James</p>
-                  </div>
-                  <div className="stars"></div>
-                  <p className="descr">
-                    Nobody thought Fortnite would still be popular this late on,
-                    but it's continued to adapt and fight for its spot at the
-                    top of the battle royale ladder.
-                  </p>
-                </div>
-                <div className="one-review">
-                  <div className="about-user">
-                    <h6>GamesRadar+</h6>
-                    <p>Автор: Ford James</p>
-                  </div>
-                  <div className="stars"></div>
-                  <p className="descr">
-                    Nobody thought Fortnite would still be popular this late on,
-                    but it's continued to adapt and fight for its spot at the
-                    top of the battle royale ladder.
-                  </p>
-                </div>
+                ))}
               </div>
-              {/* <form onSubmit={handleAddComment}>
-                <input
-                  type="text"
-                  value={comment}
-                  onChange={(e) => setComment(e.target.value)}
-                />
-                <button>add review</button>
-              </form> */}
-              <InputGroup size="sm" className="mb-3">
-                <Form.Control
-                  className="comment_input"
-                  type="text"
-                  value={comment}
-                  onChange={(e) => setComment(e.target.value)}
-                  aria-label="Small"
-                  aria-describedby="inputGroup-sizing-sm"
-                />
-                <Button className="add-comment-btn" onClick={handleAddComment}>
-                  Добавить комментарии
-                </Button>
-              </InputGroup>
+              {currentUser ? (
+                <InputGroup size="sm" className="mb-3">
+                  <Form.Control
+                    className="comment_input"
+                    type="text"
+                    value={comment}
+                    onChange={(e) => setComment(e.target.value)}
+                    aria-label="Small"
+                    aria-describedby="inputGroup-sizing-sm"
+                  />
+                  <Button
+                    className="add-comment-btn"
+                    onClick={handleAddComment}>
+                    Добавить комментарии
+                  </Button>
+                </InputGroup>
+              ) : null}
             </div>
 
             <div className="system-requirements__block">

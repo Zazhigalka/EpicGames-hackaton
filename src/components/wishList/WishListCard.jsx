@@ -1,18 +1,24 @@
 import React from "react";
 import "./wishListCard.css";
 import { useProduct } from "../../contexts/ProductContextProvider";
+import { useNavigate } from "react-router-dom";
+import { useCart } from "../../contexts/CartContextProvider";
 
 const WishListCard = ({ item }) => {
   const { deleteFromFavorites } = useProduct();
+  const navigate = useNavigate();
+  const { addProductToCart, checkProductCart } = useCart();
 
   const handleDeleteFromFavorites = (itemId) => {
-    // Ваш код обработки удаления элемента из списка желаемого
     deleteFromFavorites(itemId);
   };
 
   return (
     <div className="wish-list__items">
-      <div className="wish-list__items_left">
+      <div
+        className="wish-list__items_left"
+        onClick={() => navigate(`/product/${item.id}`)}
+      >
         <img
           src={item.preview}
           alt={item.title_of_game}
@@ -24,7 +30,12 @@ const WishListCard = ({ item }) => {
         </div>
       </div>
       <div className="wish-list__items_right">
-        <p className="w-l-i-r-p">{item.price} $</p>
+        <p
+          onClick={() => navigate(`/product/${item.id}`)}
+          className="w-l-i-r-p"
+        >
+          {item.price} $
+        </p>
         <div className="wish-list__items_to-cart">
           <button
             className="wish-list_delete"
@@ -32,7 +43,21 @@ const WishListCard = ({ item }) => {
           >
             Удалить
           </button>
-          <button className="wish-list_to-cart">Добавить в корзину</button>
+          {checkProductCart(item.id) ? (
+            <button
+              className="wish-list_to-cart"
+              onClick={() => navigate("/cart")}
+            >
+              Посмотреть в корзине
+            </button>
+          ) : (
+            <button
+              className="wish-list_to-cart"
+              onClick={() => addProductToCart(item)}
+            >
+              Добавить в корзину
+            </button>
+          )}
         </div>
       </div>
     </div>

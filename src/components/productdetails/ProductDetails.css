@@ -131,30 +131,30 @@
 }
 
 .comment_input {
-  color: #f2f2f2;
-  background: #262626;
-  border: 1px solid #434343;
+  color: #f2f2f2 !important;
+  background: #262626 !important;
+  border: 1px solid #434343 !important;
   height: 50px;
 }
 
 .comment_input:focus {
-  background: #434343;
-  border-color: #f2f2f2;
+  background: #434343 !important;
+  border-color: #f2f2f2 !important;
 }
 
 .comment_input:not(:placeholder-shown) {
-  color: #f2f2f2;
+  color: #f2f2f2 !important;
 }
 
 .add-comment-btn {
-  color: #f2f2f2;
-  background-color: #474747;
-  border: 1px solid #474747;
+  color: #f2f2f2 !important;
+  background-color: #474747 !important;
+  border: 1px solid #474747 !important;
 }
 
 .add-comment-btn:hover {
-  background-color: #606060;
-  border: 1px solid #606060;
+  background-color: #606060 !important;
+  border: 1px solid #606060 !important;
 }
 
 .product-details-genres p {
@@ -235,6 +235,10 @@
 
 .product-details__reviews-block .about-user h6 {
   color: #f5f5f5;
+}
+
+.product-details__reviews-block .about-user p {
+  font-size: 12px;
 }
 
 .product-details__reviews-block .reviews {

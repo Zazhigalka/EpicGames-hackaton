@@ -32,7 +32,6 @@ function reducer(state = INIT_STATE, action) {
   }
 }
 
-// console.log(products);
 const ProductContextProvider = ({ children }) => {
   const navigate = useNavigate();
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
@@ -134,11 +133,9 @@ const ProductContextProvider = ({ children }) => {
 
   async function addComment(formData) {
     try {
-      await axios.post(
-        `${API}/posts/${formData.get("id")}/comment/`,
-        formData,
-        getTokens()
-      );
+      const id = `${formData.get("id")}`;
+      await axios.post(`${API}/posts/${id}/comment/`, formData, getTokens());
+      getOneProduct(id);
     } catch (error) {
       console.log(error);
     }

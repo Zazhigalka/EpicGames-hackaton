@@ -43,8 +43,23 @@
 /* cart mid */
 .cart__catalog {
   display: flex;
-  align-items: center;
+  justify-content: space-between;
+  margin-top: 2%;
+  padding-bottom: 5%;
+}
+
+.cart__left {
+  width: 70%;
+}
+
+.cart__right {
+}
+
+/* cart - 0 */
+.cart__none {
+  display: flex;
   flex-direction: column;
+  align-items: center;
   margin-top: 5%;
   padding-bottom: 5%;
 }

@@ -6,6 +6,7 @@ const AddProduct = () => {
   const { createProduct } = useProduct();
 
   const [titleOfGame, setTitleOfGame] = useState("");
+  const [gameLogo, setGameLogo] = useState("");
   const [titleOfPulisher, setTitleOfPulisher] = useState("");
   const [nameOfDeveloper, setNameOfDeveloper] = useState("");
   const [dateOfIssue, setDateOfIssue] = useState("");
@@ -23,29 +24,31 @@ const AddProduct = () => {
   const [image4, setImage4] = useState("");
   const [image5, setImage5] = useState("");
 
-  console.log(
-    titleOfGame,
-    titleOfPulisher,
-    nameOfDeveloper,
-    dateOfIssue,
-    shortDescr,
-    preview,
-    fullDescr,
-    fullImage,
-    price,
-    linkGame,
-    video,
-    category,
-    image1,
-    image2,
-    image3,
-    image4,
-    image5
-  );
+  // console.log(
+  //   titleOfGame,
+  //   gameLogo,
+  //   titleOfPulisher,
+  //   nameOfDeveloper,
+  //   dateOfIssue,
+  //   shortDescr,
+  //   preview,
+  //   fullDescr,
+  //   fullImage,
+  //   price,
+  //   linkGame,
+  //   video,
+  //   category,
+  //   image1,
+  //   image2,
+  //   image3,
+  //   image4,
+  //   image5
+  // );
 
   const handleSave = () => {
     if (
       !titleOfGame ||
+      !gameLogo ||
       !titleOfPulisher ||
       !nameOfDeveloper ||
       !dateOfIssue ||
@@ -55,10 +58,7 @@ const AddProduct = () => {
       !linkGame ||
       !category ||
       !image1 ||
-      !image2 ||
-      !image3 ||
-      !image4 ||
-      !image5
+      !image2
     ) {
       alert("ЗАПОЛНИТЕ ПОЛЯ!!!");
       return;
@@ -67,6 +67,7 @@ const AddProduct = () => {
     const newProduct = new FormData();
 
     newProduct.append("title_of_game", titleOfGame);
+    newProduct.append("game_logo", gameLogo);
     newProduct.append("title_of_publisher", titleOfPulisher);
     newProduct.append("name_of_developer", nameOfDeveloper);
     newProduct.append("date_of_issue", dateOfIssue);
@@ -100,6 +101,13 @@ const AddProduct = () => {
             type="text"
             className="addProduct__inputs"
             onChange={(e) => setTitleOfGame(e.target.value)}
+          />
+          <input
+            autoFocus
+            placeholder="ENTER GAME LOGO"
+            type="text"
+            className="addProduct__inputs"
+            onChange={(e) => setGameLogo(e.target.value)}
           />
           <input
             placeholder="ENTER TITLE OF PULISHER"

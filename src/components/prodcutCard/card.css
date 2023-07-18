@@ -23,7 +23,7 @@
   position: relative;
   overflow: hidden;
   border-radius: 4px;
-  height: 235px;
+  height: auto;
   transition: 0.3s;
 }
 
