@@ -4,12 +4,18 @@ import "./homeCarouselAdaptive.css";
 import { Carousel } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import addIcon from "../../assets/add-to.png";
+import { useProduct } from "../../contexts/ProductContextProvider";
 
 const HomeCarousel = () => {
   const navigate = useNavigate();
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
   const [progressIndex, setProgressIndex] = useState(0);
   const [iconPlus, setIconPlus] = useState(false);
+  const { getFavorites, toggleFavorites } = useProduct();
+
+  useEffect(() => {
+    getFavorites();
+  }, []);
 
   const handleMouseEnter = () => {
     setIconPlus(true);
@@ -141,6 +147,7 @@ const HomeCarousel = () => {
               className="carousel__left_image d-block w-100"
               src="https://cdn2.unrealengine.com/egs-spider-man-miles-morales-carousel-desktop-1248x702-0cbd7e91abd2.jpg?h=720&quality=medium&resize=1&w=1280"
               alt="Spider-Man"
+              onClick={() => navigate("/product/14")}
             />
             <Carousel.Caption className="carousel__left_descr">
               <img
@@ -156,7 +163,9 @@ const HomeCarousel = () => {
                 От <span style={{ fontWeight: 600 }}>39,99$</span>
               </p>
               <div className="left__descr_bottom">
-                <button>Добавить в Корзину</button>
+                <button onClick={() => toggleFavorites()}>
+                  Добавить в Корзину
+                </button>
                 <div className="home__wish">
                   <img src={addIcon} alt="" />
                   <p>В список желаемого</p>
@@ -169,6 +178,7 @@ const HomeCarousel = () => {
               className="carousel__left_image d-block w-100"
               src="https://cdn2.unrealengine.com/egs-ac-mirage-carousel-desktop-1920x1080-b74b6e380b4d.jpg?h=720&quality=medium&resize=1&w=1280"
               alt="Second slide"
+              onClick={() => navigate("/product/11")}
             />
             <Carousel.Caption className="carousel__left_descr">
               <img
@@ -199,6 +209,7 @@ const HomeCarousel = () => {
               src="https://cdnb.artstation.com/p/assets/images/images/006/737/939/large/vitaliy-naymushin-fortnite-keyart-final.jpg?1500907440"
               alt="Fortnite"
               style={{ opacity: 0.8 }}
+              onClick={() => navigate("/product/12")}
             />
             <Carousel.Caption className="carousel__left_descr">
               <img
@@ -260,6 +271,7 @@ const HomeCarousel = () => {
               className="carousel__left_image d-block w-100"
               src="https://mms.businesswire.com/media/20230713426786/en/1840766/5/FC24_standardkeyart_16x9.jpg"
               alt="EA SPORTS FC"
+              onClick={() => navigate("/product/10")}
             />
             <Carousel.Caption
               className="carousel__left_descr"
@@ -287,6 +299,7 @@ const HomeCarousel = () => {
               src="https://cdn2.unrealengine.com/Diesel%2Fproductv2%2Fbatman-arkham-knight%2FEGS_WB_Batman_Arkham_Knight_G1_1920x1080_19_0911-1920x1080-1d69e15f00cb5ab57249f208f1f8f45d52cbbc59.jpg"
               alt="Batman"
               style={{ opacity: 0.6 }}
+              onClick={() => navigate("/product/13")}
             />
             <Carousel.Caption className="carousel__left_descr">
               <img
