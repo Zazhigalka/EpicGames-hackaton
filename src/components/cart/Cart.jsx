@@ -1,5 +1,6 @@
 import React from "react";
 import "./cart.css";
+import "./cartAdaptive.css";
 import Search from "../search/Search";
 
 const Cart = () => {
