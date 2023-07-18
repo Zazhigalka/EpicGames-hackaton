@@ -3,6 +3,7 @@ import "./Register.css";
 import auth__logo from "../../assets/epic_games_logo.png";
 import { Button, Form, Spinner } from "react-bootstrap";
 import { useAuth } from "../../contexts/AuthContextProvider";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -29,6 +30,7 @@ const Register = () => {
     }
 
     const formData = new FormData();
+
     formData.append("email", email);
     formData.append("password", password);
     formData.append("password2", passwordConfirm);
@@ -42,6 +44,8 @@ const Register = () => {
       handleRegister(formData);
     }
   }
+
+  const navigate = useNavigate();
 
   return (
     <div className="container__auth">
@@ -123,6 +127,17 @@ const Register = () => {
               )}
             </div>
           )}
+          <a
+            style={{
+              width: "80%",
+              color: "#f2f2f2",
+              alignSelf: "start",
+              marginTop: "20px",
+            }}
+            href=""
+            onClick={() => navigate("/auth")}>
+            Уже есть аккаунт? Войдите!
+          </a>
         </div>
       </div>
     </div>
