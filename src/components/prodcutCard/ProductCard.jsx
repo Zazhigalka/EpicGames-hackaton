@@ -7,7 +7,6 @@ import { useProduct } from "../../contexts/ProductContextProvider";
 
 const ProductCard = ({ item }) => {
   const [iconPlus, setIconPlus] = useState(false);
-  console.log(item);
 
   const handleMouseEnter = () => {
     setIconPlus(true);
@@ -30,7 +29,7 @@ const ProductCard = ({ item }) => {
         className="card__image"
         variant="top"
         onMouseEnter={handleMouseEnter}
-        src={item.preview}
+        src={item?.preview}
         onMouseLeave={handleMouseLeave}
         onClick={() => navigate(`/product/${item.id}`)}
       />

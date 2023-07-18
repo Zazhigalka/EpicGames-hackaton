@@ -23,8 +23,6 @@ const ProductDetails = () => {
     toggleLikeDelete,
   } = useProduct();
 
-  console.log(oneProduct);
-
   const { currentUser } = useAuth();
   const navigate = useNavigate();
 
@@ -45,7 +43,6 @@ const ProductDetails = () => {
     getOneProduct(id);
   }, []);
 
-  console.log(oneProduct);
   return (
     <div style={{ backgroundColor: "#121212" }}>
       <div
@@ -109,7 +106,7 @@ const ProductDetails = () => {
             <div className="product-details-right">
               <div className="product-logo-block">
                 <img
-                  src={oneProduct?.preview}
+                  src={oneProduct?.game_logo}
                   alt=""
                   className="product-logo"
                 />

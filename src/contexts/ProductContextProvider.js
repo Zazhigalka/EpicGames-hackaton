@@ -32,7 +32,6 @@ function reducer(state = INIT_STATE, action) {
   }
 }
 
-// console.log(products);
 const ProductContextProvider = ({ children }) => {
   const navigate = useNavigate();
   const [state, dispatch] = useReducer(reducer, INIT_STATE);

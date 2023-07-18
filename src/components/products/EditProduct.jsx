@@ -16,6 +16,7 @@ const EditProduct = () => {
   useEffect(() => {
     if (oneProduct) {
       setTitleOfGame(oneProduct.title_of_game);
+      setGameLogo(oneProduct.game_logo);
       setTitleOfPulisher(oneProduct.title_of_publisher);
       setNameOfDeveloper(oneProduct.name_of_developer);
       setDateOfIssue(oneProduct.date_of_issue);
@@ -31,6 +32,7 @@ const EditProduct = () => {
   }, [oneProduct]);
 
   const [titleOfGame, setTitleOfGame] = useState("");
+  const [gameLogo, setGameLogo] = useState("");
   const [titleOfPulisher, setTitleOfPulisher] = useState("");
   const [nameOfDeveloper, setNameOfDeveloper] = useState("");
   const [dateOfIssue, setDateOfIssue] = useState("");
@@ -42,25 +44,12 @@ const EditProduct = () => {
   const [linkGame, setLinkGame] = useState("");
   const [video, setVideo] = useState("");
   const [category, setCategory] = useState("");
-
-  console.log(
-    titleOfGame,
-    titleOfPulisher,
-    nameOfDeveloper,
-    dateOfIssue,
-    shortDescr,
-    preview,
-    fullDescr,
-    fullImage,
-    price,
-    linkGame,
-    video,
-    category
-  );
+  console.log(gameLogo);
 
   const handleSave = () => {
     if (
       !titleOfGame ||
+      !gameLogo ||
       !titleOfPulisher ||
       !nameOfDeveloper ||
       !dateOfIssue ||
@@ -77,6 +66,7 @@ const EditProduct = () => {
     const newProduct = new FormData();
 
     newProduct.append("title_of_game", titleOfGame);
+    newProduct.append("game_logo", gameLogo);
     newProduct.append("title_of_publisher", titleOfPulisher);
     newProduct.append("name_of_developer", nameOfDeveloper);
     newProduct.append("date_of_issue", dateOfIssue);
@@ -105,6 +95,13 @@ const EditProduct = () => {
             className="addProduct__inputs"
             onChange={(e) => setTitleOfGame(e.target.value)}
             value={titleOfGame}
+          />
+          <input
+            placeholder="ENTER GAME LOGO"
+            type="text"
+            className="addProduct__inputs"
+            onChange={(e) => setGameLogo(e.target.value)}
+            value={gameLogo}
           />
           <input
             placeholder="ENTER TITLE OF PULISHER"
