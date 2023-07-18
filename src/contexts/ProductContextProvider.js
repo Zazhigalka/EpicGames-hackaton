@@ -70,6 +70,24 @@ const ProductContextProvider = ({ children }) => {
     }
   }
 
+  async function toggleLike(id) {
+    try {
+      await axios.get(`${API}/posts/${id}/toggle_like/`, getTokens());
+      getProducts();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function toggleLikeDelete(id) {
+    try {
+      await axios.get(`${API}/posts/${id}/delete_like/`, getTokens());
+      getProducts();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const values = {
     createProduct,
     getProducts,
@@ -77,6 +95,8 @@ const ProductContextProvider = ({ children }) => {
     getOneProduct,
     oneProduct: state.oneProduct,
     deleteProduct,
+    toggleLike,
+    toggleLikeDelete,
   };
   return (
     <productContext.Provider value={values}>{children}</productContext.Provider>

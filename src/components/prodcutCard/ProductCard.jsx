@@ -19,8 +19,7 @@ const ProductCard = ({ item }) => {
   return (
     <Card
       className="card__container"
-      onClick={() => navigate(`/product/${item.id}`)}
-    >
+      onClick={() => navigate(`/product/${item.id}`)}>
       <Card.Img
         className="card__image"
         variant="top"
