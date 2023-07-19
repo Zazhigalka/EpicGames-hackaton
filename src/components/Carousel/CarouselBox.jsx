@@ -5,23 +5,7 @@ import "./CarouselBox.css";
 
 const CarouselBox = () => {
   const { oneProduct } = useProduct();
-  const videoRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
-
-  useEffect(() => {
-    const video = videoRef.current;
-
-    const handleEnded = () => {
-      video.currentTime = 0;
-      video.play();
-    };
-
-    video.addEventListener("ended", handleEnded);
-
-    return () => {
-      video.removeEventListener("ended", handleEnded);
-    };
-  }, []);
 
   const handleSelect = (selectedIndex) => {
     setActiveIndex(selectedIndex);
@@ -30,17 +14,15 @@ const CarouselBox = () => {
   return (
     <div style={{ width: "90%" }}>
       <Carousel activeIndex={activeIndex} onSelect={handleSelect}>
-        <Carousel.Item>
-          <video
-            className="d-block w-100"
-            autoPlay
-            muted
-            controls
-            ref={videoRef}>
-            <source src={oneProduct?.video} type="video/mp4" />
-            Ваш браузер не поддерживает воспроизведение видео.
-          </video>
-        </Carousel.Item>
+        {oneProduct ? (
+          <Carousel.Item>
+            <video className="d-block w-100" autoPlay muted controls>
+              <source src={oneProduct?.video} type="video/mp4" />
+              Ваш браузер не поддерживает воспроизведение видео.
+            </video>
+          </Carousel.Item>
+        ) : null}
+
         <Carousel.Item>
           <img
             className="d-block w-100"
