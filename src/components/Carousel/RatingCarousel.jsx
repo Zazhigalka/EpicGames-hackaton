@@ -3,7 +3,7 @@ import { ReactComponent as Star } from "../../assets/star.svg";
 import "./RatingCarousel.css";
 import { Button } from "react-bootstrap";
 
-const RatingSlider = ({ id, addRating }) => {
+const RatingSlider = ({ id, addRating, setHasRated }) => {
   const [rate, setRate] = useState(0);
 
   const handleChange = (event) => {
@@ -15,6 +15,8 @@ const RatingSlider = ({ id, addRating }) => {
     formData.append("mark", rate);
     formData.append("id", id);
     addRating(formData);
+
+    setHasRated(true);
   };
 
   return (
@@ -24,7 +26,7 @@ const RatingSlider = ({ id, addRating }) => {
         {[0, 1, 2, 3, 4, 5].map((star) => (
           <Star
             key={star}
-            className={`star ${star >= rate ? "filled" : ""}`}
+            className={`star ${star >= rate ? "none" : "filled"}`}
             onClick={() => setRate(star)}
           />
         ))}

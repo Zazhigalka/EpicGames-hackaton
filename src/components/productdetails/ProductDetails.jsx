@@ -392,13 +392,13 @@ const ProductDetails = () => {
                   }
                 />
               </div>
-              {hasRated && ratingData?.mark && (
+              {hasRated && ratingData?.mark ? (
                 <p style={{ fontSize: "2em", textAlign: "center" }}>
                   Вы уже оценили! Ваша оценка: {ratingData?.mark}
                 </p>
-              )}
+              ) : null}
 
-              {!hasRated && currentUser ? (
+              {!hasRated && currentUser && ratingData?.mark ? null : (
                 <div>
                   <RatingSlider
                     id={id}
@@ -406,7 +406,7 @@ const ProductDetails = () => {
                     setHasRated={setHasRated}
                   />
                 </div>
-              ) : null}
+              )}
             </div>
 
             <div className="system-requirements__block">

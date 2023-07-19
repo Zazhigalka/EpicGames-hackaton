@@ -6,16 +6,25 @@ import isAdded from "../../assets/complete.svg";
 import { useNavigate } from "react-router-dom";
 import { useProduct } from "../../contexts/ProductContextProvider";
 import { useCart } from "../../contexts/CartContextProvider";
+import inFavorites from "../../assets/complete.svg";
 
 const ProductCard = ({ item }) => {
   const [iconPlus, setIconPlus] = useState(false);
-  const { deleteFromFavorites, getFavorites, toggleFavorites } = useProduct();
-  const [isFavorited, setIsFavorited] = useState(false);
+  const { getProducts, products, getFavorites, toggleFavorites } = useProduct();
 
   useEffect(() => {
+    getProducts();
     getFavorites();
   }, []);
 
+  const handleClick = (id) => {
+    toggleFavorites(id);
+    if (products) {
+      let filtered = products.filter((item) => item.id === id);
+      return filtered[0]?.is_favorite || false;
+    }
+    return false;
+  };
   const handleMouseEnter = () => {
     setIconPlus(true);
   };
@@ -27,15 +36,6 @@ const ProductCard = ({ item }) => {
   const navigate = useNavigate();
 
   const path = document.location.pathname;
-
-  const handleClick = () => {
-    toggleFavorites(item.id);
-    setIsFavorited(true);
-    if (isFavorited) {
-      deleteFromFavorites(item.id);
-      setIsFavorited(false);
-    }
-  };
 
   return (
     <Card className="card__container">
@@ -51,15 +51,15 @@ const ProductCard = ({ item }) => {
       {iconPlus ? (
         <img
           onMouseEnter={handleMouseEnter}
-          src={isFavorited ? isAdded : addIcon}
+          src={handleClick() ? inFavorites : addIcon}
           id="card__add_icon"
           alt=""
           title={
-            isFavorited
+            handleClick
               ? "Уже в списке желаемого"
               : "Добавить в список желаемого"
           }
-          onClick={handleClick}
+          onClick={() => handleClick(item.id)}
         />
       ) : null}
       <Card.Body className="card__body">

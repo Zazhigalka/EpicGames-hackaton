@@ -7,12 +7,26 @@ import addToWish from "../../assets/add-to.png";
 import ProductsItems from "./ProductsItems";
 import { useProduct } from "../../contexts/ProductContextProvider";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import inFavorites from "../../assets/complete.svg";
 
 const Home = () => {
-  const { products, getProducts } = useProduct();
+  const { products, getProducts, getFavorites, toggleFavorites } = useProduct();
+
+  const navigate = useNavigate();
+
+  const handleClick = (id) => {
+    toggleFavorites(id);
+    if (products) {
+      let filtered = products.filter((item) => item.id === id);
+      return filtered[0]?.is_favorite || false;
+    }
+    return false;
+  };
 
   useEffect(() => {
     getProducts();
+    getFavorites();
   }, []);
 
   // home second
@@ -94,13 +108,17 @@ const Home = () => {
               className="home__second_img"
               src="https://d.newsweek.com/en/full/895239/god-war-4-trophy-guide-complete-list-all-how-get-gold-silver-bronze-platinum.jpg?w=1600&h=900&q=88&f=9f956e01f14bb50bd8c38f9793d10384"
               alt=""
+              onClick={() => navigate("/product/15")}
             />
             {iconPlus ? (
               <img
                 className="home__second_add"
-                src={addToWish}
+                src={handleClick() ? inFavorites : addToWish}
                 alt=""
-                title="В список желания"
+                title={
+                  handleClick() ? "В списке желаемого" : "В список желаемого"
+                }
+                onClick={() => handleClick()}
               />
             ) : null}
           </div>
@@ -123,13 +141,16 @@ const Home = () => {
               className="home__second_img"
               src="https://assets.altarofgaming.com/wp-content/uploads/2021/11/valorant-game-cover-altar-of-gaming.jpg"
               alt=""
+              onClick={() => navigate("/product/19")}
             />
             {secondIconPlus ? (
               <img
                 className="home__second_add"
-                src={addToWish}
+                src={handleClick() ? inFavorites : addToWish}
                 alt=""
-                title="В список желания"
+                title={
+                  handleClick() ? "В списке желаемого" : "В список желаемого"
+                }
               />
             ) : null}
           </div>
@@ -347,13 +368,16 @@ const Home = () => {
               className="home__second_img"
               src="https://wallpapershome.ru/images/wallpapers/poster-3840x2160-poster-18222.jpg"
               alt=""
+              onClick={() => navigate("/product/16")}
             />
             {thirdIconPlus ? (
               <img
                 className="home__second_add"
-                src={addToWish}
+                src={handleClick() ? inFavorites : addToWish}
                 alt=""
-                title="В список желания"
+                title={
+                  handleClick() ? "В списке желаемого" : "В список желаемого"
+                }
               />
             ) : null}
           </div>
@@ -375,13 +399,16 @@ const Home = () => {
               className="home__second_img"
               src="https://image.api.playstation.com/vulcan/img/rnd/202010/2618/itbSm3suGHSSHIpmu9CCPBRy.jpg"
               alt=""
+              onClick={() => navigate("/product/20")}
             />
             {fouthIconPlus ? (
               <img
                 className="home__second_add"
-                src={addToWish}
+                src={handleClick() ? inFavorites : addToWish}
                 alt=""
-                title="В список желания"
+                title={
+                  handleClick() ? "В списке желаемого" : "В список желаемого"
+                }
               />
             ) : null}
           </div>

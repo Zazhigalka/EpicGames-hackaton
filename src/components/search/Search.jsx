@@ -9,14 +9,20 @@ import {
 } from "react-bootstrap";
 import "./Search.css";
 import search_icon from "../../assets/search.png";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import cart__icon from "../../assets/cart__icon.png";
 import heart__icon from "../../assets/search__heart_icon.png";
 import { useAuth } from "../../contexts/AuthContextProvider";
 import { useProduct } from "../../contexts/ProductContextProvider";
+import { useEffect } from "react";
 
 const Search = () => {
+  const { getProducts, products } = useProduct();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    getProducts();
+  }, []);
 
   const { currentUser } = useAuth();
   const { searchProducts } = useProduct();

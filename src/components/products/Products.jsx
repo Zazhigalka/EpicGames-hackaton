@@ -11,7 +11,6 @@ const Products = () => {
   const { getProducts, products, pages, categoryFilter, searchFilter } =
     useProduct();
   const [currentPage, setCurrentPage] = useState(1);
-  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     setSearchParams({
@@ -37,9 +36,11 @@ const Products = () => {
     setCurrentPage(currentPage + 1);
   };
 
+  const [searchParams, setSearchParams] = useSearchParams();
+
   useEffect(() => {
     getProducts();
-  }, [searchParams]);
+  }, []);
 
   console.log(products);
 
@@ -93,16 +94,10 @@ const Products = () => {
             {products.map((item) => {
               if (categoryFilter === "All") {
                 return <ProductCard key={item.id} item={item} />;
-              } else if (searchFilter === item.title_of_game) {
-                return <ProductCard key={item.id} item={item} />;
               } else if (item.category === categoryFilter) {
                 return <ProductCard key={item.id} item={item} />;
               }
-            })} 
-
-            {/* {products.map((item) => (
-              <ProductCard key={item.id} item={item} />
-            ))} */}
+            })}
           </div>
           <Pagination>
             <Pagination.Prev onClick={handlePrev} />
