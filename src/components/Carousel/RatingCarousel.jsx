@@ -15,6 +15,8 @@ const RatingSlider = ({ id, addRating }) => {
     formData.append("mark", rate);
     formData.append("id", id);
     addRating(formData);
+
+    setHasRated(true);
   };
 
   return (
