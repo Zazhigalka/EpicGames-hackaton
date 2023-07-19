@@ -11,6 +11,7 @@ import inFavorites from "../../assets/complete.svg";
 const ProductCard = ({ item }) => {
   const [iconPlus, setIconPlus] = useState(false);
   const { getProducts, products, getFavorites, toggleFavorites } = useProduct();
+  const [info, setInfo] = useState(false);
 
   useEffect(() => {
     getProducts();
@@ -21,7 +22,7 @@ const ProductCard = ({ item }) => {
     toggleFavorites(id);
     if (products) {
       let filtered = products.filter((item) => item.id === id);
-      return filtered[0]?.is_favorite || false;
+      setInfo(filtered[0]?.is_favorite);
     }
     return false;
   };
@@ -41,21 +42,19 @@ const ProductCard = ({ item }) => {
         className="card__image"
         variant="top"
         onMouseEnter={handleMouseEnter}
-        src={item?.preview}
         onMouseLeave={handleMouseLeave}
+        src={item?.preview}
         onClick={() => navigate(`/product/${item.id}`)}
       />
       <div id="card__back"></div>
       {iconPlus ? (
         <img
           onMouseEnter={handleMouseEnter}
-          src={handleClick(item.id) ? inFavorites : addIcon}
+          src={info ? inFavorites : addIcon}
           id="card__add_icon"
           alt=""
           title={
-            handleClick(item.id)
-              ? "Уже в списке желаемого"
-              : "Добавить в список желаемого"
+            info ? "Уже в списке желаемого" : "Добавить в список желаемого"
           }
           onClick={() => handleClick(item.id)}
         />
