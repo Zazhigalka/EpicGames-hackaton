@@ -13,6 +13,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useProduct } from "../../contexts/ProductContextProvider";
 import { ReactComponent as LikeIcon } from "../../assets/heart.svg";
 import moment from "moment/moment";
+import RatingSlider from "../Carousel/RatingCarousel";
 
 const ProductDetails = () => {
   const {
@@ -25,6 +26,8 @@ const ProductDetails = () => {
 
     addComment,
     deleteComment,
+
+    addRating,
   } = useProduct();
 
   const { currentUser } = useAuth();
@@ -285,48 +288,10 @@ const ProductDetails = () => {
                   alignItems: "center",
                   justifyContent: "center",
                 }}>
-                <h4>4.3</h4>
+                <h4>{oneProduct?.rating}</h4>
               </div>
-            </div>
 
-            <div className="product-details__reviews-block">
-              <h5>Рейтинги</h5>
-              <div className="reviews">
-                {oneProduct?.comments.map((comment) => (
-                  <div key={comment.id} className="one-review">
-                    <div className="about-user">
-                      <h6>GamesRadar+</h6>
-                      <p>
-                        Дата создания:
-                        {moment(comment.created_at).format("DD/MM/YYYY")}
-                      </p>
-                      <p>
-                        Время создания:
-                        {moment(comment.created_at).format("hh:mm")}
-                      </p>
-                    </div>
-                    <div className="stars"></div>
-                    <p className="descr">{comment.body}</p>
-                  </div>
-                ))}
-              </div>
-              {currentUser ? (
-                <InputGroup size="sm" className="mb-3">
-                  <Form.Control
-                    className="comment_input"
-                    type="text"
-                    value={comment}
-                    onChange={(e) => setComment(e.target.value)}
-                    aria-label="Small"
-                    aria-describedby="inputGroup-sizing-sm"
-                  />
-                  <Button
-                    className="add-comment-btn"
-                    onClick={handleAddComment}>
-                    Добавить комментарии
-                  </Button>
-                </InputGroup>
-              ) : null}
+              <RatingSlider id={id} addRating={addRating} />
             </div>
 
             <div className="system-requirements__block">
@@ -386,6 +351,46 @@ const ProductDetails = () => {
                   товарные знаки являются собственностью соответствующих
                   владельцев.
                 </p>
+              </div>
+            </div>
+            <div className="product-details__reviews-block">
+              <h5>Комментарии</h5>
+
+              <div className="reviews">
+                {currentUser ? (
+                  <InputGroup size="sm" className="mb-3 mt-3">
+                    <Form.Control
+                      className="comment_input"
+                      type="text"
+                      value={comment}
+                      onChange={(e) => setComment(e.target.value)}
+                      aria-label="Small"
+                      aria-describedby="inputGroup-sizing-sm"
+                    />
+                    <Button
+                      className="add-comment-btn"
+                      onClick={handleAddComment}>
+                      Добавить комментарии
+                    </Button>
+                  </InputGroup>
+                ) : null}
+                {oneProduct?.comments.map((comment) => (
+                  <div key={comment.id} className="one-review">
+                    <div className="about-user">
+                      <h6>GamesRadar+</h6>
+                      <p>
+                        Дата создания:
+                        {moment(comment.created_at).format("DD/MM/YYYY")}
+                      </p>
+                      <p>
+                        Время создания:
+                        {moment(comment.created_at).format("hh:mm")}
+                      </p>
+                    </div>
+                    <div className="stars"></div>
+                    <p className="descr">{comment.body}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </section>

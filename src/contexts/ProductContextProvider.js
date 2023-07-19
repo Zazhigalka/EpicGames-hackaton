@@ -150,6 +150,16 @@ const ProductContextProvider = ({ children }) => {
     }
   }
 
+  async function addRating(formData) {
+    try {
+      const id = `${formData.get("id")}`;
+      await axios.post(`${API}/posts/${id}/rating/`, formData, getTokens());
+      getOneProduct(id);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const values = {
     createProduct,
     getProducts,
@@ -169,6 +179,8 @@ const ProductContextProvider = ({ children }) => {
 
     addComment,
     deleteComment,
+
+    addRating,
   };
 
   return (
