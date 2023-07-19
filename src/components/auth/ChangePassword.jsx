@@ -9,7 +9,7 @@ const ChangePassword = () => {
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
 
-  const { handleChangePassword, loading } = useAuth();
+  const { handleChangePassword, loading, error } = useAuth();
 
   function handleSave() {
     const formData = new FormData();
@@ -35,6 +35,7 @@ const ChangePassword = () => {
             type="password"
             placeholder="Новый пароль"
           />
+          {error ? <p style={{ color: "#f2f2f2" }}>{error}</p> : null}
         </div>
 
         {loading ? (

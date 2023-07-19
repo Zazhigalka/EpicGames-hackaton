@@ -97,8 +97,7 @@ const NavbarEpic = () => {
             onClick={() => {
               navigate("/");
               handleElementClick();
-            }}
-          >
+            }}>
             МАГАЗИН
           </Nav.Link>
           <Nav.Link
@@ -110,23 +109,20 @@ const NavbarEpic = () => {
             onClick={() => {
               navigate("/distribution");
               handleElementSecond();
-            }}
-          >
+            }}>
             ДИСТРИБУЦИЯ
           </Nav.Link>
           <Nav.Link
             className="navbar__items no-jump"
             href="https://www.epicgames.com/help"
-            target="_blank"
-          >
+            target="_blank">
             ПОДДЕРЖКА
           </Nav.Link>
           <Nav className="square"></Nav>
           <Nav.Link
             className="navbar__items no-jump"
             href="https://www.unrealengine.com/en-US"
-            target="_blank"
-          >
+            target="_blank">
             UNREAL ENGINE
           </Nav.Link>
         </Nav>
@@ -135,8 +131,7 @@ const NavbarEpic = () => {
           className="navbar__user"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          align="center"
-        >
+          align="center">
           <Dropdown.Toggle as={CustomToggle} className="user-icon">
             <img src={userIcon} id="user__icon" alt="" />
           </Dropdown.Toggle>
@@ -146,22 +141,24 @@ const NavbarEpic = () => {
               {isSeller ? (
                 <Dropdown.Item
                   className="dropdown__items"
-                  onClick={() => navigate("/addproduct")}
-                >
+                  onClick={() => navigate("/addproduct")}>
                   Добавить продукт
                 </Dropdown.Item>
               ) : null}
 
               <Dropdown.Item
                 className="dropdown__items"
-                onClick={() => navigate("/wish-list")}
-              >
+                onClick={() => navigate("/wish-list")}>
                 Список желаемого
               </Dropdown.Item>
               <Dropdown.Item
                 className="dropdown__items"
-                onClick={() => navigate("/cart")}
-              >
+                onClick={() => navigate("/change-password")}>
+                Сменить пароль
+              </Dropdown.Item>
+              <Dropdown.Item
+                className="dropdown__items"
+                onClick={() => navigate("/cart")}>
                 Корзина
               </Dropdown.Item>
               <Dropdown.Item className="dropdown__items" onClick={logout}>
@@ -178,8 +175,7 @@ const NavbarEpic = () => {
             <Nav
               style={{ cursor: "pointer" }}
               className="navbar__user_name"
-              onClick={() => navigate("/auth")}
-            >
+              onClick={() => navigate("/auth")}>
               Войти
             </Nav>
           )}
@@ -200,8 +196,7 @@ const NavbarEpic = () => {
               className="menu__close"
               onClick={() => {
                 toggleMenu();
-              }}
-            >
+              }}>
               <img src={closeMenu} alt="Закрыть" id="menu__close_icon" />
             </div>
             <ul style={{ width: "100%" }}>
@@ -210,8 +205,7 @@ const NavbarEpic = () => {
                 onClick={() => {
                   navigate("/");
                   toggleMenu();
-                }}
-              >
+                }}>
                 магазин
               </li>
               <div className="menu__border"></div>
@@ -221,8 +215,7 @@ const NavbarEpic = () => {
                 onClick={() => {
                   navigate("/distribution");
                   toggleMenu();
-                }}
-              >
+                }}>
                 ДИСТРИБУЦИЯ
               </li>
               <div className="menu__border"></div>
@@ -250,8 +243,7 @@ const NavbarEpic = () => {
               </div>
               <a
                 href="https://launcher-public-service-prod06.ol.epicgames.com/launcher/api/installer/download/EpicGamesLauncherInstaller.msi"
-                className="menu__right"
-              >
+                className="menu__right">
                 ДОСТУПНО ТОЛЬКО НА ПК/MAC
               </a>
             </div>
@@ -269,8 +261,7 @@ const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     onClick={(e) => {
       e.preventDefault();
       onClick(e);
-    }}
-  >
+    }}>
     {children}
   </a>
 ));
