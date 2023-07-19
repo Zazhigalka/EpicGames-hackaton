@@ -15,7 +15,7 @@ const Register = () => {
   const [userName, setUserName] = useState("");
   const [isSeller, setIsSeller] = useState(false);
 
-  const { handleRegister, handleRegisterSeller, loading } = useAuth();
+  const { handleRegister, handleRegisterSeller, loading, error } = useAuth();
 
   function handleSave() {
     if (
@@ -91,6 +91,7 @@ const Register = () => {
               type="password"
               placeholder=" Подтвердите пароль"
             />
+            {error ? <p style={{ color: "#f2f2f2" }}>{error}</p> : null}
           </div>
           <Form.Check
             type="switch"

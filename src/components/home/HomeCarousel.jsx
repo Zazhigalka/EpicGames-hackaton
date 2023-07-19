@@ -4,12 +4,29 @@ import "./homeCarouselAdaptive.css";
 import { Carousel } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import addIcon from "../../assets/add-to.png";
+import inFavorites from "../../assets/complete.svg";
+import { useProduct } from "../../contexts/ProductContextProvider";
 
 const HomeCarousel = () => {
   const navigate = useNavigate();
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
   const [progressIndex, setProgressIndex] = useState(0);
   const [iconPlus, setIconPlus] = useState(false);
+  const {
+    favorites,
+    oneProduct,
+    getFavorites,
+    toggleFavorites,
+    getOneProduct,
+    getProducts,
+    products,
+  } = useProduct();
+
+  // console.log(products);
+  useEffect(() => {
+    getProducts();
+    getFavorites();
+  }, []);
 
   const handleMouseEnter = () => {
     setIconPlus(true);
@@ -85,6 +102,7 @@ const HomeCarousel = () => {
       title: "EA SPORTS FC 24",
       descr: "EA SPORTS FC™ — это следующая глава всемирной игры.",
       price: "От 69,99 $",
+      id: "10",
     },
     {
       imgSrc:
@@ -93,6 +111,7 @@ const HomeCarousel = () => {
       descr:
         "Когда его дому грозит страшная опасность, Майлз надевает костюм и становится Человеком-Пауком.",
       price: "От 39,99 $",
+      id: "14",
     },
     {
       imgSrc:
@@ -101,6 +120,7 @@ const HomeCarousel = () => {
       descr:
         "Узнайте историю Басима, хитрого вора, который устремился наоживлённые улицы Багдада IX века в поисках ответов и      справедливости.",
       price: "От 39,99 $",
+      id: "11",
     },
     {
       imgSrc: "https://i.ebayimg.com/images/g/3a8AAOSwmetgbgeq/s-l1600.jpg",
@@ -108,12 +128,14 @@ const HomeCarousel = () => {
       descr:
         "Собирайте друзей и отправляйтесь в игру Fortnite от Epic Games, в которой вас ждёт грандиозная битва для 100 игроков.",
       price: "Бесплатно",
+      id: "12",
     },
     {
       imgSrc: "https://i.ebayimg.com/images/g/gXoAAOSwgn1dWpwt/s-l1200.jpg",
       title: "",
       descr: "Premium Издание всемирно-известной игры.",
       price: "От 24,99 $",
+      id: "15",
     },
     {
       imgSrc:
@@ -122,6 +144,7 @@ const HomeCarousel = () => {
       descr:
         "Batman™: Arkham Knight — это эпичное завершение признанной критиками трилогии Arkham компании Rocksteady Studios.",
       price: "От 19,99 $",
+      id: "13",
     },
   ];
 
@@ -141,6 +164,7 @@ const HomeCarousel = () => {
               className="carousel__left_image d-block w-100"
               src="https://cdn2.unrealengine.com/egs-spider-man-miles-morales-carousel-desktop-1248x702-0cbd7e91abd2.jpg?h=720&quality=medium&resize=1&w=1280"
               alt="Spider-Man"
+              onClick={() => navigate("/product/14")}
             />
             <Carousel.Caption className="carousel__left_descr">
               <img
@@ -159,7 +183,13 @@ const HomeCarousel = () => {
                 <button>Добавить в Корзину</button>
                 <div className="home__wish">
                   <img src={addIcon} alt="" />
-                  <p>В список желаемого</p>
+                  <p
+                    onClick={() => {
+                      toggleFavorites(14);
+                    }}
+                  >
+                    В список желаемого
+                  </p>
                 </div>
               </div>
             </Carousel.Caption>
@@ -169,6 +199,7 @@ const HomeCarousel = () => {
               className="carousel__left_image d-block w-100"
               src="https://cdn2.unrealengine.com/egs-ac-mirage-carousel-desktop-1920x1080-b74b6e380b4d.jpg?h=720&quality=medium&resize=1&w=1280"
               alt="Second slide"
+              onClick={() => navigate("/product/11")}
             />
             <Carousel.Caption className="carousel__left_descr">
               <img
@@ -188,7 +219,13 @@ const HomeCarousel = () => {
                 <button>Добавить в Корзину</button>
                 <div className="home__wish">
                   <img src={addIcon} alt="" />
-                  <p>В список желаемого</p>
+                  <p
+                    onClick={() => {
+                      toggleFavorites(11);
+                    }}
+                  >
+                    В список желаемого
+                  </p>
                 </div>
               </div>
             </Carousel.Caption>
@@ -199,6 +236,7 @@ const HomeCarousel = () => {
               src="https://cdnb.artstation.com/p/assets/images/images/006/737/939/large/vitaliy-naymushin-fortnite-keyart-final.jpg?1500907440"
               alt="Fortnite"
               style={{ opacity: 0.8 }}
+              onClick={() => navigate("/product/12")}
             />
             <Carousel.Caption className="carousel__left_descr">
               <img
@@ -217,7 +255,13 @@ const HomeCarousel = () => {
                 <button>Добавить в Корзину</button>
                 <div className="home__wish">
                   <img src={addIcon} alt="" />
-                  <p>В список желаемого</p>
+                  <p
+                    onClick={() => {
+                      toggleFavorites(12);
+                    }}
+                  >
+                    В список желаемого
+                  </p>
                 </div>
               </div>
             </Carousel.Caption>
@@ -260,6 +304,7 @@ const HomeCarousel = () => {
               className="carousel__left_image d-block w-100"
               src="https://mms.businesswire.com/media/20230713426786/en/1840766/5/FC24_standardkeyart_16x9.jpg"
               alt="EA SPORTS FC"
+              onClick={() => navigate("/product/10")}
             />
             <Carousel.Caption
               className="carousel__left_descr"
@@ -276,7 +321,13 @@ const HomeCarousel = () => {
                 <button>Добавить в Корзину</button>
                 <div className="home__wish">
                   <img src={addIcon} alt="" />
-                  <p>В список желаемого</p>
+                  <p
+                    onClick={() => {
+                      toggleFavorites(10);
+                    }}
+                  >
+                    В список желаемого
+                  </p>
                 </div>
               </div>
             </Carousel.Caption>
@@ -287,6 +338,7 @@ const HomeCarousel = () => {
               src="https://cdn2.unrealengine.com/Diesel%2Fproductv2%2Fbatman-arkham-knight%2FEGS_WB_Batman_Arkham_Knight_G1_1920x1080_19_0911-1920x1080-1d69e15f00cb5ab57249f208f1f8f45d52cbbc59.jpg"
               alt="Batman"
               style={{ opacity: 0.6 }}
+              onClick={() => navigate("/product/13")}
             />
             <Carousel.Caption className="carousel__left_descr">
               <img
@@ -305,7 +357,14 @@ const HomeCarousel = () => {
                 <button>Добавить в корзину</button>
                 <div className="home__wish">
                   <img src={addIcon} alt="" />
-                  <p>В список желаемого</p>
+
+                  <p
+                    onClick={() => {
+                      toggleFavorites(13);
+                    }}
+                  >
+                    В список желаемого
+                  </p>
                 </div>
               </div>
             </Carousel.Caption>
@@ -323,7 +382,9 @@ const HomeCarousel = () => {
           >
             <img src={item.imgSrc} alt="" className="carousel__right_img" />
             <p className="carousel__right_title">{item.title}</p>
-            <div className={activeSlideIndex === index ? "filled" : ""}></div>
+            <div
+              className={activeSlideIndex === index ? "filled-carousel" : ""}
+            ></div>
           </li>
         ))}
       </ul>
@@ -335,6 +396,7 @@ const HomeCarousel = () => {
               style={{ position: "relative" }}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
+              key={item.id}
             >
               <img
                 className="home__adapt_img"

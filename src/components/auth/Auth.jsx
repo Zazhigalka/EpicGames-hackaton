@@ -10,7 +10,7 @@ const Auth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { handleLogin, loading } = useAuth();
+  const { handleLogin, loading, error } = useAuth();
 
   function handleSave() {
     const formData = new FormData();
@@ -39,6 +39,7 @@ const Auth = () => {
             type="password"
             placeholder="Пароль"
           />
+          {error ? <p style={{ color: "#f2f2f2" }}>{error}</p> : null}
         </div>
 
         {loading ? (

@@ -103,9 +103,15 @@ body {
 .wish-list__catalog {
   display: flex;
   align-items: center;
-  flex-direction: column;
-  margin: 10% auto 0;
   padding-bottom: 8%;
+  text-align: center;
+}
+
+.wish-list__none {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 8% 15% 0;
   text-align: center;
 }
 
@@ -144,3 +150,10 @@ body {
 }
 /* bottom end */
 
+/* wish-list products */
+.wish-list__products {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin-top: 3%;
+}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./ProductDetails.css";
 import "./Product-Details-adaptive_styles.css";
-import { Button } from "react-bootstrap";
+import { Button, Form, InputGroup } from "react-bootstrap";
 import CarouselBox from "../Carousel/CarouselBox";
 import addTo from "../../assets/add-to.png";
 import shareIcon from "../../assets/share.png";
@@ -11,24 +11,66 @@ import Search from "../search/Search";
 import { useAuth } from "../../contexts/AuthContextProvider";
 import { useNavigate, useParams } from "react-router-dom";
 import { useProduct } from "../../contexts/ProductContextProvider";
+import { ReactComponent as LikeIcon } from "../../assets/heart.svg";
+import { ReactComponent as StarIcon } from "../../assets/star.svg";
+import moment from "moment/moment";
+import RatingSlider from "../Carousel/RatingCarousel";
 
 const ProductDetails = () => {
-  const { getOneProduct, oneProduct, deleteProduct } = useProduct();
+  const {
+    getOneProduct,
+    oneProduct,
+    deleteProduct,
+
+    toggleLike,
+    toggleLikeDelete,
+
+    addComment,
+    deleteComment,
+
+    addRating,
+    getRatingData,
+    ratingData,
+  } = useProduct();
+
   const { currentUser } = useAuth();
   const navigate = useNavigate();
 
+  const { id } = useParams();
+
+  useEffect(() => {
+    getOneProduct(id);
+    getRatingData(id);
+  }, [id]);
+
   const [showMore, setShowMore] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
+  const [totalLikes, setTotalLikes] = useState(0);
+
+  useEffect(() => {
+    setIsLiked(oneProduct?.is_liked);
+    setTotalLikes(oneProduct?.likes_count);
+  }, [oneProduct]);
 
   const toggleShowMore = () => {
     setShowMore(!showMore);
   };
 
-  const { id } = useParams();
-  useEffect(() => {
-    getOneProduct(id);
-  }, []);
+  const [comment, setComment] = useState("");
 
-  console.log(oneProduct);
+  const handleAddComment = (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append("id", id);
+    formData.append("body", comment);
+
+    addComment(formData);
+    setComment("");
+  };
+
+  const [hasRated, setHasRated] = useState(false);
+
   return (
     <div style={{ backgroundColor: "#121212" }}>
       <div
@@ -38,17 +80,55 @@ const ProductDetails = () => {
           right: "0",
           top: "0",
           zIndex: "999",
-        }}
-      >
+        }}>
         <Search />
       </div>
       <div>
         <div className="product-details-container">
           <section className="product-details__section1">
             <div className="product-details-left">
-              <h3>Fortnite</h3>
+              <h3>{oneProduct?.title_of_game}</h3>
               <div className="product-details-rating__title">
-                <div className="raiting-on-num">4.3</div>
+                <div className="raiting-on-num">
+                  {oneProduct?.rating}
+                  <div>
+                    <StarIcon
+                      className={
+                        oneProduct?.rating >= 1
+                          ? "logo__stars stars-active"
+                          : "logo__stars"
+                      }
+                    />
+                    <StarIcon
+                      className={
+                        oneProduct?.rating >= 2
+                          ? "logo__stars stars-active"
+                          : "logo__stars"
+                      }
+                    />
+                    <StarIcon
+                      className={
+                        oneProduct?.rating >= 3
+                          ? "logo__stars stars-active"
+                          : "logo__stars"
+                      }
+                    />
+                    <StarIcon
+                      className={
+                        oneProduct?.rating >= 4
+                          ? "logo__stars stars-active"
+                          : "logo__stars"
+                      }
+                    />
+                    <StarIcon
+                      className={
+                        oneProduct?.rating >= 5
+                          ? "logo__stars stars-active"
+                          : "logo__stars"
+                      }
+                    />
+                  </div>
+                </div>
               </div>
               <CarouselBox />
               <p
@@ -57,14 +137,8 @@ const ProductDetails = () => {
                   color: "#f5f5f5",
                   margin: "3em 0",
                   width: "100%",
-                }}
-              >
-                Собирайте друзей и отправляйтесь в игру Fortnite от Epic Games,
-                в которой вас ждёт грандиозная битва для 100 игроков. В ней вам
-                предстоит искать полезную добычу, добывать материалы, создавать
-                предметы и отстреливаться от врагов. Всё вместе это делает
-                каждый матч совершенно непредсказуемым, а с каждым новым сезоном
-                игра становится ещё больше и интереснее.
+                }}>
+                {oneProduct?.short_description}
               </p>
 
               {showMore && (
@@ -74,38 +148,8 @@ const ProductDetails = () => {
                     color: "rgba(245, 245, 245, 0.6)",
                     margin: "3em 0",
                     width: "100%",
-                  }}
-                >
-                  Исследуйте большой разрушаемый мир, в котором каждого игрока
-                  ждут неповторимые приключения. Объединяйтесь с друзьями,
-                  ускоряйтесь, карабкайтесь и пробивайте себе путь к победе при
-                  любых условиях: со строительством в «Королевской битве» или
-                  без строительства в «Нулевой высоте». Откройте для себя новые
-                  способы игры: здесь вы найдёте тысячи самых разных игр от
-                  наших авторов — приключения, ролевые игры, игры на выживание и
-                  многое другое. Или отбивайтесь от полчищ монстров с тремя
-                  друзьями в «Сражении с Бурей». Дикие земли ждут вас в третьем
-                  сезоне четвёртой главы Королевской битвы Fortnite. Центральная
-                  часть острова разрушилась, явив свету огромный неизведанный
-                  мир джунглей, полный древних тайн. Забирайтесь в кроны
-                  деревьев, катайтесь на ящерах, прыгайте в грязь, чтобы
-                  ускориться или для маскировки. Вычисляйте врагов с помощью
-                  винтовки с тепловизором, скользите по лианам, стреляя из
-                  автомата с дисковым магазином, и превращайте оппонентов в
-                  зрителей с помощью кибертронской пушки. Откройте для себя
-                  моду, неподвластную времени, с экипировкой боевого пропуска
-                  третьего сезона четвёртой главы. С покупкой нового боевого
-                  пропуска вы сразу получите устремлённую в будущее Эру.
-                  Повышайте уровень боевого пропуска, чтобы открыть экипировку
-                  рокерши Риан и лидера автоботов Оптимуса Прайма. Позже в этом
-                  сезоне обладателей боевого пропуска встретит большой любитель
-                  отдыха, Тропический Мяускул! Опыт для боевого пропуска можно
-                  заработать в «Королевской битве» и «Нулевой высоте». Но знали
-                  ли вы, что очки опыта также можно получить в некоторых играх
-                  творческого режима? Авторские игры, которые приносят очки
-                  опыта, отмечены соответствующим значком в их описании в меню
-                  «Поиск». Играйте так, как нравится вам, и откройте Риан,
-                  Оптимуса Прайма и других героев!
+                  }}>
+                  {oneProduct?.full_description}
                 </p>
               )}
               <button className="show-more" onClick={toggleShowMore}>
@@ -115,7 +159,7 @@ const ProductDetails = () => {
               <div className="product-details-genres">
                 <div>
                   <h6>Жанры</h6>
-                  <p>Shooter</p>
+                  <p>{oneProduct?.category}</p>
                 </div>
                 <div>
                   <h6>Особенности</h6>
@@ -126,7 +170,7 @@ const ProductDetails = () => {
             <div className="product-details-right">
               <div className="product-logo-block">
                 <img
-                  src="https://cdn2.unrealengine.com/24br-s24-egs-launcher-logo-350x100-350x100-b63249f937d9.png?h=270&quality=medium&resize=1&w=480"
+                  src={oneProduct?.game_logo}
                   alt=""
                   className="product-logo"
                 />
@@ -140,15 +184,12 @@ const ProductDetails = () => {
                 <>
                   <Button
                     variant="primary w-100 p-2 mt-3"
-                    onClick={() => navigate(`/editproduct/${oneProduct.id}`)}
-                  >
+                    onClick={() => navigate(`/editproduct/${oneProduct.id}`)}>
                     Редактировать продукт
                   </Button>
                   <Button
-                    variant="danger
-               w-100 p-2 mt-3"
-                    onClick={() => deleteProduct(oneProduct.id)}
-                  >
+                    variant="danger w-100 p-2 mt-3"
+                    onClick={() => deleteProduct(oneProduct.id)}>
                     Удалить Продукт
                   </Button>
                 </>
@@ -159,14 +200,74 @@ const ProductDetails = () => {
                   <Button variant="warning w-100 p-2 mt-3">Получить</Button>
                   <Button
                     className="outlined-btn"
-                    variant="outline-light p-2 w-100 mt-3"
-                  >
+                    variant="outline-light p-2 w-100 mt-3">
                     Добавить в корзину
                   </Button>
+                  {isLiked ? (
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        flexDirection: "column",
+                      }}>
+                      <Button
+                        className="outlined-btn d-flex align-content-center justify-content-center"
+                        variant="outline-light p-2 w-100 mt-3"
+                        onClick={() =>
+                          toggleLikeDelete(
+                            oneProduct.id,
+                            setIsLiked,
+                            setTotalLikes
+                          )
+                        }>
+                        <div
+                          style={{
+                            width: "27%",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "space-between",
+                          }}>
+                          <LikeIcon className="like-icon-active" />
+                          Нравится
+                        </div>
+                      </Button>
+                      <p style={{ color: "#f2f2f2", fontSize: "10px" }}>
+                        (Понравилось {totalLikes} пользователям)
+                      </p>
+                    </div>
+                  ) : (
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        flexDirection: "column",
+                      }}>
+                      <Button
+                        className="outlined-btn d-flex align-content-center justify-content-center"
+                        variant="outline-light p-2 w-100 mt-3"
+                        onClick={() =>
+                          toggleLike(oneProduct.id, setIsLiked, setTotalLikes)
+                        }>
+                        <div
+                          style={{
+                            width: "27%",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "space-between",
+                          }}>
+                          <LikeIcon className="like-icon-unactive" />
+                          Нравится
+                        </div>
+                      </Button>
+                      <p style={{ color: "#f2f2f2", fontSize: "10px" }}>
+                        (Понравилось {totalLikes} пользователям)
+                      </p>
+                    </div>
+                  )}
+
                   <Button
                     className="outlined-btn"
-                    variant="outline-light w-100 mt-3 p-1"
-                  >
+                    variant="outline-light w-100 p-1">
                     <img width={20} src={addTo} alt="" /> В список желаемого
                   </Button>
                 </>
@@ -175,16 +276,16 @@ const ProductDetails = () => {
               <ul className="product-details__more-about-product-list">
                 <li>
                   <h6>Разработчик</h6>
-                  <p>Epic Games</p>
+                  <p>{oneProduct?.name_of_developer}</p>
                 </li>
 
                 <li>
                   <h6>Издатель</h6>
-                  <p>Epic Games</p>
+                  <p>{oneProduct?.title_of_publisher}</p>
                 </li>
                 <li>
                   <h6>Дата выхода</h6>
-                  <p>21.07.17</p>
+                  <p>{oneProduct?.date_of_issue}</p>
                 </li>
                 <li>
                   <h6>Изначальный выпуск</h6>
@@ -198,16 +299,14 @@ const ProductDetails = () => {
               <div className="btn-share__box">
                 <Button
                   className="outlined-btn"
-                  variant="outline-light w-100 mt-3"
-                >
+                  variant="outline-light w-100 mt-3">
                   <img width={20} src={shareIcon} alt="" /> Поделиться
                 </Button>
 
                 {currentUser ? (
                   <Button
                     className="outlined-btn"
-                    variant="outline-light w-100 mt-3"
-                  >
+                    variant="outline-light w-100 mt-3">
                     <img width={20} src={reportIcon} alt="" /> Пожаловаться
                   </Button>
                 ) : null}
@@ -226,60 +325,72 @@ const ProductDetails = () => {
 
             <div className="product-details__raiting">
               <h5>Оценки игроков в Epic</h5>
-              <p>На основе отзывов игроков в экосистеме Epic Games</p>
+              <p>
+                На основе отзывов игроков в экосистеме Epic Games (оценили:
+                {oneProduct?.marks_count})
+              </p>
 
               <div
                 style={{
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                }}
-              >
-                <h4>4.3</h4>
+                  borderBottom: "1px solid #262626",
+                  gap: "10px",
+                  padding: "40px 0",
+                }}>
+                <h4>{oneProduct?.rating}</h4>
+                <StarIcon
+                  className={
+                    oneProduct?.rating >= 1
+                      ? "rait__stars stars-active"
+                      : "rait__stars"
+                  }
+                />
+                <StarIcon
+                  className={
+                    oneProduct?.rating >= 2
+                      ? "rait__stars stars-active"
+                      : "rait__stars"
+                  }
+                />
+                <StarIcon
+                  className={
+                    oneProduct?.rating >= 3
+                      ? "rait__stars stars-active"
+                      : "rait__stars"
+                  }
+                />
+                <StarIcon
+                  className={
+                    oneProduct?.rating >= 4
+                      ? "rait__stars stars-active"
+                      : "rait__stars"
+                  }
+                />
+                <StarIcon
+                  className={
+                    oneProduct?.rating >= 5
+                      ? "rait__stars stars-active"
+                      : "rait__stars"
+                  }
+                />
               </div>
-            </div>
+              {hasRated && ratingData?.mark ? (
+                <p style={{ fontSize: "2em", textAlign: "center" }}>
+                  Вы уже оценили! Ваша оценка: {ratingData?.mark}
+                </p>
+              ) : null}
 
-            <div className="product-details__reviews-block">
-              <h5>Рейтинги</h5>
-              <div className="reviews">
-                <div className="one-review">
-                  <div className="about-user">
-                    <h6>GamesRadar+</h6>
-                    <p>Автор: Ford James</p>
-                  </div>
-                  <div className="stars"></div>
-                  <p className="descr">
-                    Nobody thought Fortnite would still be popular this late on,
-                    but it's continued to adapt and fight for its spot at the
-                    top of the battle royale ladder.
-                  </p>
+              {!hasRated && currentUser && ratingData?.mark ? null : (
+                <div>
+                  <RatingSlider
+                    id={id}
+                    addRating={addRating}
+                    setHasRated={setHasRated}
+                  />
                 </div>
-                <div className="one-review">
-                  <div className="about-user">
-                    <h6>GamesRadar+</h6>
-                    <p>Автор: Ford James</p>
-                  </div>
-                  <div className="stars"></div>
-                  <p className="descr">
-                    Nobody thought Fortnite would still be popular this late on,
-                    but it's continued to adapt and fight for its spot at the
-                    top of the battle royale ladder.
-                  </p>
-                </div>
-                <div className="one-review">
-                  <div className="about-user">
-                    <h6>GamesRadar+</h6>
-                    <p>Автор: Ford James</p>
-                  </div>
-                  <div className="stars"></div>
-                  <p className="descr">
-                    Nobody thought Fortnite would still be popular this late on,
-                    but it's continued to adapt and fight for its spot at the
-                    top of the battle royale ladder.
-                  </p>
-                </div>
-              </div>
-              <Button variant="secondary">Посмотреть все отзывы</Button>
+              )}
             </div>
 
             <div className="system-requirements__block">
@@ -339,6 +450,46 @@ const ProductDetails = () => {
                   товарные знаки являются собственностью соответствующих
                   владельцев.
                 </p>
+              </div>
+            </div>
+            <div className="product-details__reviews-block">
+              <h5>Комментарии</h5>
+
+              <div className="reviews">
+                {currentUser ? (
+                  <InputGroup size="sm" className="mb-3 mt-3">
+                    <Form.Control
+                      className="comment_input"
+                      type="text"
+                      value={comment}
+                      onChange={(e) => setComment(e.target.value)}
+                      aria-label="Small"
+                      aria-describedby="inputGroup-sizing-sm"
+                    />
+                    <Button
+                      className="add-comment-btn"
+                      onClick={handleAddComment}>
+                      Добавить комментарии
+                    </Button>
+                  </InputGroup>
+                ) : null}
+                {oneProduct?.comments.map((comment) => (
+                  <div key={comment.id} className="one-review">
+                    <div className="about-user">
+                      <h6>{comment.owner_username}</h6>
+                      <p>
+                        Дата создания:
+                        {moment(comment.created_at).format("DD/MM/YYYY")}
+                      </p>
+                      <p>
+                        Время создания:
+                        {moment(comment.created_at).format("hh:mm")}
+                      </p>
+                    </div>
+                    <div className="stars"></div>
+                    <p className="descr">{comment.body}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </section>

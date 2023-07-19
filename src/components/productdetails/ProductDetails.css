@@ -14,6 +14,23 @@
   justify-content: space-between;
 }
 
+.product-details-container .logo__stars {
+  width: 15px;
+}
+
+.product-details-container .rait__stars {
+  width: 40px;
+}
+
+.product-details-container .logo__stars path,
+.product-details-container .rait__stars path {
+  fill: #f2f2f2;
+}
+
+.product-details-container .stars-active path {
+  fill: gold;
+}
+
 .product-details-left {
   width: 63%;
   height: 100%;
@@ -51,11 +68,28 @@
   font-size: 1em !important;
 }
 
+.product-details-container .like-icon-unactive:hover path {
+  fill: red;
+  stroke: red;
+}
+
+.product-details-container .like-icon-unactive path {
+  stroke: #fff;
+}
+
+.product-details-container .like-icon-active path {
+  fill: red;
+  stroke: red;
+}
+
 .product-details-rating__title {
   margin: 20px 0;
 }
 
 .product-details-rating__title .raiting-on-num {
+  display: flex;
+  align-items: center;
+  gap: 5px;
   color: #f5f5f5;
   width: fit-content;
   padding: 3px 5px;
@@ -65,7 +99,7 @@
 }
 
 .product-logo {
-  width: 110%;
+  width: 50%;
 }
 
 .outlined-btn:hover {
@@ -114,6 +148,33 @@
 
 .product-details-genres h6 {
   color: rgba(245, 245, 245, 0.6);
+}
+
+.comment_input {
+  color: #f2f2f2 !important;
+  background: #262626 !important;
+  border: 1px solid #434343 !important;
+  height: 50px;
+}
+
+.comment_input:focus {
+  background: #434343 !important;
+  border-color: #f2f2f2 !important;
+}
+
+.comment_input:not(:placeholder-shown) {
+  color: #f2f2f2 !important;
+}
+
+.add-comment-btn {
+  color: #f2f2f2 !important;
+  background-color: #474747 !important;
+  border: 1px solid #474747 !important;
+}
+
+.add-comment-btn:hover {
+  background-color: #606060 !important;
+  border: 1px solid #606060 !important;
 }
 
 .product-details-genres p {
@@ -194,12 +255,11 @@
 
 .product-details__reviews-block .about-user h6 {
   color: #f5f5f5;
+  font-size: 1.3em;
 }
 
 .product-details__reviews-block .reviews {
   width: 100%;
-  display: flex;
-  justify-content: space-between;
 }
 
 .one-review h6 {
@@ -207,7 +267,7 @@
 }
 
 .product-details__reviews-block .one-review {
-  width: 30%;
+  width: 100%;
   padding: 20px;
   margin: 30px 0;
   display: flex;
