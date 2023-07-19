@@ -78,3 +78,7 @@
 .filled {
   animation: none !important;
 }
+
+.none {
+  display: none !important;
+}
