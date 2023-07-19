@@ -1,0 +1,10 @@
+.thumbnail {
+  width: 15%;
+  margin: 5px;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.thumbnail.active {
+  border-color: #007bff;
+}

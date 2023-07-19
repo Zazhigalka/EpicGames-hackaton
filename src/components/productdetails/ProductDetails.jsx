@@ -12,6 +12,7 @@ import { useAuth } from "../../contexts/AuthContextProvider";
 import { useNavigate, useParams } from "react-router-dom";
 import { useProduct } from "../../contexts/ProductContextProvider";
 import { ReactComponent as LikeIcon } from "../../assets/heart.svg";
+import { ReactComponent as StarIcon } from "../../assets/star.svg";
 import moment from "moment/moment";
 import RatingSlider from "../Carousel/RatingCarousel";
 
@@ -64,7 +65,6 @@ const ProductDetails = () => {
     addComment(formData);
     setComment("");
   };
-
   return (
     <div style={{ backgroundColor: "#121212" }}>
       <div
@@ -83,7 +83,46 @@ const ProductDetails = () => {
             <div className="product-details-left">
               <h3>{oneProduct?.title_of_game}</h3>
               <div className="product-details-rating__title">
-                <div className="raiting-on-num">{oneProduct?.rating}</div>
+                <div className="raiting-on-num">
+                  {oneProduct?.rating}
+                  <div>
+                    <StarIcon
+                      className={
+                        oneProduct.rating >= 1
+                          ? "logo__stars stars-active"
+                          : "logo__stars"
+                      }
+                    />
+                    <StarIcon
+                      className={
+                        oneProduct.rating >= 2
+                          ? "logo__stars stars-active"
+                          : "logo__stars"
+                      }
+                    />
+                    <StarIcon
+                      className={
+                        oneProduct.rating >= 3
+                          ? "logo__stars stars-active"
+                          : "logo__stars"
+                      }
+                    />
+                    <StarIcon
+                      className={
+                        oneProduct.rating >= 4
+                          ? "logo__stars stars-active"
+                          : "logo__stars"
+                      }
+                    />
+                    <StarIcon
+                      className={
+                        oneProduct.rating >= 5
+                          ? "logo__stars stars-active"
+                          : "logo__stars"
+                      }
+                    />
+                  </div>
+                </div>
               </div>
               <CarouselBox />
               <p
@@ -281,7 +320,7 @@ const ProductDetails = () => {
             <div className="product-details__raiting">
               <h5>Оценки игроков в Epic</h5>
               <p>
-                На основе отзывов игроков в экосистеме Epic Games (оценили:{" "}
+                На основе отзывов игроков в экосистеме Epic Games (оценили:
                 {oneProduct?.marks_count})
               </p>
 
@@ -290,11 +329,51 @@ const ProductDetails = () => {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
+                  borderBottom: "1px solid #262626",
+                  padding: "40px 0",
                 }}>
-                <h4>{oneProduct?.rating}</h4>
+                <h4>
+                  {oneProduct?.rating}
+                  <StarIcon
+                    className={
+                      oneProduct.rating >= 1
+                        ? "rait__stars stars-active"
+                        : "rait__stars"
+                    }
+                  />
+                  <StarIcon
+                    className={
+                      oneProduct.rating >= 2
+                        ? "rait__stars stars-active"
+                        : "rait__stars"
+                    }
+                  />
+                  <StarIcon
+                    className={
+                      oneProduct.rating >= 3
+                        ? "rait__stars stars-active"
+                        : "rait__stars"
+                    }
+                  />
+                  <StarIcon
+                    className={
+                      oneProduct.rating >= 4
+                        ? "rait__stars stars-active"
+                        : "rait__stars"
+                    }
+                  />
+                  <StarIcon
+                    className={
+                      oneProduct.rating >= 5
+                        ? "rait__stars stars-active"
+                        : "rait__stars"
+                    }
+                  />
+                </h4>
               </div>
-
-              <RatingSlider id={id} addRating={addRating} />
+              {currentUser ? (
+                <RatingSlider id={id} addRating={addRating} />
+              ) : null}
             </div>
 
             <div className="system-requirements__block">
