@@ -84,6 +84,7 @@ const Search = () => {
                 className={`search__items ${
                   path === "/news" ? "search__items_active" : ""
                 }`}
+                onClick={() => navigate("/news")}
               >
                 Новости
               </span>

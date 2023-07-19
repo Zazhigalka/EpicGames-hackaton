@@ -35,8 +35,6 @@ const ProductCard = ({ item }) => {
 
   const navigate = useNavigate();
 
-  const path = document.location.pathname;
-
   return (
     <Card className="card__container">
       <Card.Img
@@ -51,11 +49,11 @@ const ProductCard = ({ item }) => {
       {iconPlus ? (
         <img
           onMouseEnter={handleMouseEnter}
-          src={handleClick() ? inFavorites : addIcon}
+          src={handleClick(item.id) ? inFavorites : addIcon}
           id="card__add_icon"
           alt=""
           title={
-            handleClick
+            handleClick(item.id)
               ? "Уже в списке желаемого"
               : "Добавить в список желаемого"
           }
