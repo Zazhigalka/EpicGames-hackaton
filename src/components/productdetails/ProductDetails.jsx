@@ -40,6 +40,7 @@ const ProductDetails = () => {
     getOneProduct(id);
   }, [id]);
 
+  console.log(oneProduct);
   const [showMore, setShowMore] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   const [totalLikes, setTotalLikes] = useState(0);
@@ -75,7 +76,8 @@ const ProductDetails = () => {
           right: "0",
           top: "0",
           zIndex: "999",
-        }}>
+        }}
+      >
         <Search />
       </div>
       <div>
@@ -132,7 +134,8 @@ const ProductDetails = () => {
                   color: "#f5f5f5",
                   margin: "3em 0",
                   width: "100%",
-                }}>
+                }}
+              >
                 {oneProduct?.short_description}
               </p>
 
@@ -143,7 +146,8 @@ const ProductDetails = () => {
                     color: "rgba(245, 245, 245, 0.6)",
                     margin: "3em 0",
                     width: "100%",
-                  }}>
+                  }}
+                >
                   {oneProduct?.full_description}
                 </p>
               )}
@@ -179,12 +183,14 @@ const ProductDetails = () => {
                 <>
                   <Button
                     variant="primary w-100 p-2 mt-3"
-                    onClick={() => navigate(`/editproduct/${oneProduct.id}`)}>
+                    onClick={() => navigate(`/editproduct/${oneProduct.id}`)}
+                  >
                     Редактировать продукт
                   </Button>
                   <Button
                     variant="danger w-100 p-2 mt-3"
-                    onClick={() => deleteProduct(oneProduct.id)}>
+                    onClick={() => deleteProduct(oneProduct.id)}
+                  >
                     Удалить Продукт
                   </Button>
                 </>
@@ -195,7 +201,8 @@ const ProductDetails = () => {
                   <Button variant="warning w-100 p-2 mt-3">Получить</Button>
                   <Button
                     className="outlined-btn"
-                    variant="outline-light p-2 w-100 mt-3">
+                    variant="outline-light p-2 w-100 mt-3"
+                  >
                     Добавить в корзину
                   </Button>
                   {isLiked ? (
@@ -204,7 +211,8 @@ const ProductDetails = () => {
                         display: "flex",
                         alignItems: "center",
                         flexDirection: "column",
-                      }}>
+                      }}
+                    >
                       <Button
                         className="outlined-btn d-flex align-content-center justify-content-center"
                         variant="outline-light p-2 w-100 mt-3"
@@ -214,14 +222,16 @@ const ProductDetails = () => {
                             setIsLiked,
                             setTotalLikes
                           )
-                        }>
+                        }
+                      >
                         <div
                           style={{
                             width: "27%",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "space-between",
-                          }}>
+                          }}
+                        >
                           <LikeIcon className="like-icon-active" />
                           Нравится
                         </div>
@@ -236,20 +246,23 @@ const ProductDetails = () => {
                         display: "flex",
                         alignItems: "center",
                         flexDirection: "column",
-                      }}>
+                      }}
+                    >
                       <Button
                         className="outlined-btn d-flex align-content-center justify-content-center"
                         variant="outline-light p-2 w-100 mt-3"
                         onClick={() =>
                           toggleLike(oneProduct.id, setIsLiked, setTotalLikes)
-                        }>
+                        }
+                      >
                         <div
                           style={{
                             width: "27%",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "space-between",
-                          }}>
+                          }}
+                        >
                           <LikeIcon className="like-icon-unactive" />
                           Нравится
                         </div>
@@ -262,7 +275,8 @@ const ProductDetails = () => {
 
                   <Button
                     className="outlined-btn"
-                    variant="outline-light w-100 p-1">
+                    variant="outline-light w-100 p-1"
+                  >
                     <img width={20} src={addTo} alt="" /> В список желаемого
                   </Button>
                 </>
@@ -294,14 +308,16 @@ const ProductDetails = () => {
               <div className="btn-share__box">
                 <Button
                   className="outlined-btn"
-                  variant="outline-light w-100 mt-3">
+                  variant="outline-light w-100 mt-3"
+                >
                   <img width={20} src={shareIcon} alt="" /> Поделиться
                 </Button>
 
                 {currentUser ? (
                   <Button
                     className="outlined-btn"
-                    variant="outline-light w-100 mt-3">
+                    variant="outline-light w-100 mt-3"
+                  >
                     <img width={20} src={reportIcon} alt="" /> Пожаловаться
                   </Button>
                 ) : null}
@@ -333,7 +349,8 @@ const ProductDetails = () => {
                   borderBottom: "1px solid #262626",
                   gap: "10px",
                   padding: "40px 0",
-                }}>
+                }}
+              >
                 <h4>{oneProduct?.rating}</h4>
                 <StarIcon
                   className={
@@ -451,7 +468,8 @@ const ProductDetails = () => {
                     />
                     <Button
                       className="add-comment-btn"
-                      onClick={handleAddComment}>
+                      onClick={handleAddComment}
+                    >
                       Добавить комментарии
                     </Button>
                   </InputGroup>

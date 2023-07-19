@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./AddProduct.css";
 import { useProduct } from "../../contexts/ProductContextProvider";
 
 const AddProduct = () => {
-  const { createProduct } = useProduct();
+  const { getCategories, categories, createProduct } = useProduct();
+  useEffect(() => {
+    getCategories();
+  }, []);
 
   const [titleOfGame, setTitleOfGame] = useState("");
   const [gameLogo, setGameLogo] = useState("");
@@ -172,12 +175,23 @@ const AddProduct = () => {
             onChange={(e) => setVideo(e.target.value)}
             encType="multipart/form-data"
           />
-          <input
+          {/* <input
             placeholder="ENTER CATEGORY"
             type="text"
             className="addProduct__inputs"
             onChange={(e) => setCategory(e.target.value)}
-          />
+          /> */}
+          <select
+            className="addProduct__inputs"
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            <option>Choose category</option>
+            {categories.map((item) => (
+              <option key={item.slug} value={item.slug}>
+                {item.name}
+              </option>
+            ))}
+          </select>
           <input
             placeholder="ENTER FIRST IMAGE"
             type="text"
