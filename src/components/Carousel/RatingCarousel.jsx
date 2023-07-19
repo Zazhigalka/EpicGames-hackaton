@@ -19,6 +19,7 @@ const RatingSlider = ({ id, addRating }) => {
 
   return (
     <div className="rating-slider-container">
+      <h2 style={{ color: "#f2f2f2", marginBottom: "20px" }}>Оценить</h2>
       <div className="rating-stars">
         {[0, 1, 2, 3, 4, 5].map((star) => (
           <Star

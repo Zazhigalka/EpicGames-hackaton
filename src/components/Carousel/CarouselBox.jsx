@@ -1,18 +1,19 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Carousel, CarouselItem } from "react-bootstrap";
 import { useProduct } from "../../contexts/ProductContextProvider";
-// import { useInView } from "react-intersection-observer";
+import "./CarouselBox.css";
 
 const CarouselBox = () => {
   const { oneProduct } = useProduct();
   const videoRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
     const video = videoRef.current;
 
     const handleEnded = () => {
-      video.currentTime = 0; // Сбросить время воспроизведения до начала
-      video.play(); // Начать воспроизведение заново
+      video.currentTime = 0;
+      video.play();
     };
 
     video.addEventListener("ended", handleEnded);
@@ -22,41 +23,182 @@ const CarouselBox = () => {
     };
   }, []);
 
+  const handleSelect = (selectedIndex) => {
+    setActiveIndex(selectedIndex);
+  };
+
   return (
-    <Carousel style={{ width: "90%" }}>
-      <CarouselItem>
+    <div style={{ width: "90%" }}>
+      <Carousel activeIndex={activeIndex} onSelect={handleSelect}>
+        <Carousel.Item>
+          <video
+            className="d-block w-100"
+            autoPlay
+            muted
+            controls
+            ref={videoRef}>
+            <source src={oneProduct?.video} type="video/mp4" />
+            Ваш браузер не поддерживает воспроизведение видео.
+          </video>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src={oneProduct?.image_one}
+            alt="Image 1"
+          />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src={oneProduct?.image_two}
+            alt="Image 2"
+          />
+        </Carousel.Item>
+        {oneProduct?.image_one ? (
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src={oneProduct?.image_one}
+              alt="Image 1"
+            />
+          </Carousel.Item>
+        ) : null}
+
+        {oneProduct?.image_two ? (
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src={oneProduct?.image_two}
+              alt="Image 2"
+            />
+          </Carousel.Item>
+        ) : null}
+
+        {oneProduct?.image_three ? (
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src={oneProduct?.image_three}
+              alt="Image 3"
+            />
+          </Carousel.Item>
+        ) : null}
+
+        {oneProduct?.image_four ? (
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src={oneProduct?.image_four}
+              alt="Image 4"
+            />
+          </Carousel.Item>
+        ) : null}
+
+        {oneProduct?.image_five ? (
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src={oneProduct?.image_five}
+              alt="Image 5"
+            />
+          </Carousel.Item>
+        ) : null}
+        {oneProduct?.image_six ? (
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src={oneProduct?.image_six}
+              alt="Image 6"
+            />
+          </Carousel.Item>
+        ) : null}
+        {oneProduct?.image_seven ? (
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src={oneProduct?.image_seven}
+              alt="Image 7"
+            />
+          </Carousel.Item>
+        ) : null}
+        {oneProduct?.image_eight ? (
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src={oneProduct?.image_eight}
+              alt="Image 8"
+            />
+          </Carousel.Item>
+        ) : null}
+        {oneProduct?.image_nine ? (
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src={oneProduct?.image_nine}
+              alt="Image 9"
+            />
+          </Carousel.Item>
+        ) : null}
+        {oneProduct?.image_ten ? (
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src={oneProduct?.image_ten}
+              alt="Image 10"
+            />
+          </Carousel.Item>
+        ) : null}
+      </Carousel>
+      <div className="d-flex justify-content-center mt-3">
         <video
-          className="d-block"
-          style={{ width: "100%" }}
-          autoPlay
-          muted
-          controls
-          ref={videoRef}
-        >
-          <source src={oneProduct?.video} type="video/mp4" />
-          Ваш браузер не поддерживает воспроизведение видео.
-        </video>
-        {/* <img
-          className="d-block"
-          style={{ width: "100%" }}
-          src="https://cdn2.unrealengine.com/06-gameplaystill007-3840x2160-3840x2160-0a9808f757e3.png"
-        /> */}
-      </CarouselItem>
-      <CarouselItem>
-        <img
-          className="d-block"
-          style={{ width: "100%" }}
-          src={oneProduct?.image_one}
+          className={`thumbnail ${activeIndex === 0 ? "active" : ""}`}
+          src={oneProduct?.video}
+          alt="Video Thumbnail"
+          onClick={() => setActiveIndex(0)}
         />
-      </CarouselItem>
-      <CarouselItem>
-        <img
-          className="d-block"
-          style={{ width: "100%" }}
-          src={oneProduct?.image_two}
-        />
-      </CarouselItem>
-    </Carousel>
+        {oneProduct?.image_one ? (
+          <img
+            className={`thumbnail ${activeIndex === 1 ? "active" : ""}`}
+            src={oneProduct?.image_one}
+            alt="Image 1 Thumbnail"
+            onClick={() => setActiveIndex(1)}
+          />
+        ) : null}
+        {oneProduct?.image_two ? (
+          <img
+            className={`thumbnail ${activeIndex === 2 ? "active" : ""}`}
+            src={oneProduct?.image_two}
+            alt="Image 2 Thumbnail"
+            onClick={() => setActiveIndex(2)}
+          />
+        ) : null}
+        {oneProduct?.image_three ? (
+          <img
+            className={`thumbnail ${activeIndex === 3 ? "active" : ""}`}
+            src={oneProduct?.image_three}
+            alt="Image 3 Thumbnail"
+            onClick={() => setActiveIndex(3)}
+          />
+        ) : null}
+        {oneProduct?.image_four ? (
+          <img
+            className={`thumbnail ${activeIndex === 4 ? "active" : ""}`}
+            src={oneProduct?.image_four}
+            alt="Image 1 Thumbnail"
+            onClick={() => setActiveIndex(4)}
+          />
+        ) : null}
+        {oneProduct?.image_five ? (
+          <img
+            className={`thumbnail ${activeIndex === 5 ? "active" : ""}`}
+            src={oneProduct?.image_five}
+            alt="Image 1 Thumbnail"
+            onClick={() => setActiveIndex(5)}
+          />
+        ) : null}
+      </div>
+    </div>
   );
 };
 
