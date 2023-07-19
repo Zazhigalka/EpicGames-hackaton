@@ -44,6 +44,8 @@ const Register = () => {
     } else {
       handleRegister(formData);
     }
+
+    navigate('/RegisterSuccess')
   }
 
   const navigate = useNavigate();

@@ -43,7 +43,7 @@ const Search = () => {
               }}>
               <option value="/">Главное</option>
               <option value="/products">Все игры</option>
-              <option value="3">Новости</option>
+              <option value="/news">Новости</option>
             </select>
             <Nav.Link className="search__linkes">
               <span
@@ -67,7 +67,7 @@ const Search = () => {
                 Все игры
               </span>
             </Nav.Link>
-            <Nav.Link className="search__linkes" href="#pricing">
+            <Nav.Link className="search__linkes" href="/news">
               <span
                 className={`search__items ${
                   path === '/news' ? 'search__items_active' : ''
