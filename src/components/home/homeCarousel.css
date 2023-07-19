@@ -188,7 +188,7 @@
   }
 }
 
-.filled {
+.filled-carousel {
   position: absolute;
   left: 0;
   top: 0;
@@ -197,5 +197,5 @@
   transition: width 10s linear;
   opacity: 0.1;
   background-color: #fff;
-  animation: fillAnimation 10s linear forwards;
+  animation: fillAnimation 10s linear forwards !important;
 }

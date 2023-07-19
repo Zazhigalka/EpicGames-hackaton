@@ -5,8 +5,16 @@ import "./homeAdaptive.css";
 import HomeCarousel from "./HomeCarousel";
 import addToWish from "../../assets/add-to.png";
 import ProductsItems from "./ProductsItems";
+import { useProduct } from "../../contexts/ProductContextProvider";
+import { useEffect } from "react";
 
 const Home = () => {
+  const { products, getProducts } = useProduct();
+
+  useEffect(() => {
+    getProducts();
+  }, []);
+
   // home second
   const [iconPlus, setIconPlus] = useState(false);
   const [secondIconPlus, setSecondIconPlus] = useState(false);
@@ -408,31 +416,25 @@ const Home = () => {
         </div>
         {currentSlide === 1 ? (
           <div className={`home__fifth_products-${currentSlide}`}>
-            <ProductsItems />
-            <ProductsItems />
-            <ProductsItems />
-            <ProductsItems />
-            <ProductsItems />
+            {products?.slice(0, 5).map((item) => (
+              <ProductsItems key={item.id} item={item} />
+            ))}
           </div>
         ) : null}
 
         {currentSlide === 2 ? (
           <div className={`home__fifth_products-${currentSlide}`}>
-            <ProductsItems />
-            <ProductsItems />
-            <ProductsItems />
-            <ProductsItems />
-            <ProductsItems />
+            {products?.slice(5, 10).map((item) => (
+              <ProductsItems key={item.id} item={item} />
+            ))}
           </div>
         ) : null}
 
         {currentSlide === 3 ? (
           <div className={`home__fifth_products-${currentSlide}`}>
-            <ProductsItems />
-            <ProductsItems />
-            <ProductsItems />
-            <ProductsItems />
-            <ProductsItems />
+            {products?.slice(10, 15).map((item) => (
+              <ProductsItems key={item.id} item={item} />
+            ))}
           </div>
         ) : null}
       </div>

@@ -1,18 +1,18 @@
 import React from "react";
 import { useCart } from "../../contexts/CartContextProvider";
 import "./cartCard.css";
+import { useNavigate } from "react-router-dom";
 
 const CartCard = ({ item }) => {
   const { deleteCartProduct } = useCart();
-
-  console.log(item.item);
+  const navigate = useNavigate();
 
   return (
-    <div
-      className="cart-list__items"
-      //   onClick={() => navigate(`/product/${item.id}`)}
-    >
-      <div className="cart-list__items_left">
+    <div className="cart-list__items">
+      <div
+        className="cart-list__items_left"
+        onClick={() => navigate(`/product/${item.item.id}`)}
+      >
         <img
           src={item.item.preview}
           alt={item.item.title_of_game}
@@ -24,7 +24,12 @@ const CartCard = ({ item }) => {
         </div>
       </div>
       <div className="cart-list__items_right">
-        <p className="c-l-i-r-p">{item.item.price} $</p>
+        <p
+          className="c-l-i-r-p"
+          onClick={() => navigate(`/product/${item.id}`)}
+        >
+          {item.item.price == 0 ? "Бесплатно" : `${item.item.price} $`}
+        </p>
         <button
           className="cart-list_delete"
           onClick={() => deleteCartProduct(item.item.id)}

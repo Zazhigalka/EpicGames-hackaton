@@ -4,14 +4,40 @@ import Search from "../search/Search";
 import { useCart } from "../../contexts/CartContextProvider";
 import { useNavigate } from "react-router-dom";
 import CartCard from "./CartCard";
+import { useState } from "react";
 
 const Cart = () => {
   const { cart, getCart } = useCart();
   const navigate = useNavigate();
 
+  let number = cart.totalPrice;
+  let formattedNumber = number.toFixed(2);
+
   useEffect(() => {
     getCart();
   }, []);
+
+  const [phone, setPhone] = useState("");
+  const [cardNumber, setCardNumber] = useState("");
+
+  const handlePhoneChange = (event) => {
+    setPhone(event.target.value);
+  };
+
+  const handleCardNumberChange = (event) => {
+    setCardNumber(event.target.value);
+  };
+
+  const handleSubmit = () => {
+    if (phone.trim() === "" || cardNumber.trim() === "") {
+      alert("Заполните все поля!");
+      return;
+    }
+
+    alert("Успешная покупка!");
+    localStorage.removeItem("cart");
+    navigate("/");
+  };
 
   return (
     <div className="cart__container">
@@ -36,10 +62,35 @@ const Cart = () => {
         <div className="cart__catalog">
           <div className="cart__left">
             {cart.products.map((item) => (
-              <CartCard item={item} key={item.id} />
+              <CartCard item={item} key={item.item.id} />
             ))}
           </div>
-          <div className="cart__right">Pay</div>
+          <div className="cart__right">
+            <p className="cart__right_title">Все игры и приложения</p>
+            <div className="cart__pay">
+              <input
+                type="number"
+                placeholder="Введите номер телефона"
+                className="pay-inputs"
+                value={phone}
+                onChange={handlePhoneChange}
+              />
+              <input
+                type="number"
+                className="pay-inputs"
+                placeholder="Введите номер карты"
+                value={cardNumber}
+                onChange={handleCardNumberChange}
+              />
+              <div className="cart__pay_price">
+                <p>Цена</p>
+                <p>{formattedNumber} $</p>
+              </div>
+              <button className="pay__confirm" onClick={handleSubmit}>
+                Оформить заказ
+              </button>
+            </div>
+          </div>
         </div>
       ) : (
         <div className="cart__none">

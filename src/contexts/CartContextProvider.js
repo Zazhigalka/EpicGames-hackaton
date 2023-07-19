@@ -1,11 +1,15 @@
 import React, { createContext, useContext, useReducer } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const cartContext = createContext();
 export const useCart = () => useContext(cartContext);
 
 const INIT_STATE = {
-  cart: JSON.parse(localStorage.getItem("cart")),
+  cart: JSON.parse(localStorage.getItem("cart")) || {
+    products: [],
+    totalPrice: 0,
+  },
 };
 
 const reducer = (state = INIT_STATE, action) => {
@@ -18,54 +22,51 @@ const reducer = (state = INIT_STATE, action) => {
   }
 };
 
+const calcTotalPrice = (products) => {
+  return products.reduce((total, product) => total + product.subPrice, 0);
+};
+
 const CartContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
-
   const navigate = useNavigate();
 
   const getCart = () => {
-    let cart = JSON.parse(localStorage.getItem("cart"));
-    if (!cart) {
-      localStorage.setItem(
-        "cart",
-        JSON.stringify({
-          products: [],
-          totalPrice: 0,
-        })
-      );
-      cart = {
-        products: [],
-        totalPrice: 0,
-      };
-    }
-
+    let cart = JSON.parse(localStorage.getItem("cart")) || {
+      products: [],
+      totalPrice: 0,
+    };
     dispatch({ type: "GET_CART", payload: cart });
   };
 
   const addProductToCart = (product) => {
-    let cart = JSON.parse(localStorage.getItem("cart"));
-    if (!cart) {
-      cart = { products: [], totalPrice: 0 };
-    }
-    let newProduct = {
-      item: product,
-      count: 1,
-      subPrice: +product.price,
+    let cart = JSON.parse(localStorage.getItem("cart")) || {
+      products: [],
+      totalPrice: 0,
     };
 
-    let productToFind = cart.products.filter(
+    let productToFind = cart.products.find(
       (elem) => elem.item.id === product.id
     );
 
-    if (productToFind.length === 0) {
-      cart.products.push(newProduct);
-    } else {
-      cart.products = cart.products.filter(
-        (elem) => elem.item.id !== product.id
+    if (productToFind) {
+      cart.products = cart.products.map((elem) =>
+        elem.item.id === product.id
+          ? {
+              ...elem,
+              count: elem.count + 1,
+              subPrice: elem.subPrice + +product.price,
+            }
+          : elem
       );
+    } else {
+      cart.products.push({
+        item: product,
+        count: 1,
+        subPrice: +product.price,
+      });
     }
 
-    // cart.totalPrice = calcTotalPrice(cart.products);
+    cart.totalPrice = calcTotalPrice(cart.products);
     localStorage.setItem("cart", JSON.stringify(cart));
     dispatch({ type: "GET_CART", payload: cart });
   };
@@ -74,15 +75,15 @@ const CartContextProvider = ({ children }) => {
     let cart = JSON.parse(localStorage.getItem("cart"));
 
     if (cart) {
-      let newCart = cart.products.filter((elem) => elem.item.id === id);
-      return newCart.length > 0 ? true : false;
+      return cart.products.some((elem) => elem.item.id === id);
     }
+    return false;
   };
 
   const deleteCartProduct = (id) => {
     let cart = JSON.parse(localStorage.getItem("cart"));
     cart.products = cart.products.filter((elem) => elem.item.id !== id);
-    // cart.totalPrice = calcTotalPrice(cart.products);
+    cart.totalPrice = calcTotalPrice(cart.products);
     localStorage.setItem("cart", JSON.stringify(cart));
     dispatch({ type: "GET_CART", payload: cart });
   };
