@@ -22,7 +22,7 @@ const ProductCard = ({ item }) => {
     toggleFavorites(id);
     if (products) {
       let filtered = products.filter((item) => item.id === id);
-      setInfo(filtered[0]?.is_favorite) || setInfo(false)_;
+      setInfo(filtered[0]?.is_favorite);
     }
     return false;
   };
@@ -42,20 +42,19 @@ const ProductCard = ({ item }) => {
         className="card__image"
         variant="top"
         onMouseEnter={handleMouseEnter}
-        src={item?.preview}
         onMouseLeave={handleMouseLeave}
+        src={item?.preview}
         onClick={() => navigate(`/product/${item.id}`)}
       />
       <div id="card__back"></div>
       {iconPlus ? (
         <img
+          onMouseEnter={handleMouseEnter}
           src={info ? inFavorites : addIcon}
           id="card__add_icon"
           alt=""
           title={
-            info
-              ? "Уже в списке желаемого"
-              : "Добавить в список желаемого"
+            info ? "Уже в списке желаемого" : "Добавить в список желаемого"
           }
           onClick={() => handleClick(item.id)}
         />
