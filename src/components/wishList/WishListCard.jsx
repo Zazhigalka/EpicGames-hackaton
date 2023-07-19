@@ -34,7 +34,7 @@ const WishListCard = ({ item }) => {
           onClick={() => navigate(`/product/${item.id}`)}
           className="w-l-i-r-p"
         >
-          {item.price} $
+          {item.price == 0 ? "Бесплатно" : `${item.price} $`}
         </p>
         <div className="wish-list__items_to-cart">
           <button

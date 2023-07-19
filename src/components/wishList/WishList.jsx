@@ -18,8 +18,6 @@ const WishList = () => {
   const { currentUser, getUserData } = useAuth();
   const [wishListProducts, getWishListProducts] = useState([]);
 
-  console.log(wishListProducts);
-
   async function fetchData() {
     try {
       const email = localStorage.getItem("email");
