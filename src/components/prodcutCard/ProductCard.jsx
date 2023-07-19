@@ -35,8 +35,6 @@ const ProductCard = ({ item }) => {
 
   const navigate = useNavigate();
 
-  const path = document.location.pathname;
-
   return (
     <Card className="card__container">
       <Card.Img
