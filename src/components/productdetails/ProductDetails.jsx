@@ -330,46 +330,45 @@ const ProductDetails = () => {
                   alignItems: "center",
                   justifyContent: "center",
                   borderBottom: "1px solid #262626",
+                  gap: "10px",
                   padding: "40px 0",
                 }}>
-                <h4>
-                  {oneProduct?.rating}
-                  <StarIcon
-                    className={
-                      oneProduct.rating >= 1
-                        ? "rait__stars stars-active"
-                        : "rait__stars"
-                    }
-                  />
-                  <StarIcon
-                    className={
-                      oneProduct.rating >= 2
-                        ? "rait__stars stars-active"
-                        : "rait__stars"
-                    }
-                  />
-                  <StarIcon
-                    className={
-                      oneProduct.rating >= 3
-                        ? "rait__stars stars-active"
-                        : "rait__stars"
-                    }
-                  />
-                  <StarIcon
-                    className={
-                      oneProduct.rating >= 4
-                        ? "rait__stars stars-active"
-                        : "rait__stars"
-                    }
-                  />
-                  <StarIcon
-                    className={
-                      oneProduct.rating >= 5
-                        ? "rait__stars stars-active"
-                        : "rait__stars"
-                    }
-                  />
-                </h4>
+                <h4>{oneProduct?.rating}</h4>
+                <StarIcon
+                  className={
+                    oneProduct.rating >= 1
+                      ? "rait__stars stars-active"
+                      : "rait__stars"
+                  }
+                />
+                <StarIcon
+                  className={
+                    oneProduct.rating >= 2
+                      ? "rait__stars stars-active"
+                      : "rait__stars"
+                  }
+                />
+                <StarIcon
+                  className={
+                    oneProduct.rating >= 3
+                      ? "rait__stars stars-active"
+                      : "rait__stars"
+                  }
+                />
+                <StarIcon
+                  className={
+                    oneProduct.rating >= 4
+                      ? "rait__stars stars-active"
+                      : "rait__stars"
+                  }
+                />
+                <StarIcon
+                  className={
+                    oneProduct.rating >= 5
+                      ? "rait__stars stars-active"
+                      : "rait__stars"
+                  }
+                />
               </div>
               {currentUser ? (
                 <RatingSlider id={id} addRating={addRating} />
