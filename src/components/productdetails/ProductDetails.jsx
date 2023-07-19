@@ -65,6 +65,7 @@ const ProductDetails = () => {
     addComment(formData);
     setComment("");
   };
+
   return (
     <div style={{ backgroundColor: "#121212" }}>
       <div
@@ -88,35 +89,35 @@ const ProductDetails = () => {
                   <div>
                     <StarIcon
                       className={
-                        oneProduct.rating >= 1
+                        oneProduct?.rating >= 1
                           ? "logo__stars stars-active"
                           : "logo__stars"
                       }
                     />
                     <StarIcon
                       className={
-                        oneProduct.rating >= 2
+                        oneProduct?.rating >= 2
                           ? "logo__stars stars-active"
                           : "logo__stars"
                       }
                     />
                     <StarIcon
                       className={
-                        oneProduct.rating >= 3
+                        oneProduct?.rating >= 3
                           ? "logo__stars stars-active"
                           : "logo__stars"
                       }
                     />
                     <StarIcon
                       className={
-                        oneProduct.rating >= 4
+                        oneProduct?.rating >= 4
                           ? "logo__stars stars-active"
                           : "logo__stars"
                       }
                     />
                     <StarIcon
                       className={
-                        oneProduct.rating >= 5
+                        oneProduct?.rating >= 5
                           ? "logo__stars stars-active"
                           : "logo__stars"
                       }
@@ -336,35 +337,35 @@ const ProductDetails = () => {
                 <h4>{oneProduct?.rating}</h4>
                 <StarIcon
                   className={
-                    oneProduct.rating >= 1
+                    oneProduct?.rating >= 1
                       ? "rait__stars stars-active"
                       : "rait__stars"
                   }
                 />
                 <StarIcon
                   className={
-                    oneProduct.rating >= 2
+                    oneProduct?.rating >= 2
                       ? "rait__stars stars-active"
                       : "rait__stars"
                   }
                 />
                 <StarIcon
                   className={
-                    oneProduct.rating >= 3
+                    oneProduct?.rating >= 3
                       ? "rait__stars stars-active"
                       : "rait__stars"
                   }
                 />
                 <StarIcon
                   className={
-                    oneProduct.rating >= 4
+                    oneProduct?.rating >= 4
                       ? "rait__stars stars-active"
                       : "rait__stars"
                   }
                 />
                 <StarIcon
                   className={
-                    oneProduct.rating >= 5
+                    oneProduct?.rating >= 5
                       ? "rait__stars stars-active"
                       : "rait__stars"
                   }
@@ -458,7 +459,7 @@ const ProductDetails = () => {
                 {oneProduct?.comments.map((comment) => (
                   <div key={comment.id} className="one-review">
                     <div className="about-user">
-                      <h6>GamesRadar+</h6>
+                      <h6>{comment.owner_username}</h6>
                       <p>
                         Дата создания:
                         {moment(comment.created_at).format("DD/MM/YYYY")}
