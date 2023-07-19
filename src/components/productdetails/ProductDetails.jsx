@@ -29,6 +29,8 @@ const ProductDetails = () => {
     deleteComment,
 
     addRating,
+    getRatingData,
+    ratingData,
   } = useProduct();
 
   const { currentUser } = useAuth();
@@ -38,16 +40,23 @@ const ProductDetails = () => {
 
   useEffect(() => {
     getOneProduct(id);
+    getRatingData(id);
   }, [id]);
 
   const [showMore, setShowMore] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   const [totalLikes, setTotalLikes] = useState(0);
+  const [isRated, setIsRated] = useState(false);
+  const [rating, setRating] = useState(0);
 
   useEffect(() => {
     setIsLiked(oneProduct?.is_liked);
     setTotalLikes(oneProduct?.likes_count);
   }, [oneProduct]);
+
+  // useEffect(() => {
+  //   setIsRated(ratingData);
+  // }, [ratingData]);
 
   const toggleShowMore = () => {
     setShowMore(!showMore);
@@ -66,6 +75,7 @@ const ProductDetails = () => {
     setComment("");
   };
 
+  console.log(ratingData);
   return (
     <div style={{ backgroundColor: "#121212" }}>
       <div
@@ -371,9 +381,22 @@ const ProductDetails = () => {
                   }
                 />
               </div>
-              {currentUser ? (
-                <RatingSlider id={id} addRating={addRating} />
-              ) : null}
+              {ratingData?.mark ? (
+                <p
+                  style={{
+                    fontSize: "2em",
+                    textAlign: "center",
+                    marginTop: "40px",
+                  }}>
+                  Вы уже оценили! Ваша оценка: {ratingData?.mark}
+                </p>
+              ) : (
+                <div>
+                  {currentUser ? (
+                    <RatingSlider id={id} addRating={addRating} />
+                  ) : null}
+                </div>
+              )}
             </div>
 
             <div className="system-requirements__block">
