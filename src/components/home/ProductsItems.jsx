@@ -9,6 +9,7 @@ const ProductsItems = ({ item }) => {
   const [iconPlus, setIconPlus] = useState(false);
   const navigate = useNavigate();
   const { toggleFavorites, getFavorites, products, getProducts } = useProduct();
+  const [info, setInfo] = useState(false);
 
   useEffect(() => {
     getProducts();
@@ -19,7 +20,7 @@ const ProductsItems = ({ item }) => {
     toggleFavorites(id);
     if (products) {
       let filtered = products.filter((item) => item.id === id);
-      return filtered[0]?.is_favorite || false;
+      setInfo(filtered[0]?.is_favorite);
     }
     return false;
   };
@@ -38,16 +39,16 @@ const ProductsItems = ({ item }) => {
         alt=""
         className="home__fifth_items-img"
         onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
         onClick={() => navigate(`/product/${item.id})`)}
       />
       {iconPlus ? (
         <img
-          src={handleClick(item.id) ? inFavorites : addToWish}
+          onMouseEnter={handleMouseEnter}
+          src={info ? inFavorites : addToWish}
           alt=""
           className="home__fifth_add"
-          title={
-            handleClick(item.id) ? "В списке желаемого" : "В список желаемого"
-          }
+          title={info ? "В списке желаемого" : "В список желаемого"}
           onClick={() => handleClick(item.id)}
         />
       ) : null}
