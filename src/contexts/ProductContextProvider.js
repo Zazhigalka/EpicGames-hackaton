@@ -11,6 +11,7 @@ const INIT_STATE = {
   products: [],
   oneProduct: null,
   favorites: [],
+  ratingData: null,
 };
 
 function reducer(state = INIT_STATE, action) {
@@ -26,6 +27,9 @@ function reducer(state = INIT_STATE, action) {
 
     case "GET_FAVORITES":
       return { ...state, favorites: action.payload };
+
+    case "GET_RATING":
+      return { ...state, ratingData: action.payload };
 
     default:
       return state;
@@ -160,6 +164,16 @@ const ProductContextProvider = ({ children }) => {
     }
   }
 
+  async function getRatingData(id) {
+    try {
+      const res = await axios.get(`${API}/posts/${id}/rating/`, getTokens());
+      const data = res.data[0];
+      dispatch({ type: "GET_RATING", payload: data });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const values = {
     createProduct,
     getProducts,
@@ -181,6 +195,8 @@ const ProductContextProvider = ({ children }) => {
     deleteComment,
 
     addRating,
+    getRatingData,
+    ratingData: state.ratingData,
   };
 
   return (
