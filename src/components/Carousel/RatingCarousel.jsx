@@ -24,7 +24,7 @@ const RatingSlider = ({ id, addRating }) => {
         {[0, 1, 2, 3, 4, 5].map((star) => (
           <Star
             key={star}
-            className={`star ${star >= rate ? "filled" : ""}`}
+            className={`star ${star >= rate ? "none" : "filled"}`}
             onClick={() => setRate(star)}
           />
         ))}
