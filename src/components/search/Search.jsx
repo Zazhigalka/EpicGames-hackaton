@@ -25,15 +25,9 @@ const Search = () => {
   }, []);
 
   const { currentUser } = useAuth();
+  const { searchProducts } = useProduct();
 
   const path = document.location.pathname;
-
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [search, setSearch] = useState(searchParams.get("q") || "");
-
-  React.useEffect(() => {
-    setSearchParams({ q: search });
-  }, [search]);
 
   return (
     <Navbar style={{ height: "90px" }} className="search" data-bs-theme="dark">
@@ -43,9 +37,8 @@ const Search = () => {
           <input
             type="text"
             className="search__input"
+            onChange={(e) => searchProducts(e.target.value)}
             placeholder="Искать в магазине"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
           />
         </div>
         <Nav className="search__items_group">

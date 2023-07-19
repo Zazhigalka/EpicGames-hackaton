@@ -3,14 +3,17 @@ import React, { createContext, useContext, useReducer } from "react";
 import { useNavigate } from "react-router-dom";
 import { API } from "../helpers/consts";
 import { getTokens } from "../helpers/functions";
+import { useState } from "react";
 
 export const productContext = createContext();
 export const useProduct = () => useContext(productContext);
 
 const INIT_STATE = {
   products: [],
+  pages: 0,
   oneProduct: null,
   favorites: [],
+  categories: [],
   ratingData: null,
 };
 
@@ -28,6 +31,8 @@ function reducer(state = INIT_STATE, action) {
     case "GET_FAVORITES":
       return { ...state, favorites: action.payload };
 
+    case "GET_CATEGORIES":
+      return { ...state, categories: action.payload };
     case "GET_RATING":
       return { ...state, ratingData: action.payload };
 
@@ -39,6 +44,19 @@ function reducer(state = INIT_STATE, action) {
 const ProductContextProvider = ({ children }) => {
   const navigate = useNavigate();
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
+  const [categoryFilter, setCategoryFilter] = useState("All");
+
+  async function searchProducts(game_title) {
+    try {
+      const res = await axios(
+        `${API}/posts/?search=${game_title}`,
+        getTokens()
+      );
+      dispatch({ type: "GET_PRODUCTS", payload: res.data });
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   async function getProducts() {
     try {
@@ -98,6 +116,16 @@ const ProductContextProvider = ({ children }) => {
     try {
       await axios.delete(`${API}/posts/${id}/`, getTokens());
       getProducts();
+      navigate("/products");
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function getCategories() {
+    try {
+      const res = await axios(`${API}/categories/`);
+      dispatch({ type: "GET_CATEGORIES", payload: res.data });
     } catch (error) {
       console.log(error);
     }
@@ -200,6 +228,9 @@ const ProductContextProvider = ({ children }) => {
     oneProduct: state.oneProduct,
     deleteProduct,
     updateProduct,
+    getCategories,
+    categories: state.categories,
+    pages: state.pages,
 
     toggleFavorites,
     getFavorites,
@@ -213,6 +244,11 @@ const ProductContextProvider = ({ children }) => {
     deleteComment,
 
     addRating,
+
+    categoryFilter,
+    setCategoryFilter,
+    searchProducts,
+
     getRatingData,
     ratingData: state.ratingData,
 
