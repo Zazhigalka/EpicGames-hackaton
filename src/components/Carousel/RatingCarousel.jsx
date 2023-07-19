@@ -35,9 +35,9 @@ const RatingSlider = ({ id, addRating }) => {
         step="1"
         value={rate}
         onChange={handleChange}
-        className="slider"
+        className="slider mt-4 mb-4"
       />
-      <Button variant="secondary" onClick={handleAddRating}>
+      <Button size="lg" variant="secondary" onClick={handleAddRating}>
         Добавить рейтинг
       </Button>
     </div>
