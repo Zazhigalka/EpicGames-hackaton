@@ -14,6 +14,7 @@ const INIT_STATE = {
   oneProduct: null,
   favorites: [],
   categories: [],
+  ratingData: null,
 };
 
 function reducer(state = INIT_STATE, action) {
@@ -32,6 +33,9 @@ function reducer(state = INIT_STATE, action) {
 
     case "GET_CATEGORIES":
       return { ...state, categories: action.payload };
+    case "GET_RATING":
+      return { ...state, ratingData: action.payload };
+
     default:
       return state;
   }
@@ -41,7 +45,18 @@ const ProductContextProvider = ({ children }) => {
   const navigate = useNavigate();
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
   const [categoryFilter, setCategoryFilter] = useState("All");
-  const [searchFilter, setSearchFilter] = useState("");
+
+  async function searchProducts(game_title) {
+    try {
+      const res = await axios(
+        `${API}/posts/?search=${game_title}`,
+        getTokens()
+      );
+      dispatch({ type: "GET_PRODUCTS", payload: res.data });
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   async function getProducts() {
     try {
@@ -177,6 +192,16 @@ const ProductContextProvider = ({ children }) => {
     }
   }
 
+  async function getRatingData(id) {
+    try {
+      const res = await axios.get(`${API}/posts/${id}/rating/`, getTokens());
+      const data = res.data[0];
+      dispatch({ type: "GET_RATING", payload: data });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const values = {
     createProduct,
     getProducts,
@@ -204,9 +229,10 @@ const ProductContextProvider = ({ children }) => {
 
     categoryFilter,
     setCategoryFilter,
+    searchProducts,
 
-    searchFilter,
-    setSearchFilter,
+    getRatingData,
+    ratingData: state.ratingData,
   };
 
   return (

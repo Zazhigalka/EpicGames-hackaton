@@ -19,7 +19,7 @@ const Search = () => {
   const navigate = useNavigate();
 
   const { currentUser } = useAuth();
-  const { searchFilter, setSearchFilter } = useProduct();
+  const { searchProducts } = useProduct();
 
   const path = document.location.pathname;
 
@@ -31,7 +31,7 @@ const Search = () => {
           <input
             type="text"
             className="search__input"
-            onChange={(e) => setSearchFilter(e.target.value)}
+            onChange={(e) => searchProducts(e.target.value)}
             placeholder="Искать в магазине"
           />
         </div>

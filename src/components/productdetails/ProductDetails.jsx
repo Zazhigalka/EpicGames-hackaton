@@ -29,6 +29,8 @@ const ProductDetails = () => {
     deleteComment,
 
     addRating,
+    getRatingData,
+    ratingData,
   } = useProduct();
 
   const { currentUser } = useAuth();
@@ -38,9 +40,9 @@ const ProductDetails = () => {
 
   useEffect(() => {
     getOneProduct(id);
+    getRatingData(id);
   }, [id]);
 
-  console.log(oneProduct);
   const [showMore, setShowMore] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   const [totalLikes, setTotalLikes] = useState(0);
@@ -66,6 +68,8 @@ const ProductDetails = () => {
     addComment(formData);
     setComment("");
   };
+
+  const [hasRated, setHasRated] = useState(false);
 
   return (
     <div style={{ backgroundColor: "#121212" }}>
@@ -388,8 +392,20 @@ const ProductDetails = () => {
                   }
                 />
               </div>
-              {currentUser ? (
-                <RatingSlider id={id} addRating={addRating} />
+              {hasRated && ratingData?.mark && (
+                <p style={{ fontSize: "2em", textAlign: "center" }}>
+                  Вы уже оценили! Ваша оценка: {ratingData?.mark}
+                </p>
+              )}
+
+              {!hasRated && currentUser ? (
+                <div>
+                  <RatingSlider
+                    id={id}
+                    addRating={addRating}
+                    setHasRated={setHasRated}
+                  />
+                </div>
               ) : null}
             </div>
 

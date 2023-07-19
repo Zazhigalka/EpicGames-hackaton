@@ -4,6 +4,7 @@
 }
 .home__fifth_items-img {
   height: 250px;
+  width: 190px;
   border-radius: 10px;
   transition: 0.2s;
   cursor: pointer;

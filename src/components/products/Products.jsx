@@ -98,7 +98,7 @@ const Products = () => {
               } else if (item.category === categoryFilter) {
                 return <ProductCard key={item.id} item={item} />;
               }
-            })}
+            })} 
 
             {/* {products.map((item) => (
               <ProductCard key={item.id} item={item} />
