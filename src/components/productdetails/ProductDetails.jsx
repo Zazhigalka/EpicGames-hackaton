@@ -280,7 +280,10 @@ const ProductDetails = () => {
 
             <div className="product-details__raiting">
               <h5>Оценки игроков в Epic</h5>
-              <p>На основе отзывов игроков в экосистеме Epic Games</p>
+              <p>
+                На основе отзывов игроков в экосистеме Epic Games (оценили:{" "}
+                {oneProduct?.marks_count})
+              </p>
 
               <div
                 style={{
