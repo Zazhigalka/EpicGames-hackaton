@@ -61,7 +61,7 @@ const ProductCard = ({ item }) => {
         />
       ) : null}
       <Card.Body className="card__body">
-        <Card.Text className="card__osob">Особенности</Card.Text>
+        <Card.Text className="card__osob">{item.category}</Card.Text>
         <Card.Title className="card__title">{item.title_of_game}</Card.Title>
         <Card.Text className="card__price">
           {item.price == 0 ? "Бесплатно" : `${item.price} $`}

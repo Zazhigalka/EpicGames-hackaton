@@ -9,7 +9,10 @@ const Filter = () => {
     <div className="filter__container">
       <p className="filter__title">Фильтры</p>
       <div className="all__filters">
-        <Form.Select className="price__select">
+        <Form.Select
+          style={{ backgroundColor: "#121212", color: "white" }}
+          className="price__select"
+        >
           <option>Цена</option>
           <option value="1">Бесплатно</option>
           <option value="2">Ниже 10,00 $</option>
@@ -18,7 +21,7 @@ const Filter = () => {
           <option value="5">14,99 $ и выше</option>
         </Form.Select>
         <GenreSelect />
-        <OsobennostiSelect />
+        {/* <OsobennostiSelect /> */}
       </div>
     </div>
   );

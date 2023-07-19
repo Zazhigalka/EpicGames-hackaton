@@ -4,14 +4,19 @@ import { useProduct } from "../../contexts/ProductContextProvider";
 import { useParams } from "react-router-dom";
 
 const EditProduct = () => {
-  const { updateProduct, oneProduct, getOneProduct } = useProduct();
+  const {
+    categories,
+    getCategories,
+    updateProduct,
+    oneProduct,
+    getOneProduct,
+  } = useProduct();
 
   const { id } = useParams();
   useEffect(() => {
     getOneProduct(id);
+    getCategories();
   }, []);
-
-  console.log(oneProduct);
 
   useEffect(() => {
     if (oneProduct) {
@@ -54,7 +59,6 @@ const EditProduct = () => {
   const [image3, setImage3] = useState("");
   const [image4, setImage4] = useState("");
   const [image5, setImage5] = useState("");
-  console.log(gameLogo);
 
   const handleSave = () => {
     if (
@@ -192,13 +196,25 @@ const EditProduct = () => {
             encType="multipart/form-data"
             value={video}
           />
-          <input
+          {/* <input
             placeholder="ENTER CATEGORY"
             type="text"
             className="addProduct__inputs"
             onChange={(e) => setCategory(e.target.value)}
             value={category}
-          />
+          /> */}
+          <select
+            className="addProduct__inputs"
+            onChange={(e) => setCategory(e.target.value)}
+            value={category}
+          >
+            <option>Choose category</option>
+            {categories.map((item) => (
+              <option key={item.slug} value={item.slug}>
+                {item.name}
+              </option>
+            ))}
+          </select>
           <input
             placeholder="ENTER FIRST IMAGE"
             type="text"

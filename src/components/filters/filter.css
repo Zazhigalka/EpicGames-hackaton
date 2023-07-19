@@ -13,5 +13,7 @@
 .all__filters {
 }
 
-.price__select {
+.price__select option {
+  background-color: #121212;
+  color: white;
 }
