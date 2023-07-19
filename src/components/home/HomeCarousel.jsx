@@ -12,21 +12,21 @@ const HomeCarousel = () => {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
   const [progressIndex, setProgressIndex] = useState(0);
   const [iconPlus, setIconPlus] = useState(false);
-  const {
-    favorites,
-    oneProduct,
-    getFavorites,
-    toggleFavorites,
-    getOneProduct,
-    getProducts,
-    products,
-  } = useProduct();
+  const { getFavorites, toggleFavorites, getProducts, products } = useProduct();
 
   // console.log(products);
   useEffect(() => {
     getProducts();
     getFavorites();
   }, []);
+
+  const handleClick = (id) => {
+    if (products) {
+      let filtered = products.filter((item) => item.id === id);
+      return filtered[0]?.is_favorite || false;
+    }
+    return false;
+  };
 
   const handleMouseEnter = () => {
     setIconPlus(true);
@@ -182,13 +182,16 @@ const HomeCarousel = () => {
               <div className="left__descr_bottom">
                 <button>Добавить в Корзину</button>
                 <div className="home__wish">
-                  <img src={addIcon} alt="" />
+                  <img src={handleClick(3) ? inFavorites : addIcon} alt="" />
                   <p
                     onClick={() => {
-                      toggleFavorites(14);
+                      toggleFavorites(3);
+                      handleClick(3);
                     }}
                   >
-                    В список желаемого
+                    {handleClick(3)
+                      ? "В списке желаемого"
+                      : "В список желаемого"}
                   </p>
                 </div>
               </div>
@@ -218,13 +221,15 @@ const HomeCarousel = () => {
               <div className="left__descr_bottom">
                 <button>Добавить в Корзину</button>
                 <div className="home__wish">
-                  <img src={addIcon} alt="" />
+                  <img src={handleClick(4) ? inFavorites : addIcon} alt="" />
                   <p
                     onClick={() => {
                       toggleFavorites(11);
                     }}
                   >
-                    В список желаемого
+                    {handleClick(3)
+                      ? "В списке желаемого"
+                      : "В список желаемого"}
                   </p>
                 </div>
               </div>
@@ -254,13 +259,15 @@ const HomeCarousel = () => {
               <div className="left__descr_bottom">
                 <button>Добавить в Корзину</button>
                 <div className="home__wish">
-                  <img src={addIcon} alt="" />
+                  <img src={handleClick(4) ? inFavorites : addIcon} alt="" />
                   <p
                     onClick={() => {
                       toggleFavorites(12);
                     }}
                   >
-                    В список желаемого
+                    {handleClick(3)
+                      ? "В списке желаемого"
+                      : "В список желаемого"}
                   </p>
                 </div>
               </div>
@@ -294,8 +301,12 @@ const HomeCarousel = () => {
               <div className="left__descr_bottom">
                 <button>Добавить в Корзину</button>
                 <div className="home__wish">
-                  <img src={addIcon} alt="" />
-                  <p>В список желаемого</p>
+                  <img src={handleClick(4) ? inFavorites : addIcon} alt="" />
+                  <p>
+                    {handleClick(3)
+                      ? "В списке желаемого"
+                      : "В список желаемого"}
+                  </p>
                 </div>
               </div>
             </Carousel.Caption>
@@ -321,13 +332,16 @@ const HomeCarousel = () => {
               <div className="left__descr_bottom">
                 <button>Добавить в Корзину</button>
                 <div className="home__wish">
-                  <img src={addIcon} alt="" />
+                  <img src={handleClick(4) ? inFavorites : addIcon} alt="" />
                   <p
                     onClick={() => {
-                      toggleFavorites(10);
+                      toggleFavorites(4);
+                      handleClick(4);
                     }}
                   >
-                    В список желаемого
+                    {handleClick(4)
+                      ? "В списке желаемого"
+                      : "В список желаемого"}
                   </p>
                 </div>
               </div>
@@ -357,14 +371,16 @@ const HomeCarousel = () => {
               <div className="left__descr_bottom">
                 <button>Добавить в корзину</button>
                 <div className="home__wish">
-                  <img src={addIcon} alt="" />
+                  <img src={handleClick(4) ? inFavorites : addIcon} alt="" />
 
                   <p
                     onClick={() => {
                       toggleFavorites(13);
                     }}
                   >
-                    В список желаемого
+                    {handleClick(3)
+                      ? "В списке желаемого"
+                      : "В список желаемого"}
                   </p>
                 </div>
               </div>

@@ -1,13 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./productItems.css";
 import addToWish from "../../assets/add-to.png";
 import { useNavigate } from "react-router-dom";
 import { useProduct } from "../../contexts/ProductContextProvider";
+import inFavorites from "../../assets/complete.svg";
 
 const ProductsItems = ({ item }) => {
   const [iconPlus, setIconPlus] = useState(false);
   const navigate = useNavigate();
-  const { toggleFavorites } = useProduct();
+  const { toggleFavorites, getFavorites, products, getProducts } = useProduct();
+
+  useEffect(() => {
+    getProducts();
+    getFavorites();
+  }, []);
+
+  const handleClick = (id) => {
+    toggleFavorites(id);
+    if (products) {
+      let filtered = products.filter((item) => item.id === id);
+      return filtered[0]?.is_favorite || false;
+    }
+    return false;
+  };
 
   const handleMouseEnter = () => {
     setIconPlus(true);
@@ -23,15 +38,15 @@ const ProductsItems = ({ item }) => {
         alt=""
         className="home__fifth_items-img"
         onMouseEnter={handleMouseEnter}
-        onClick={() => navigate(`/product/${item.id}`)}
+        onClick={() => navigate(`/product/${item.id})`)}
       />
       {iconPlus ? (
         <img
-          src={addToWish}
+          src={handleClick() ? inFavorites : addToWish}
           alt=""
           className="home__fifth_add"
-          title="В список желания"
-          onClick={() => toggleFavorites(item.id)}
+          title={handleClick() ? "В списке желаемого" : "В список желаемого"}
+          onClick={() => handleClick(item.id)}
         />
       ) : null}
       <p className="home__fifth_items-game">Базовая игра</p>
