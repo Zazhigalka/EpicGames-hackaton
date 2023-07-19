@@ -42,10 +42,12 @@ const ProductsItems = ({ item }) => {
       />
       {iconPlus ? (
         <img
-          src={handleClick() ? inFavorites : addToWish}
+          src={handleClick(item.id) ? inFavorites : addToWish}
           alt=""
           className="home__fifth_add"
-          title={handleClick() ? "В списке желаемого" : "В список желаемого"}
+          title={
+            handleClick(item.id) ? "В списке желаемого" : "В список желаемого"
+          }
           onClick={() => handleClick(item.id)}
         />
       ) : null}
