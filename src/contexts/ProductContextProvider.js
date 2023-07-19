@@ -38,7 +38,10 @@ const ProductContextProvider = ({ children }) => {
 
   async function getProducts() {
     try {
-      const res = await axios(`${API}/posts/`, getTokens());
+      const res = await axios(
+        `${API}/posts/${window.location.search}/`,
+        getTokens()
+      );
       dispatch({ type: "GET_PRODUCTS", payload: res.data });
     } catch (error) {
       console.log(error);
@@ -62,6 +65,21 @@ const ProductContextProvider = ({ children }) => {
       console.log(error);
     }
   }
+
+  const fetchByParams = async (query, value) => {
+    const search = new URLSearchParams(window.location.search);
+    if (value === "All") {
+      search.delete(query);
+    } else if (query === "_sort") {
+      search.set(query, "price");
+      search.set("_order", value);
+    } else {
+      search.set(query, value);
+    }
+
+    const url = `${window.location.pathname}?${search.toString()}`;
+    navigate(url);
+  };
 
   async function getOneProduct(id) {
     try {
@@ -181,6 +199,8 @@ const ProductContextProvider = ({ children }) => {
     deleteComment,
 
     addRating,
+
+    fetchByParams,
   };
 
   return (

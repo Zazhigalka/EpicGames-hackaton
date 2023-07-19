@@ -4,12 +4,15 @@ import ProductCard from "../prodcutCard/ProductCard";
 import Filter from "../filters/Filter";
 import Search from "../search/Search";
 import { useProduct } from "../../contexts/ProductContextProvider";
+import { useSearchParams } from "react-router-dom";
 
 const Products = () => {
   const { getProducts, products } = useProduct();
+  const [searchParams, setSearchParams] = useSearchParams();
+
   useEffect(() => {
     getProducts();
-  }, []);
+  }, [searchParams]);
 
   return (
     <div className="products__container">
