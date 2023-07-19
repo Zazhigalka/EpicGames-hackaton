@@ -3,7 +3,7 @@ import { ReactComponent as Star } from "../../assets/star.svg";
 import "./RatingCarousel.css";
 import { Button } from "react-bootstrap";
 
-const RatingSlider = ({ id, addRating }) => {
+const RatingSlider = ({ id, addRating, setHasRated }) => {
   const [rate, setRate] = useState(0);
 
   const handleChange = (event) => {
